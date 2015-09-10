@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{Castain2008153}
+R.H. Castain, T.S. Woodall, D.J. Daniel, J.M. Squyres, B.~Barrett, and G.E.
+  Fagg.
+\newblock The open run-time environment (openrte): A transparent multicluster
+  environment for high-performance computing.
+\newblock {\em Future Generation Computer Systems}, 24(2):153 -- 157, 2008.
+
+\bibitem{gabriel04:_open_mpi}
+Edgar Gabriel, Graham~E. Fagg, George Bosilca, Thara Angskun, Jack~J. Dongarra,
+  Jeffrey~M. Squyres, Vishal Sahay, Prabhanjan Kambadur, Brian Barrett, Andrew
+  Lumsdaine, Ralph~H. Castain, David~J. Daniel, Richard~L. Graham, and
+  Timothy~S. Woodall.
+\newblock Open {MPI}: Goals, concept, and design of a next generation {MPI}
+  implementation.
+\newblock In {\em Proceedings, 11th European PVM/MPI Users' Group Meeting},
+  pages 97--104, Budapest, Hungary, September 2004.
+
+\end{thebibliography}
