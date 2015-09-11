@@ -5,6 +5,16 @@ G.~S. Almasi and A.~Gottlieb.
 \newblock {\em Highly Parallel Computing}.
 \newblock Benjamin-Cummings Publishing Co., Inc., Redwood City, CA, USA, 1989.
 
+\bibitem{5009071}
+M.~Flynn.
+\newblock Some computer organizations and their effectiveness.
+\newblock {\em Computers, IEEE Transactions on}, C-21(9):948--960, Sept 1972.
+
+\bibitem{44900}
+R.~Duncan.
+\newblock A survey of parallel computer architectures.
+\newblock {\em Computer}, 23(2):5--16, Feb 1990.
+
 \bibitem{Castain2008153}
 R.H. Castain, T.S. Woodall, D.J. Daniel, J.M. Squyres, B.~Barrett, and G.E.
   Fagg.
