@@ -8,7 +8,10 @@ $ pdflatex main.tex
 After adding a new citation, complie like this:
 
 $ pdflatex main.tex
+
 $ bibtex main.aux
+
 $ pdflatex main.tex
+
 $ pdflatex main.tex
 
