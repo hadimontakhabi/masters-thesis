@@ -1,7 +1,7 @@
 \chapter{Introduction}
 \label{sec:Introduction}
 
-\section{Parallel Architectures and Parallel Programming Models}
+\section{Parallel Architectures}
 \label{sec:Introduction}
 
 Parallel computing is a type of computation in which calculations are carried out simultaneously~\cite{Almasi:1989:HPC:160438}. The idea is to divide large problems into smaller ones and solve those smaller problems at the same time.
@@ -11,23 +11,48 @@ There are four categories defined:
 
 \begin{enumerate}
   \item \textbf{Single Instruction, Single Data Stream (SISD)}\\\
-In this architecture, a single processor executes a single instruction stream.
-
+    In this architecture, a single processor executes a single instruction stream.
   \item \textbf{Single Instruction, Multiple Data Streams (SIMD)}\\\
-This architecture describes computers with multiple processing elements which execute the same operation on multiple data streams at the same time.
-
+    This architecture describes computers with multiple processing elements which execute the same operation on multiple data streams at the same time.
   \item \textbf{Multiple Instruction, Single Data Stream (MISD)}\\\
-In this architecture, multiple instructions operate on a single data stream. This architecture is almost non-existent, and it could be used for fault tolerant systems.
-
+    In this architecture, multiple instructions operate on a single data stream. This architecture is almost non-existent, and it could be used for fault tolerant systems.
   \item \textbf{Multiple Instruction, Multiple Data Streams (MIMD)}\\\
-In this architecture, multiple independent processors execute different instructions on different data streams at the same time. This is the most generic category.
+    In this architecture, multiple independent processors execute different instructions on different data streams at the same time. This is the most generic category.
+    
+    MIMD category is subdivided into shared-memory and distributed memory architectures. Furthermore, shared-memory architectures can be classified as symmetric multiprocessors with uniform memory access (UMA) or as non-uniform memory access (NUMA) architectures that have recently gained popularity~\cite{kshemkalyani2008distributed,sutter2005free}.
+
 \end{enumerate}
 
+
+\section{Parallel Programming Models}
+\label{sec:Introduction}
+The programming model is an abstraction that defines the hardware and the form of programming language or API used for writing parallel programs.
+Parallel programming models can be divided into two broad areas: Process interaction and problem decomposition.~\cite{parallelprogrammingmodels}
+\begin{itemize}
+\item \textbf{Process Interaction}\\
+  Parallel processes need to communicate with each other. The mechanism that they use for the communication is described as process interation. Two main types of process interaction are shared memory and message passing. The interaction could also be implicit.
+  \begin{itemize}
+  \item \textbf{Shared Memory}\\
+    In this model, parallel processes share a global address space which they all read and write to. Since these operations are asynchronous, protection mechanisms like locks and semaphores are needed to control concurrent access.
+  \item \textbf{Message Passing}\\
+    In this model, parallel tasks exchange data through sending and receiving messages to and from one another. These communications can be synchronpus or asynchronus.
+  \item \textbf{Implicit}\\
+    In this model, process interactions are not visible to the programmer. Usually, the compiler or the runtime is responsible for performing the interations.
+  \end{itemize}
+\item \textbf{Problem Decomposition}\\
+Problem decomposition describes the way processes are expressed to break down a large problem~\cite{Quinn:2003:PPC:1211440}.
+  \begin{itemize}
+  \item \textbf{Task Parallelism}\\
+    The main focus of a task based parallelism is on processes or threads as individual units of execution. This is a natural way to express message passing communication.
+  \item \textbf{Data Parallelism}\\
+    In task-parallel models the data is usually structured in an array. A set of tasks will operate independently on separate partitions of the data.     
+  \end{itemize}
+\end{itemize}
 
 
 \section{Message Passing Interface (MPI)}
 \label{sec:Introduction}
-
+``MPI (Message Passing Interface) is a specification for a standard library for message passing that was defined by the MPI Forum, a broadly based group of parallel computer vendors, library writers, and applications specialists. Multiple implementations of MPI have been developed.''~\cite{gropp1996high}
 
 \section{Influence of Runtime Environments on MPI Jobs}
 \label{sec:Introduction}

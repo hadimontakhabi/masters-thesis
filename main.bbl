@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Almasi:1989:HPC:160438}
 G.~S. Almasi and A.~Gottlieb.
@@ -14,6 +14,33 @@ M.~Flynn.
 R.~Duncan.
 \newblock A survey of parallel computer architectures.
 \newblock {\em Computer}, 23(2):5--16, Feb 1990.
+
+\bibitem{kshemkalyani2008distributed}
+Ajay~D Kshemkalyani and Mukesh Singhal.
+\newblock {\em Distributed computing: principles, algorithms, and systems}.
+\newblock Cambridge University Press, 2008.
+
+\bibitem{sutter2005free}
+Herb Sutter.
+\newblock The free lunch is over: A fundamental turn toward concurrency in
+  software.
+\newblock {\em Dr. Dobb’s journal}, 30(3):202--210, 2005.
+
+\bibitem{parallelprogrammingmodels}
+Parallel programming models.
+\newblock \url{https://en.wikipedia.org/wiki/Parallel_programming_model}.
+\newblock Accessed: 2015-09-14.
+
+\bibitem{Quinn:2003:PPC:1211440}
+Michael~J. Quinn.
+\newblock {\em Parallel Programming in C with MPI and OpenMP}.
+\newblock McGraw-Hill Education Group, 2003.
+
+\bibitem{gropp1996high}
+William Gropp, Ewing Lusk, Nathan Doss, and Anthony Skjellum.
+\newblock A high-performance, portable implementation of the mpi message
+  passing interface standard.
+\newblock {\em Parallel computing}, 22(6):789--828, 1996.
 
 \bibitem{openmpi}
 Open mpi: Open source high performance computing.
