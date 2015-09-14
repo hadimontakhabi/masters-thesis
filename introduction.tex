@@ -9,13 +9,20 @@ Parallel computing is a type of computation in which calculations are carried ou
 Flynn's taxonomy is a classification of computer architectures, proposed by Michael J. Flynn in 1966~\cite{5009071,44900}. This classification is based on the number of concurrent instructions and data streams available in the architecture.
 There are four categories defined:
 
-\bf{Single Instruction, Single Data Stream (SISD)}
+\begin{enumerate}
+  \item \textbf{Single Instruction, Single Data Stream (SISD)}\\\
+In this architecture, a single processor executes a single instruction stream.
 
-\bf{Single Instruction, Multiple Data Streams (SIMD)}
+  \item \textbf{Single Instruction, Multiple Data Streams (SIMD)}\\\
+This architecture describes computers with multiple processing elements which execute the same operation on multiple data streams at the same time.
 
-\bf{Multiple Instruction, Single Data Stream (MISD)}
+  \item \textbf{Multiple Instruction, Single Data Stream (MISD)}\\\
+In this architecture, multiple instructions operate on a single data stream. This architecture is almost non-existent, and it could be used for fault tolerant systems.
 
-\bf{Single Instruction, Multiple Data Streams (SIMD)}
+  \item \textbf{Multiple Instruction, Multiple Data Streams (MIMD)}\\\
+In this architecture, multiple independent processors execute different instructions on different data streams at the same time. This is the most generic category.
+\end{enumerate}
+
 
 
 \section{Message Passing Interface (MPI)}

@@ -15,6 +15,11 @@ R.~Duncan.
 \newblock A survey of parallel computer architectures.
 \newblock {\em Computer}, 23(2):5--16, Feb 1990.
 
+\bibitem{openmpi}
+Open mpi: Open source high performance computing.
+\newblock \url{http://www.open-mpi.org}.
+\newblock Accessed: 2015-09-14.
+
 \bibitem{Castain2008153}
 R.H. Castain, T.S. Woodall, D.J. Daniel, J.M. Squyres, B.~Barrett, and G.E.
   Fagg.
