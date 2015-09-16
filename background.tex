@@ -29,6 +29,15 @@ Features implemented or in short-term development for Open MPI include:
 
 The Open Run-Time Environment (ORTE)~\cite{Castain2008153} was developed as part of Open MPI~\cite{gabriel04:_open_mpi} project to support distributed high-performance computing applications operating in a heterogeneous environment. Its main characteristics are interprocess communication, resource discovery and allocation, and process launch across different platforms in a transparet manner. Implementation of the ORTE is based on the Modular Component Architecture (MCA)~\cite{gabriel04:_open_mpi}.
 
+``The major roles of the runtime are:
+\begin{itemize}
+\item \textbf{Launch:} Launch the MPI application’s processes. This role is shared between the implementation runtime and the parallel machine scheduling / launching mechanism.
+\item \textbf{Connect:} Help the MPI library establish the necessary connections between the processes. Depending on the network used, hardware or configuration specific issues, the connection information (also known as the business card, or the URI of
+a process) may not be known before the MPI processes are launched. It is then necessary to distribute this information through an out-of-band messaging system. In most MPI implementations, this role is dedicated to the runtime.
+\item \textbf{Control:} Control the MPI processes: ensure that in case of a crash the entire environment is gracefully cleaned; depending on the operating system and implementation, forward signals to the MPI processes; ensure that completion codes
+are returned to the user command: mpirun.
+\item \textbf{IO:} Forward the standard input/output: users usually expect that the information printed on the standard output should appear on the standard output of the command they launched. Because the command they launched does not necessarily run on the same machine as where the print is issued in an MPI application, it is necessary to ensure the transmission of this information.''
+\end{itemize}
 
 \section{High Performance ParalleX (HPX)}
 \label{sec:Background}
