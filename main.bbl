@@ -42,10 +42,10 @@ William Gropp, Ewing Lusk, Nathan Doss, and Anthony Skjellum.
   passing interface standard.
 \newblock {\em Parallel computing}, 22(6):789--828, 1996.
 
-\bibitem{openmpi}
-Open mpi: Open source high performance computing.
-\newblock \url{http://www.open-mpi.org}.
-\newblock Accessed: 2015-09-14.
+\bibitem{barker2015message}
+Brandon Barker.
+\newblock Message passing interface (mpi).
+\newblock In {\em Workshop: High Performance Computing on Stampede}, 2015.
 
 \bibitem{Castain2008153}
 R.H. Castain, T.S. Woodall, D.J. Daniel, J.M. Squyres, B.~Barrett, and G.E.
@@ -53,6 +53,11 @@ R.H. Castain, T.S. Woodall, D.J. Daniel, J.M. Squyres, B.~Barrett, and G.E.
 \newblock The open run-time environment (openrte): A transparent multicluster
   environment for high-performance computing.
 \newblock {\em Future Generation Computer Systems}, 24(2):153 -- 157, 2008.
+
+\bibitem{openmpi}
+Open mpi: Open source high performance computing.
+\newblock \url{http://www.open-mpi.org}.
+\newblock Accessed: 2015-09-14.
 
 \bibitem{gabriel04:_open_mpi}
 Edgar Gabriel, Graham~E. Fagg, George Bosilca, Thara Angskun, Jack~J. Dongarra,

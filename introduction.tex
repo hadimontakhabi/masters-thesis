@@ -52,11 +52,13 @@ Problem decomposition describes the way processes are expressed to break down a 
 
 \section{Message Passing Interface (MPI)}
 \label{sec:Introduction}
-``MPI (Message Passing Interface) is a specification for a standard library for message passing that was defined by the MPI Forum, a broadly based group of parallel computer vendors, library writers, and applications specialists. Multiple implementations of MPI have been developed.''~\cite{gropp1996high}
+``MPI (Message Passing Interface) is a specification for a standard library for message passing that was defined by the MPI Forum, a broadly based group of parallel computer vendors, library writers, and applications specialists.''~\cite{gropp1996high}
 
-\section{Influence of Runtime Environments on MPI Jobs}
+``The goal of the Message Passing Interface is to establish a portable, efficient, and flexible standard for message passing that will be widely used for writing message passing programs. As such, MPI is the first standardized, vendor independent, message passing library. The advantages of developing message passing software using MPI closely match the design goals of portability, efficiency, and flexibility. MPI is not an IEEE or ISO standard, but has in fact, become the ``industry standard'' for writing message passing programs on HPC platforms.''~\cite{barker2015message}
+
+\section{Runtime Environments and MPI Jobs}
 \label{sec:Introduction}
-
+Developing a software environment to support high-performance computing applications in today's distributed systems poses a significant challenge. The runtime environment (RTE) must be capable of supporting heterogeneous operations, scale from one to large numbers of processors in an efficient manner, and provide strategies for dealing with fault scenarios that are expected of computing systems effectively. Furthermore, the runtime must be easy to use, providing users with a transparent interface to the computing environment in a manner that avoids the need to customize applications when moving between specific computing resources.~\cite{Castain2008153}
 
 \section{Challenges for Runtime Environments}
 \label{sec:Introduction}
