@@ -36,7 +36,7 @@ The Open Run-Time Environment (ORTE)~\cite{Castain2008153} was developed as part
 a process) may not be known before the MPI processes are launched. It is then necessary to distribute this information through an out-of-band messaging system. In most MPI implementations, this role is dedicated to the runtime.
 \item \textbf{Control:} Control the MPI processes: ensure that in case of a crash the entire environment is gracefully cleaned; depending on the operating system and implementation, forward signals to the MPI processes; ensure that completion codes
 are returned to the user command: mpirun.
-\item \textbf{IO:} Forward the standard input/output: users usually expect that the information printed on the standard output should appear on the standard output of the command they launched. Because the command they launched does not necessarily run on the same machine as where the print is issued in an MPI application, it is necessary to ensure the transmission of this information.''
+\item \textbf{IO:} Forward the standard input/output: users usually expect that the information printed on the standard output should appear on the standard output of the command they launched. Because the command they launched does not necessarily run on the same machine as where the print is issued in an MPI application, it is necessary to ensure the transmission of this information.''~\cite{bosilca2011scalability}
 \end{itemize}
 
 \section{High Performance ParalleX (HPX)}
