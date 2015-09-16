@@ -2,11 +2,9 @@
 \label{sec:Introduction}
 
 \section{Parallel Architectures}
-\label{sec:Introduction}
-
 Parallel computing is a type of computation in which calculations are carried out simultaneously~\cite{Almasi:1989:HPC:160438}. The idea is to divide large problems into smaller ones and solve those smaller problems at the same time.
 
-Flynn's taxonomy is a classification of computer architectures, proposed by Michael J. Flynn in 1966~\cite{5009071,44900}. This classification is based on the number of concurrent instructions and data streams available in the architecture.
+Flynn's taxonomy is a classification of different computer architectures proposed by Michael J. Flynn in 1966\cite{5009071,44900}. This classification is based on the number of concurrent instructions and data streams available in the architecture.
 There are four categories defined:
 
 \begin{enumerate}
@@ -25,7 +23,6 @@ There are four categories defined:
 
 
 \section{Parallel Programming Models}
-\label{sec:Introduction}
 The programming model is an abstraction that defines the hardware and the form of programming language or API used for writing parallel programs.
 Parallel programming models can be divided into two broad areas: Process interaction and problem decomposition.~\cite{parallelprogrammingmodels}
 \begin{itemize}
@@ -51,19 +48,16 @@ Problem decomposition describes the way processes are expressed to break down a 
 
 
 \section{Message Passing Interface (MPI)}
-\label{sec:Introduction}
 ``MPI (Message Passing Interface) is a specification for a standard library for message passing that was defined by the MPI Forum, a broadly based group of parallel computer vendors, library writers, and applications specialists.''~\cite{gropp1996high}
 
 ``The goal of the Message Passing Interface is to establish a portable, efficient, and flexible standard for message passing that will be widely used for writing message passing programs. As such, MPI is the first standardized, vendor independent, message passing library. The advantages of developing message passing software using MPI closely match the design goals of portability, efficiency, and flexibility. MPI is not an IEEE or ISO standard, but has in fact, become the ``industry standard'' for writing message passing programs on HPC platforms.''~\cite{barker2015message}
 
 \section{Runtime Environments and MPI Jobs}
-\label{sec:Introduction}
 High performance computing systems are growing toward hundreds of thousands to million node machines, utilizing the computing power of billions of cores. Running parallel applications on such large machines efficiently will require optimized runtime environments that are scalable and resilient. Considering a future where MPI remains a major programming paradigm, the MPI implementations will have to seamlessly adapt to launching and managing large scale applications on resources considerably larger than today.~\cite{bosilca2011scalability}
 
 \section{Challenges for Runtime Environments}
-\label{sec:Introduction}
 Developing a software environment to support high-performance computing applications in today's distributed systems poses a significant challenge. The runtime environment (RTE) must be capable of supporting heterogeneous operations, scale from one to large numbers of processors in an efficient manner, and provide strategies for dealing with fault scenarios that are expected of computing systems effectively. Furthermore, the runtime must be easy to use, providing users with a transparent interface to the computing environment in a manner that avoids the need to customize applications when moving between specific computing resources.~\cite{Castain2008153}
 
-\section{Organization of This Document}
-\label{sec:Introduction}
+\section{Organization of the Document}
+Chapter 2 provides a background and the state of art approaches to parallel runtime enviroment challenges. Open MPI as an implementation of choice will be introduced. We will discuss the project features and its architecture. Open Runtime Environment (ORTE), the current runtime environment for Open MPI project, and its features will be discussed in detail in secion 2.2. ParalleX and High Perfomance ParalleX (HPX) will be presented in section 2.3. Chapter 3 covers the design philosophy, architecture, and implementation of our runtime environment for Open MPI (HPX-RTE) in sections 3.1, 3.2, and 3.3 accordingly.
 
