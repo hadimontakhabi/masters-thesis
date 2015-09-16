@@ -53,6 +53,11 @@ George Bosilca, Thomas Herault, Ala Rezmerita, and Jack Dongarra.
 \newblock In {\em Cluster Computing (CLUSTER), 2011 IEEE International
   Conference on}, pages 187--195. IEEE, 2011.
 
+\bibitem{Hoefler:2012:OSR:2237840.2237848}
+Torsten Hoefler and Kamil Iskra.
+\newblock Operating systems and runtime environments on supercomputers.
+\newblock {\em Int. J. High Perform. Comput. Appl.}, 26(2):93--94, May 2012.
+
 \bibitem{Castain2008153}
 R.H. Castain, T.S. Woodall, D.J. Daniel, J.M. Squyres, B.~Barrett, and G.E.
   Fagg.
@@ -74,5 +79,11 @@ Edgar Gabriel, Graham~E. Fagg, George Bosilca, Thara Angskun, Jack~J. Dongarra,
   implementation.
 \newblock In {\em Proceedings, 11th European PVM/MPI Users' Group Meeting},
   pages 97--104, Budapest, Hungary, September 2004.
+
+\bibitem{4228212}
+G.R. Gao, T.~Sterling, R.~Stevens, M.~Hereld, and Weirong Zhu.
+\newblock Parallex: A study of a new parallel computation model.
+\newblock In {\em Parallel and Distributed Processing Symposium, 2007. IPDPS
+  2007. IEEE International}, pages 1--6, March 2007.
 
 \end{thebibliography}
