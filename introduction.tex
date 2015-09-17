@@ -6,19 +6,18 @@ Parallel computing is a type of computation in which calculations are carried ou
 
 
 \section{Parallel Architectures}
-Parallel computers can be classified in different ways. Flynn's taxonomy is one of the more widely used classification of different computer architectures proposed by Michael J. Flynn in 1966\cite{5009071,44900}. This classification is based on the number of concurrent instruction streams and data streams available in the architecture.
+Parallel computers can be classified in different ways. Flynn's taxonomy is one of the more widely used classification of different computer architectures proposed by Michael J. Flynn in 1966~\cite{5009071,44900}. This classification is based on the number of concurrent instruction streams and data streams available in the architecture.
 There are four categories defined:
 
-\begin{enumerate}
-  \item \textbf{Single Instruction, Single Data Stream (SISD)}\\
+\subsection{Single Instruction, Single Data Stream (SISD)}
     In this architecture, a single processor executes a single instruction stream and only one data stream is available as an input during any given clock cycle. This is basically a serial computer.
-  \item \textbf{Single Instruction, Multiple Data Streams (SIMD)}\\
+\subsection{Single Instruction, Multiple Data Streams (SIMD)}
     This architecture describes computers with multiple processing elements which execute the same instruction at any given clock cycle. Each processing unit can use a different data stream.
-  \item \textbf{Multiple Instruction, Single Data Stream (MISD)}\\
+\subsection{Multiple Instruction, Single Data Stream (MISD)}
     In this architecture, multiple processing units operate on a single data stream, each one having a separate set of instructions. This architecture is almost non-existent.
-  \item \textbf{Multiple Instruction, Multiple Data Streams (MIMD)}\\
+\subsection{Multiple Instruction, Multiple Data Streams (MIMD)}
     In this architecture, multiple independent processors execute different instructions on different data streams at the same time. Execution can be synchronous or asynchronous. This is the most generic category. Most current supercomputers fall under this category.
-\end{enumerate}
+
 
 \section{Parallel Computer Memory Architectures}
 Main memory in a parallel computer is either shared or distributed~\cite{patterson2013computer}.
@@ -63,13 +62,21 @@ Each processor operates independently. Changes that a processor makes to its loc
 
 
 \subsection{Hybrid Distributed-Shared Memory}
-By combining a shared memory and distributed memory model, we will have a hybrid distributed-shared memory system. An example for this category could be a cluster of nodes with each node having multiple cores that share the same memory.
+By combining a shared memory and distributed memory model, we will have a hybrid distributed-shared memory system. An example for this category could be a cluster of nodes with each node having multiple cores that share the same memory (Figure \ref{fig:hybridd_mem}), or a cluster of nodes with each having multiple GPUs and cores (Figure \ref{fig:hybridd_mem2}.
 
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.6]{images/hybrid_mem.png}
-  \caption{Hybrid Distributed-Shared Memory}
+  \caption{Hybrid Distributed-Shared Memory (Multi-core nodes)}
   \label{fig:hybridd_mem}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{images/hybrid_mem2.png}
+  \caption{Hybrid Distributed-Shared Memory (Multi-core nodes with GPUs)}
+  \label{fig:hybridd_mem2}
 \end{figure}
 
 
