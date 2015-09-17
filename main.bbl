@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{barney2010introduction}
+Blaise Barney et~al.
+\newblock Introduction to parallel computing.
+\newblock {\em Lawrence Livermore National Laboratory}, 6(13):10, 2010.
+
 \bibitem{Almasi:1989:HPC:160438}
 G.~S. Almasi and A.~Gottlieb.
 \newblock {\em Highly Parallel Computing}.
