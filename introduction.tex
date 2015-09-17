@@ -1,27 +1,76 @@
 \chapter{Introduction}
 \label{sec:Introduction}
 
-Traditionally, software is written for sequential computation. A problem is broken down into a series of instrcutions. Those instructions are executed sequentially on a single processor. In this scenario, only one instruction is executed at any given moment in time.~\cite{barney2010introduction}\\
-Parallel computing is a type of computation in which calculations are carried out simultaneously to solve a computational problem.~\cite{Almasi:1989:HPC:160438}. The idea is to divide large problems into smaller ones and solve those smaller problems at the same time.
+Traditionally, software is written for sequential computation. A problem is broken down into a series of instrcutions. Those instructions are executed sequentially on a single processor. In this scenario, only one instruction is executed at any given moment in time~\cite{barney2010introduction}.\\
+Parallel computing is a type of computation in which calculations are carried out simultaneously to solve a computational problem~\cite{Almasi:1989:HPC:160438}. In parallel computing, a problem is broken down into discrete parts that can be solved concurrently. Each part includes a series of instructions. Instructions for each part of the problem are executed in parallel on different processors. This this scenario, a control mechanism among all the processors is needed.
 
 
 \section{Parallel Architectures}
-Flynn's taxonomy is a classification of different computer architectures proposed by Michael J. Flynn in 1966\cite{5009071,44900}. This classification is based on the number of concurrent instructions and data streams available in the architecture.
+Parallel computers can be classified in different ways. Flynn's taxonomy is one of the more widely used classification of different computer architectures proposed by Michael J. Flynn in 1966\cite{5009071,44900}. This classification is based on the number of concurrent instruction streams and data streams available in the architecture.
 There are four categories defined:
 
 \begin{enumerate}
-  \item \textbf{Single Instruction, Single Data Stream (SISD)}\\\
-    In this architecture, a single processor executes a single instruction stream.
-  \item \textbf{Single Instruction, Multiple Data Streams (SIMD)}\\\
-    This architecture describes computers with multiple processing elements which execute the same operation on multiple data streams at the same time.
-  \item \textbf{Multiple Instruction, Single Data Stream (MISD)}\\\
-    In this architecture, multiple instructions operate on a single data stream. This architecture is almost non-existent, and it could be used for fault tolerant systems.
-  \item \textbf{Multiple Instruction, Multiple Data Streams (MIMD)}\\\
-    In this architecture, multiple independent processors execute different instructions on different data streams at the same time. This is the most generic category.
-    
-    MIMD category is subdivided into shared-memory and distributed memory architectures. Furthermore, shared-memory architectures can be classified as symmetric multiprocessors with uniform memory access (UMA) or as non-uniform memory access (NUMA) architectures that have recently gained popularity~\cite{kshemkalyani2008distributed,sutter2005free}.
-
+  \item \textbf{Single Instruction, Single Data Stream (SISD)}\\
+    In this architecture, a single processor executes a single instruction stream and only one data stream is available as an input during any given clock cycle. This is basically a serial computer.
+  \item \textbf{Single Instruction, Multiple Data Streams (SIMD)}\\
+    This architecture describes computers with multiple processing elements which execute the same instruction at any given clock cycle. Each processing unit can use a different data stream.
+  \item \textbf{Multiple Instruction, Single Data Stream (MISD)}\\
+    In this architecture, multiple processing units operate on a single data stream, each one having a separate set of instructions. This architecture is almost non-existent.
+  \item \textbf{Multiple Instruction, Multiple Data Streams (MIMD)}\\
+    In this architecture, multiple independent processors execute different instructions on different data streams at the same time. Execution can be synchronous or asynchronous. This is the most generic category. Most current supercomputers fall under this category.
 \end{enumerate}
+
+\section{Parallel Computer Memory Architectures}
+Main memory in a parallel computer is either shared or distributed~\cite{patterson2013computer}.
+
+\subsection{Shared Memory}
+In a shared memory parallel computer, the memory is shared between all processing elements as a single global address space. Multiple processors can share the same memory resources and operate independently. Changes in a memory location by one processor are visible to all other processors.\\ 
+Furthermore, shared-memory architectures can be classified as symmetric multiprocessors with uniform memory access (UMA) or as non-uniform memory access (NUMA) architectures based on memory access time~\cite{kshemkalyani2008distributed,sutter2005free}.
+
+\begin{itemize}
+\item \textbf{Uniform Memory Access (UMA)}\\
+  This category is most known by Symmetric Multiprocessor (SMP) machines. SMPs have identical processors with equal access time to memory. Figure \ref{fig:shared_memory_UMA} demonstrates a typical UMA architecture.\\
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{images/shared_mem.png}
+    \caption{Shared Memory (UMA)}
+    \label{fig:shared_memory_UMA}
+  \end{figure}
+
+\item \textbf{Non-Uniform Memory Access (NUMA)}\\
+  Typically, these are made by physically connecting two or more SMPs. This way, one SMP can access memory of another SMP directly. However, access time to all memories is not equal to all processors.
+  
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{images/numa.png}
+    \caption{Shared Memory (NUMA)}
+    \label{fig:shared_memory_NUMA}
+  \end{figure}
+
+\end{itemize}
+
+
+\subsection{Distributed Memory}
+Each processing element has its own local memory. Therefore, there is no global address space. To connect inter-process memory units, a communication network is needed.
+Each processor operates independently. Changes that a processor makes to its local memory have no effect on the memory of other processors. If a processor needs to access data in another processor's memory, the programmer needs to explicitly define the communication mechanism.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{images/distributed_mem.png}
+  \caption{Distributed Memory}
+  \label{fig:distributed_mem}
+\end{figure}
+
+
+\subsection{Hybrid Distributed-Shared Memory}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{images/hybrid_mem.png}
+  \caption{Hybrid Distributed-Shared Memory}
+  \label{fig:hybridd_mem}
+\end{figure}
+
 
 
 \section{Parallel Programming Models}

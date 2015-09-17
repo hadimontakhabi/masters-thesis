@@ -20,6 +20,12 @@ R.~Duncan.
 \newblock A survey of parallel computer architectures.
 \newblock {\em Computer}, 23(2):5--16, Feb 1990.
 
+\bibitem{patterson2013computer}
+David~A Patterson and John~L Hennessy.
+\newblock {\em Computer organization and design: the hardware/software
+  interface}.
+\newblock Newnes, 2013.
+
 \bibitem{kshemkalyani2008distributed}
 Ajay~D Kshemkalyani and Mukesh Singhal.
 \newblock {\em Distributed computing: principles, algorithms, and systems}.
