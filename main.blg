@@ -5,46 +5,48 @@ A level-1 auxiliary file: title.aux
 A level-1 auxiliary file: introduction.aux
 A level-1 auxiliary file: background.aux
 A level-1 auxiliary file: hpx-rte.aux
+A level-1 auxiliary file: evaluation.aux
+A level-1 auxiliary file: conclusion.aux
 The style file: unsrt.bst
 Database file #1: main.bib
-You've used 17 entries,
+You've used 21 entries,
             1791 wiz_defined-function locations,
-            560 strings with 6569 characters,
-and the built_in function-call counts, 3838 in all, are:
-= -- 326
-> -- 171
-< -- 3
-+ -- 65
-- -- 48
-* -- 247
-:= -- 591
-add.period$ -- 52
-call.type$ -- 17
-change.case$ -- 13
+            591 strings with 7483 characters,
+and the built_in function-call counts, 5207 in all, are:
+= -- 463
+> -- 226
+< -- 6
++ -- 85
+- -- 64
+* -- 332
+:= -- 786
+add.period$ -- 67
+call.type$ -- 21
+change.case$ -- 17
 chr.to.int$ -- 0
-cite$ -- 17
-duplicate$ -- 182
-empty$ -- 402
-format.name$ -- 48
-if$ -- 879
+cite$ -- 21
+duplicate$ -- 251
+empty$ -- 530
+format.name$ -- 64
+if$ -- 1207
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 19
-newline$ -- 88
-num.names$ -- 15
-pop$ -- 75
+int.to.str$ -- 21
+missing$ -- 23
+newline$ -- 108
+num.names$ -- 19
+pop$ -- 91
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 77
+skip$ -- 118
 stack$ -- 0
-substring$ -- 206
-swap$ -- 41
-text.length$ -- 3
+substring$ -- 308
+swap$ -- 69
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 33
-width$ -- 19
-write$ -- 183
+while$ -- 48
+width$ -- 23
+write$ -- 232

@@ -58,6 +58,34 @@ Brandon Barker.
 \newblock Message passing interface (mpi).
 \newblock In {\em Workshop: High Performance Computing on Stampede}, 2015.
 
+\bibitem{geist1996mpi}
+Al~Geist, William Gropp, Steve Huss-Lederman, Andrew Lumsdaine, Ewing Lusk,
+  William Saphir, Tony Skjellum, and Marc Snir.
+\newblock Mpi-2: Extending the message-passing interface.
+\newblock In {\em Euro-Par'96 Parallel Processing}, pages 128--135. Springer,
+  1996.
+
+\bibitem{walker1996mpi}
+David~W Walker and Jack~J Dongarra.
+\newblock Mpi: a standard message passing interface.
+\newblock {\em Supercomputer}, 12:56--68, 1996.
+
+\bibitem{gropp2002mpich2}
+William Gropp.
+\newblock Mpich2: A new start for mpi implementations.
+\newblock In {\em Recent Advances in Parallel Virtual Machine and Message
+  Passing Interface}, pages 7--7. Springer, 2002.
+
+\bibitem{gabriel04:_open_mpi}
+Edgar Gabriel, Graham~E. Fagg, George Bosilca, Thara Angskun, Jack~J. Dongarra,
+  Jeffrey~M. Squyres, Vishal Sahay, Prabhanjan Kambadur, Brian Barrett, Andrew
+  Lumsdaine, Ralph~H. Castain, David~J. Daniel, Richard~L. Graham, and
+  Timothy~S. Woodall.
+\newblock Open {MPI}: Goals, concept, and design of a next generation {MPI}
+  implementation.
+\newblock In {\em Proceedings, 11th European PVM/MPI Users' Group Meeting},
+  pages 97--104, Budapest, Hungary, September 2004.
+
 \bibitem{bosilca2011scalability}
 George Bosilca, Thomas Herault, Ala Rezmerita, and Jack Dongarra.
 \newblock On scalability for mpi runtime systems.
@@ -76,25 +104,23 @@ R.H. Castain, T.S. Woodall, D.J. Daniel, J.M. Squyres, B.~Barrett, and G.E.
   environment for high-performance computing.
 \newblock {\em Future Generation Computer Systems}, 24(2):153 -- 157, 2008.
 
-\bibitem{openmpi}
-Open mpi: Open source high performance computing.
-\newblock \url{http://www.open-mpi.org}.
-\newblock Accessed: 2015-09-14.
-
-\bibitem{gabriel04:_open_mpi}
-Edgar Gabriel, Graham~E. Fagg, George Bosilca, Thara Angskun, Jack~J. Dongarra,
-  Jeffrey~M. Squyres, Vishal Sahay, Prabhanjan Kambadur, Brian Barrett, Andrew
-  Lumsdaine, Ralph~H. Castain, David~J. Daniel, Richard~L. Graham, and
-  Timothy~S. Woodall.
-\newblock Open {MPI}: Goals, concept, and design of a next generation {MPI}
-  implementation.
-\newblock In {\em Proceedings, 11th European PVM/MPI Users' Group Meeting},
-  pages 97--104, Budapest, Hungary, September 2004.
-
 \bibitem{4228212}
 G.R. Gao, T.~Sterling, R.~Stevens, M.~Hereld, and Weirong Zhu.
 \newblock Parallex: A study of a new parallel computation model.
 \newblock In {\em Parallel and Distributed Processing Symposium, 2007. IPDPS
   2007. IEEE International}, pages 1--6, March 2007.
+
+\bibitem{Kaiser:2014:HTB:2676870.2676883}
+Hartmut Kaiser, Thomas Heller, Bryce Adelstein-Lelbach, Adrian Serio, and
+  Dietmar Fey.
+\newblock Hpx: A task based programming model in a global address space.
+\newblock In {\em Proceedings of the 8th International Conference on
+  Partitioned Global Address Space Programming Models}, PGAS '14, pages
+  6:1--6:11, New York, NY, USA, 2014. ACM.
+
+\bibitem{openmpi}
+Open mpi: Open source high performance computing.
+\newblock \url{http://www.open-mpi.org}.
+\newblock Accessed: 2015-09-14.
 
 \end{thebibliography}
