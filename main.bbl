@@ -129,9 +129,4 @@ Hartmut Kaiser, Thomas Heller, Bryce Adelstein-Lelbach, Adrian Serio, and
   Partitioned Global Address Space Programming Models}, PGAS '14, pages
   6:1--6:11, New York, NY, USA, 2014. ACM.
 
-\bibitem{openmpi}
-Open mpi: Open source high performance computing.
-\newblock \url{http://www.open-mpi.org}.
-\newblock Accessed: 2015-09-14.
-
 \end{thebibliography}
