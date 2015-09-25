@@ -112,7 +112,27 @@ Message Passing Interface (MPI) is a language-independent communication applicat
 
 ``The goal of the Message Passing Interface is to establish a portable, efficient, and flexible standard for message passing that will be widely used for writing message passing programs. As such, MPI is the first standardized, vendor independent, message passing library. The advantages of developing message passing software using MPI closely match the design goals of portability, efficiency, and flexibility. MPI is not an IEEE or ISO standard, but has in fact, become the ``industry standard'' for writing message passing programs on HPC platforms.''~\cite{barker2015message}
 
-MPI includes routines for blocking and non-blocking point-to-point communication, collective communication, and one-sided communication. It also provides support for generally defined datatypes (derived datatypes), process grouping (communicators), and parallel I/O~\cite{geist1996mpi,walker1996mpi}.
+Some of the main concepts of MPI include:~\cite{snir1998mpi,geist1996mpi,walker1996mpi,gropp1999using}
+\begin{itemize}
+\item \textbf{Communicators}\\
+  A communicator can be thought of as a handle to a process group. A group is an ordered set of processes. Each process is associated with a rank. Ranks are contiguous and start from zero.
+  
+\item \textbf{Point-to-point Communication}\\
+  MPI includes routines for communication between two specific processes. For instance, \verb|MPI_Send| sends a message from one specified process to another specified process. MPI specifies mechanisms for both blocking and non-blocking point-to-point communication. 
+
+\item \textbf{Collective Communication}\\
+  All processes in a process group participate in a collective funtion. For example, \verb|MPI_Bcast| sends data from one process to all the processes in a group.
+  
+\item \textbf{One-sided Communication}\\
+  MPI one-sided communication functions allow a process to access another process address space without explicit participation in that communication operation by the remote process. This can reduce synchronization and therefore improve performance in some cases.
+  
+\item \textbf{Derived Datatypes}\\
+  MPI provides a mechanism to create derived datatypes that are built from simple datatypes. These are useful in situations that the communication involves non-contiguous data or data that is comprised of multiple types.
+
+\item \textbf{MPI-IO}\\
+  MPI-IO is a set of functions to carry out parallel I/O operations. These functions allow files to be easily accessed in a patterned way using the existing derived datatype functionality.
+  
+\end{itemize}
 
 There are several implementations of MPI, including some that are in the public domain like MPICH~\cite{gropp2002mpich2} and Open MPI~\cite{gabriel04:_open_mpi}, and some commercial implementations from companies like HP, Intel, and Microsoft, and Fujitsu.
 

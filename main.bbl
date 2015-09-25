@@ -58,6 +58,11 @@ Brandon Barker.
 \newblock Message passing interface (mpi).
 \newblock In {\em Workshop: High Performance Computing on Stampede}, 2015.
 
+\bibitem{snir1998mpi}
+Marc Snir.
+\newblock {\em MPI--the Complete Reference: The MPI core}, volume~1.
+\newblock MIT press, 1998.
+
 \bibitem{geist1996mpi}
 Al~Geist, William Gropp, Steve Huss-Lederman, Andrew Lumsdaine, Ewing Lusk,
   William Saphir, Tony Skjellum, and Marc Snir.
@@ -69,6 +74,12 @@ Al~Geist, William Gropp, Steve Huss-Lederman, Andrew Lumsdaine, Ewing Lusk,
 David~W Walker and Jack~J Dongarra.
 \newblock Mpi: a standard message passing interface.
 \newblock {\em Supercomputer}, 12:56--68, 1996.
+
+\bibitem{gropp1999using}
+William Gropp, Ewing Lusk, and Rajeev Thakur.
+\newblock {\em Using MPI-2: Advanced features of the message-passing
+  interface}.
+\newblock MIT press, 1999.
 
 \bibitem{gropp2002mpich2}
 William Gropp.
