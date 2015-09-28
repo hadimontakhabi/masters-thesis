@@ -161,4 +161,23 @@ David~E Bernholdt, Benjamin~A Allan, Robert Armstrong, Felipe Bertrand, Kenneth
 \newblock {\em International Journal of High Performance Computing
   Applications}, 20(2):163--202, 2006.
 
+\bibitem{kronstadt2005peta}
+Eric~P Kronstadt.
+\newblock Peta-scale computing.
+\newblock In {\em Parallel and Distributed Processing Symposium, 2005.
+  Proceedings. 19th IEEE International}, pages 1--pp. IEEE, 2005.
+
+\bibitem{squyres2004component}
+Jeffrey~M Squyres.
+\newblock {\em A Component Architecture for the Message Passing Interface
+  (MPI): The Systems Services Interface (SSI) of LAM/MPI}.
+\newblock PhD thesis, University of Notre Dame, 2004.
+
+\bibitem{aulwes2004architecture}
+Rob~T Aulwes, David~J Daniel, Nehal~N Desai, Richard~L Graham, L~Dean Risinger,
+  Mark~A Taylor, Timothy~S Woodall, and Mitchel~W Sukalski.
+\newblock Architecture of la-mpi, a network-fault-tolerant mpi.
+\newblock In {\em Parallel and Distributed Processing Symposium, 2004.
+  Proceedings. 18th International}, page~15. IEEE, 2004.
+
 \end{thebibliography}
