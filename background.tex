@@ -24,6 +24,19 @@ Features implemented or in short-term development for Open MPI include:
   \item Open source license based on the BSD license''~\cite{openmpi}
 \end{itemize}
     
+\subsection{The Architectire of Open MPI}
+Open MPI is built based on a component architecture called the Modular Component Architecture (MCA). Component based archtirecture makes large software projects extensible and maintainable~\cite{barrett2005analysis,graham2006open}. It also allows users to build their own costumized components and integrate it into Open MPI. Component based architectures are popular in the high performance computing community~\cite{squyres2003component,bernholdt2006component}.
+
+Open MPI is comprised of three main functional areas~\cite{graham2006open}:
+\begin{enumerate}
+\item \textbf {MCA:} The backbone modular component architecture that provides management services for all other layers.
+  
+  The MCA is responsible for management of the component frameworks and providing services to them. For instance, it provides the ability to accept run-time parameters from higher-level abstractions (e.g., mpirun) and pass them down through the component framework to individual components. The MCA also finds components at build-time and invokes their corresponding hooks for configuration, building, and installation.
+  
+  \item \textbf{Component frameworks:} Each major functional area in Open MPI has a corresponding back-end component framework, which manages modules;
+  \item \textbf {Components:} Self-contained software units that export well-defined interfaces and can be deployed and composed with other components.
+\end{enumerate}
+
 \section{Open Runtime Environment (ORTE)}
 \label{sec:orte}
 The Open Run-Time Environment (ORTE)~\cite{Castain2008153} was developed as part of Open MPI~\cite{gabriel04:_open_mpi} project to support distributed high-performance computing applications operating in a heterogeneous environment. Its main characteristics are interprocess communication, resource discovery and allocation, and process launch across different platforms in a transparet manner. Implementation of the ORTE is based on the Modular Component Architecture (MCA)~\cite{gabriel04:_open_mpi}.

@@ -134,4 +134,31 @@ Open mpi: Open source high performance computing.
 \newblock \url{http://www.open-mpi.org}.
 \newblock Accessed: 2015-09-14.
 
+\bibitem{barrett2005analysis}
+Brian Barrett, Jeffrey~M Squyres, Andrew Lumsdaine, Richard~L Graham, and
+  George Bosilca.
+\newblock Analysis of the component architecture overhead in open mpi.
+\newblock In {\em Recent Advances in Parallel Virtual Machine and Message
+  Passing Interface}, pages 175--182. Springer, 2005.
+
+\bibitem{graham2006open}
+Richard~L Graham, Timothy~S Woodall, and Jeffrey~M Squyres.
+\newblock Open mpi: A flexible high performance mpi.
+\newblock In {\em Parallel Processing and Applied Mathematics}, pages 228--239.
+  Springer, 2006.
+
+\bibitem{squyres2003component}
+Jeffrey~M Squyres and Andrew Lumsdaine.
+\newblock A component architecture for lam/mpi.
+\newblock In {\em Recent Advances in Parallel Virtual Machine and Message
+  Passing Interface}, pages 379--387. Springer, 2003.
+
+\bibitem{bernholdt2006component}
+David~E Bernholdt, Benjamin~A Allan, Robert Armstrong, Felipe Bertrand, Kenneth
+  Chiu, Tamara~L Dahlgren, Kostadin Damevski, Wael~R Elwasif, Thomas~GW
+  Epperly, Madhusudhan Govindaraju, et~al.
+\newblock A component architecture for high-performance scientific computing.
+\newblock {\em International Journal of High Performance Computing
+  Applications}, 20(2):163--202, 2006.
+
 \end{thebibliography}
