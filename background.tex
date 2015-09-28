@@ -27,22 +27,29 @@ Features implemented or in short-term development for Open MPI include:
 \subsection{The Architectire of Open MPI}
 Open MPI is built based on a component architecture called the Modular Component Architecture (MCA). Component based archtirecture makes large software projects extensible and maintainable~\cite{barrett2005analysis,graham2006open}. It also allows users to build their own costumized components and integrate it into Open MPI. Component based architectures are popular in the high performance computing community~\cite{squyres2003component,bernholdt2006component}.
 
-Open MPI is comprised of three main functional areas~\cite{graham2006open}:
+Open MPI is comprised of three main functional areas (Figure \ref{fig:MCA_framework})~\cite{graham2006open}:
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{images/MCA_framework.png}
+\caption{MCA, component frameworks, and the components}
+\label{fig:MCA_framework}
+\end{figure}
+
 \begin{enumerate}
 \item \textbf {MCA:} The backbone modular component architecture that provides management services for all other layers.
   
-  The MCA is responsible for management of the component frameworks and providing services to them. For instance, it provides the ability to accept run-time parameters from higher-level abstractions (e.g., mpirun) and pass them down through the component framework to individual components. The MCA also finds components at build-time and invokes their corresponding hooks for configuration, building, and installation.
+  The MCA is responsible for management of the component frameworks and providing them services they use. For instance, the MCA provides the ability to accept run-time parameters from higher-level abstractions (e.g., mpirun) and pass them down through the component framework to individual components. It also finds components at build-time and invokes their corresponding hooks for configuration, building, and installation.
   
-  \item \textbf{Component frameworks:} Each major functional area in Open MPI has a corresponding back-end component framework, which manages modules;
-  \item \textbf {Components:} Self-contained software units that export well-defined interfaces and can be deployed and composed with other components.
+\item \textbf{Component frameworks:} Each major functional area in Open MPI has a corresponding back-end component framework, which manages modules.
+  
+  Each component framework is a construct that is created for a single, targeted task. For example, \textbf{btl} (Byte Transfer Layer) framework is used to send and receive data on different types of networks, \textbf{allocator} framework is responsible for memory allocation, and \textbf{coll} framework which is dedicated to MPI collective algorithms. A framework uses MCA's services to discover, load, use, and unload components at run time. Each framework has different policies and use case scenarios; some only use one component at a time while others use all available components simultaneously.
+
+\item \textbf {Components:} Self-contained software units that can configure, build, and install themselves. A component is an implementation of a framework's interface. Components are also known as ``plugins''.
+
+  The Open MPI software has three classes of components: Open MPI (OMPI) components, Open Run Time Environment (ORTE) components, and Open Portable Access Layer (OPAL) components.
 \end{enumerate}
 
-begin{figure}[h!]
-\centering
-\includegraphics[scale=0.6]{images/MCA_framework.png}
-\caption{The MCA, its component frameworks, and the components in each framework}
-\label{fig:MCA_framework}
-\end{figure}
 
 \section{Open Runtime Environment (ORTE)}
 \label{sec:orte}
