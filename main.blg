@@ -9,46 +9,44 @@ A level-1 auxiliary file: evaluation.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: unsrt.bst
 Database file #1: main.bib
-Warning--I didn't find a database entry for ""
-You've used 30 entries,
+You've used 31 entries,
             1791 wiz_defined-function locations,
-            635 strings with 9205 characters,
-and the built_in function-call counts, 7808 in all, are:
-= -- 703
-> -- 346
+            641 strings with 9331 characters,
+and the built_in function-call counts, 8066 in all, are:
+= -- 729
+> -- 354
 < -- 12
-+ -- 129
-- -- 99
-* -- 487
-:= -- 1172
-add.period$ -- 99
-call.type$ -- 30
-change.case$ -- 23
++ -- 132
+- -- 101
+* -- 508
+:= -- 1211
+add.period$ -- 102
+call.type$ -- 31
+change.case$ -- 24
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 387
-empty$ -- 778
-format.name$ -- 99
-if$ -- 1824
+cite$ -- 31
+duplicate$ -- 396
+empty$ -- 804
+format.name$ -- 101
+if$ -- 1880
 int.to.chr$ -- 0
-int.to.str$ -- 30
-missing$ -- 33
-newline$ -- 153
-num.names$ -- 28
-pop$ -- 138
+int.to.str$ -- 31
+missing$ -- 34
+newline$ -- 158
+num.names$ -- 29
+pop$ -- 139
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 186
+skip$ -- 190
 stack$ -- 0
-substring$ -- 452
-swap$ -- 118
+substring$ -- 483
+swap$ -- 119
 text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 72
-width$ -- 32
-write$ -- 335
-(There was 1 warning)
+while$ -- 75
+width$ -- 33
+write$ -- 346

@@ -180,4 +180,9 @@ Rob~T Aulwes, David~J Daniel, Nehal~N Desai, Richard~L Graham, L~Dean Risinger,
 \newblock In {\em Parallel and Distributed Processing Symposium, 2004.
   Proceedings. 18th International}, page~15. IEEE, 2004.
 
+\bibitem{fagg2002harness}
+Graham~E Fagg and Jack~J Dongarra.
+\newblock Harness fault tolerant mpi design, usage and performance issues.
+\newblock {\em Future Generation Computer Systems}, 18(8):1127--1142, 2002.
+
 \end{thebibliography}
