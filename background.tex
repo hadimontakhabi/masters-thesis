@@ -37,6 +37,13 @@ Open MPI is comprised of three main functional areas~\cite{graham2006open}:
   \item \textbf {Components:} Self-contained software units that export well-defined interfaces and can be deployed and composed with other components.
 \end{enumerate}
 
+begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{images/MCA_framework.png}
+\caption{The MCA, its component frameworks, and the components in each framework}
+\label{fig:MCA_framework}
+\end{figure}
+
 \section{Open Runtime Environment (ORTE)}
 \label{sec:orte}
 The Open Run-Time Environment (ORTE)~\cite{Castain2008153} was developed as part of Open MPI~\cite{gabriel04:_open_mpi} project to support distributed high-performance computing applications operating in a heterogeneous environment. Its main characteristics are interprocess communication, resource discovery and allocation, and process launch across different platforms in a transparet manner. Implementation of the ORTE is based on the Modular Component Architecture (MCA)~\cite{gabriel04:_open_mpi}.
