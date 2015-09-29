@@ -185,4 +185,19 @@ Graham~E Fagg and Jack~J Dongarra.
 \newblock Harness fault tolerant mpi design, usage and performance issues.
 \newblock {\em Future Generation Computer Systems}, 18(8):1127--1142, 2002.
 
+\bibitem{castain2005open}
+Ralph~H Castain, Timothy~S Woodall, David~J Daniel, Jeffrey~M Squyres, Brian
+  Barrett, and Graham~E Fagg.
+\newblock The open run-time environment (openrte): A transparent multi-cluster
+  environment for high-performance computing.
+\newblock In {\em Recent Advances in Parallel Virtual Machine and Message
+  Passing Interface}, pages 225--232. Springer, 2005.
+
+\bibitem{castain2008open}
+Ralph~H Castain, Timothy~S Woodall, David~J Daniel, Jeffrey~M Squyres, Brian
+  Barrett, and Graham~E Fagg.
+\newblock The open run-time environment (openrte): A transparent multicluster
+  environment for high-performance computing.
+\newblock {\em Future Generation Computer Systems}, 24(2):153--157, 2008.
+
 \end{thebibliography}
