@@ -6,6 +6,13 @@ An open source run-time for distributed hpc.
   \url{http://www.hpcwire.com/2006/03/31/an_open_source_run-time_for_distributed_hpc-1/}.
 \newblock Accessed: 2015-09-29.
 
+\bibitem{kaiser2009parallex}
+Hartmut Kaiser, Maciej Brodowicz, and Thomas Sterling.
+\newblock Parallex an advanced parallel execution model for scaling-impaired
+  applications.
+\newblock In {\em Parallel Processing Workshops, 2009. ICPPW'09. International
+  Conference on}, pages 394--401. IEEE, 2009.
+
 \bibitem{barney2010introduction}
 Blaise Barney et~al.
 \newblock Introduction to parallel computing.
@@ -206,13 +213,6 @@ Ralph~H Castain, Timothy~S Woodall, David~J Daniel, Jeffrey~M Squyres, Brian
   environment for high-performance computing.
 \newblock {\em Future Generation Computer Systems}, 24(2):153--157, 2008.
 
-\bibitem{kaiser2009parallex}
-Hartmut Kaiser, Maciej Brodowicz, and Thomas Sterling.
-\newblock Parallex an advanced parallel execution model for scaling-impaired
-  applications.
-\newblock In {\em Parallel Processing Workshops, 2009. ICPPW'09. International
-  Conference on}, pages 394--401. IEEE, 2009.
-
 \bibitem{sterling2010enabling}
 T~Sterling and C~Dekate.
 \newblock Enabling exascale through parallex paradigm.
@@ -251,5 +251,10 @@ Tim Stitt.
 Dan Bonachea.
 \newblock Gasnet specification, v1. 1.
 \newblock 2002.
+
+\bibitem{upc2005upc}
+UPC Consortium et~al.
+\newblock Upc language specifications v1. 2.
+\newblock {\em Lawrence Berkeley National Laboratory}, 2005.
 
 \end{thebibliography}

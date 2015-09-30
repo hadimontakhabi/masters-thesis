@@ -125,12 +125,22 @@ ParalleX also tries to address the difficulties of programmer productivity like 
 Main components of ParalleX include~\cite{kaiser2009parallex,dekate2012improving}:
 \begin{enumerate}
 \item \textbf{Active Global Address Space (AGAS)}\\
-  By avoiding the overhead of cache coherence, the AGAS extends the PGAS~\cite{stitt2009introduction} models (UPC~\cite{}, GASNet~\cite{bonachea2002gasnet}) by allowing the dynamic migration of first class objects across the physical system without having to change the object's name. This facilitates load balancing by allowing work to be migrated from heavily loaded nodes to less loaded nodes.  
-\item \textbf{Parallel Processes}
-\item \textbf{Threads}
+  While avoiding the overhead of cache coherence, the AGAS extends the PGAS \cite{stitt2009introduction} models (GASNet~\cite{bonachea2002gasnet}, UPC~\cite{upc2005upc}) by allowing the dynamic migration of first class objects across the physical system without having to change the object's name. This facilitates load balancing by allowing work to be migrated from heavily loaded nodes to less loaded nodes.  
+\item \textbf{Parallel Processes}\\
+  Unlike conventional models, ParalleX processes span over multiple nodes and share nodes as well. A ParalleX process can define a name space shared across several localities supporting many concurrent threads and child processes.
+\item \textbf{Threads}\\
+  
 \item \textbf{Local Control Objects (LCOs)}
 \item \textbf{Parcels}
 \item \textbf{Percolation}
-  
+
 \end{enumerate}
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{images/hpx.png}
+\caption{Modular Structure of HPX Implementation~\cite{kaiser2009parallex}}
+\label{fig:hpx-structure}
+\end{figure}
 
