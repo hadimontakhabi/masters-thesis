@@ -233,6 +233,12 @@ Thomas Sterling, Matthew Anderson, P~Kevin Bohan, Maciej Brodowicz, Abhishek
 \newblock In {\em Solving Software Challenges for Exascale}, pages 85--99.
   Springer, 2014.
 
+\bibitem{gao2007parallex}
+Guang~R Gao, Thomas Sterling, Rick Stevens, Mark Hereld, and Weirong Zhu.
+\newblock Parallex: A study of a new parallel computation model.
+\newblock In {\em Parallel and Distributed Processing Symposium, 2007. IPDPS
+  2007. IEEE International}, pages 1--6. IEEE, 2007.
+
 \bibitem{dekate2012improving}
 Chirag Dekate, Matthew Anderson, Maciej Brodowicz, Hartmut Kaiser, Bryce
   Adelstein-Lelbach, and Thomas Sterling.
