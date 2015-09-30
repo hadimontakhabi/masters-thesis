@@ -129,10 +129,12 @@ Main components of ParalleX include~\cite{kaiser2009parallex,dekate2012improving
 \item \textbf{Parallel Processes}\\
   Unlike conventional models, ParalleX processes span over multiple nodes and share nodes as well. A ParalleX process can define a name space shared across several localities supporting many concurrent threads and child processes.
 \item \textbf{Threads}\\
-  
-\item \textbf{Local Control Objects (LCOs)}
-\item \textbf{Parcels}
-\item \textbf{Percolation}
+  ParalleX threads provide local control flow and data usage within a single node utilized for specifying and performing most of the computational work to be performed by an application program. ParalleX threads can migrate to remote localities. 
+\item \textbf{Local Control Objects (LCOs)}\\
+  LCOs provide different functionalities for event driven ParalleX thread creation, protection of data structures from race conditions, and scheduling of work automatically to let every single computation strand proceed as far as possible.
+\item \textbf{Parcels}\\
+  Parcels are messages that carry action and data asynchronously between different localities. ``Parcels enable message passing for distributed control flow and dynamic resource management, implementing a split phase transaction based execution model.''~\cite{kaiser2009parallex}
+\item \textbf{Percolation}\\
 
 \end{enumerate}
 
