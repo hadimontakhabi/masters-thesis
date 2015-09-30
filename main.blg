@@ -9,44 +9,47 @@ A level-1 auxiliary file: evaluation.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: unsrt.bst
 Database file #1: main.bib
-You've used 38 entries,
+Warning--I didn't find a database entry for ""
+Warning--empty journal in bonachea2002gasnet
+You've used 41 entries,
             1791 wiz_defined-function locations,
-            674 strings with 10632 characters,
-and the built_in function-call counts, 10216 in all, are:
-= -- 930
-> -- 451
+            686 strings with 11130 characters,
+and the built_in function-call counts, 10782 in all, are:
+= -- 976
+> -- 479
 < -- 16
-+ -- 167
-- -- 129
-* -- 647
-:= -- 1517
-add.period$ -- 126
-call.type$ -- 38
-change.case$ -- 31
++ -- 178
+- -- 137
+* -- 681
+:= -- 1612
+add.period$ -- 135
+call.type$ -- 41
+change.case$ -- 33
 chr.to.int$ -- 0
-cite$ -- 38
-duplicate$ -- 499
-empty$ -- 1012
-format.name$ -- 129
-if$ -- 2388
+cite$ -- 42
+duplicate$ -- 526
+empty$ -- 1069
+format.name$ -- 137
+if$ -- 2510
 int.to.chr$ -- 0
-int.to.str$ -- 38
-missing$ -- 40
-newline$ -- 193
-num.names$ -- 35
-pop$ -- 173
+int.to.str$ -- 41
+missing$ -- 44
+newline$ -- 208
+num.names$ -- 38
+pop$ -- 186
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 249
+skip$ -- 257
 stack$ -- 0
-substring$ -- 634
-swap$ -- 158
+substring$ -- 659
+swap$ -- 160
 text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 97
-width$ -- 40
-write$ -- 424
+warning$ -- 1
+while$ -- 102
+width$ -- 43
+write$ -- 454
+(There were 2 warnings)

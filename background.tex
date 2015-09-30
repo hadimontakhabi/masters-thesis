@@ -122,6 +122,15 @@ ParalleX~\cite{kaiser2009parallex} is a new computation model that attempts to a
 
 ParalleX also tries to address the difficulties of programmer productivity like explicit locality management and scheduling, performance tuning, fragmented memory, and synchronous global barriers to dramatically enhance the broad effectiveness of parallel processing for high end computing~\cite{4228212}. ParalleX changes the fundamental model of parallel computation from communicating sequential processes (e.g., MPI) to an innovative combination of concepts using message-driven work-queue execution in the context of a global address space.~\cite{tabbal2011preliminary,sterling2014towards}
 
-
-
+Main components of ParalleX include~\cite{kaiser2009parallex,dekate2012improving}:
+\begin{enumerate}
+\item \textbf{Active Global Address Space (AGAS)}\\
+  By avoiding the overhead of cache coherence, the AGAS extends the PGAS~\cite{stitt2009introduction} models (UPC~\cite{}, GASNet~\cite{bonachea2002gasnet}) by allowing the dynamic migration of first class objects across the physical system without having to change the object's name. This facilitates load balancing by allowing work to be migrated from heavily loaded nodes to less loaded nodes.  
+\item \textbf{Parallel Processes}
+\item \textbf{Threads}
+\item \textbf{Local Control Objects (LCOs)}
+\item \textbf{Parcels}
+\item \textbf{Percolation}
+  
+\end{enumerate}
 
