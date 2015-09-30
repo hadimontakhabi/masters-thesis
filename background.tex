@@ -69,31 +69,6 @@ Developing software environments for high performance computing applications in 
 
 There has been a number of studies with different approaches to this challenge. Each approach focuses on a particular aspect of the overall problem. For example, LAM/MPI emphasis was on ease of portability and performance~\cite{squyres2004component}. LA-MPI focused on data fault tolerance~\cite{aulwes2004architecture}, and HARNESS FT-MPI focused on system fault tolerance~\cite{fagg2002harness}.
 
-The Open Runtime Environment (ORTE) was developed as a part of the Open MPI project to support distributed high performance computing applications operating in a heterogeneous environment. Implementation of the ORTE is based on the Modular Component Architecture (MCA). The main design objectives of the ORTE are ease of use, resilient operations, scalability, and extensibility. Interprocess communication, resource discovery and allocation, and process launch across different platforms in a transparet manner are main features of the ORTE.\cite{castain2005open}.
-
-The ORTE consists of four major subsystems (Figure \ref{fig:orte-architecture})\cite{castain2005open,castain2008open,Castain2008153}:
-
-\begin{enumerate}
-\item \textbf{General Purpose Registry (GPR)}\\
-  The GPR is the core subsystem in the ORTE architecture. It provides a mechanism for exchanging of communication connection data, in the form of key-value pairs, among processes.  The GPR is also used to synchronize events across the system. It asynchronously notifies subscribers of events such as data changes in the registry or new data being entered to the registry.
-\item \textbf{Resource Management}\\
-  The Resource management subsystem consists four smaller subsystems: \textit{Resource Discovery Subsytem (RDS)}, \textit{Resource Allocation Subsystem (RAS)}, \textit{Resource Mapping Subsystem}, and \textit{Process Launch Subsystem (PLS)}. These four subsystems together provide services for resource discovery, allocation, mapping, and process launch. 
-\item \textbf{Error Management}\\
-  The \textit{State Monitoring and Reporting (SMR)} subsystem and the \textit{Error Manager} subsystem are two smaller subsystems constructing the error management subsystem. The error management subsystem brings the fault tolerance capability to the ORTE.
-\item \textbf{Support Services}\\
-  There are four subsystems comprising the support services subsystem:\\
-  The \textit{Runtime Messaging Layer (RML)} is responsible for providing administrative communication services across all ORTE subsystems. The \textit{Name Services (NS)} subsystem assigns each application, and each process within each application, a unique identifier. The \textit{I/O Forwarding (IOF)} subsystem is responsible for transporting standard input, output, and error messages between the remote processes and the user. And finally, the \textit{Data Services (DS)} subsystem is responsible for facilities like providing a single interface for all declared data types, packing/unpacking network communications, and support for transparent data manipulation within the ORTE.
-\end{enumerate}
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.5]{images/orte.png}
-\caption{The ORTE architecture~\cite{hpcwire}}
-\label{fig:orte-architecture}
-\end{figure}
-
-
-
 ``The major roles of the runtime are:
 \begin{enumerate}
 \item \textbf{Launch}\\
@@ -107,6 +82,28 @@ are returned to the user command: mpirun.
 \item \textbf{IO}\\
   Forward the standard input/output: users usually expect that the information printed on the standard output should appear on the standard output of the command they launched. Because the command they launched does not necessarily run on the same machine as where the print is issued in an MPI application, it is necessary to ensure the transmission of this information.''~\cite{bosilca2011scalability}
 \end{enumerate}
+
+The Open Runtime Environment (ORTE) was developed as a part of the Open MPI project to support distributed high performance computing applications operating in a heterogeneous environment. Implementation of the ORTE is based on the Modular Component Architecture (MCA). The main design objectives of the ORTE are ease of use, resilient operations, scalability, and extensibility. Interprocess communication, resource discovery and allocation, and process launch across different platforms in a transparet manner are main features of the ORTE.\cite{castain2005open}.
+
+The ORTE consists of four major subsystems (Figure \ref{fig:orte-architecture})\cite{castain2005open,castain2008open,Castain2008153}:
+
+\begin{enumerate}
+\item \textbf{General Purpose Registry (GPR)}\\
+  The GPR is the core subsystem in the ORTE architecture. It provides a mechanism for exchanging of communication connection data, in the form of key-value pairs, among processes.  The GPR is also used to synchronize events across the system. It asynchronously notifies subscribers of events such as data changes in the registry or new data being entered to the registry.
+\item \textbf{Resource Management}\\
+  The Resource management subsystem consists four smaller subsystems: \textit{Resource Discovery Subsytem (RDS)}, \textit{Resource Allocation Subsystem (RAS)}, \textit{Resource Mapping Subsystem}, and \textit{Process Launch Subsystem (PLS)}. These four subsystems together provide services for resource discovery, allocation, mapping, and process launch. 
+\item \textbf{Error Management}\\
+  The \textit{State Monitoring and Reporting (SMR)} subsystem and the \textit{Error Manager} subsystem are two smaller subsystems constructing the error management subsystem. The error management subsystem brings the fault tolerance capability to the ORTE.
+\item \textbf{Support Services}\\
+  There are four subsystems comprising the support services subsystem: The \textit{Runtime Messaging Layer (RML)} is responsible for providing administrative communication services across all ORTE subsystems. The \textit{Name Services (NS)} subsystem assigns each application, and each process within each application, a unique identifier. The \textit{I/O Forwarding (IOF)} subsystem is responsible for transporting standard input, output, and error messages between the remote processes and the user. And finally, the \textit{Data Services (DS)} subsystem is responsible for facilities like providing a single interface for all declared data types, packing/unpacking network communications, and support for transparent data manipulation within the ORTE.
+\end{enumerate}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{images/orte.png}
+\caption{The ORTE architecture~\cite{hpcwire}}
+\label{fig:orte-architecture}
+\end{figure}
 
 \section{High Performance ParalleX (HPX)}
 \label{sec:hpx}
