@@ -9,44 +9,44 @@ A level-1 auxiliary file: evaluation.aux
 A level-1 auxiliary file: conclusion.aux
 The style file: unsrt.bst
 Database file #1: main.bib
-You've used 34 entries,
+You've used 38 entries,
             1791 wiz_defined-function locations,
-            651 strings with 9764 characters,
-and the built_in function-call counts, 8892 in all, are:
-= -- 804
-> -- 395
-< -- 13
-+ -- 147
-- -- 113
-* -- 563
-:= -- 1330
-add.period$ -- 112
-call.type$ -- 34
-change.case$ -- 27
+            674 strings with 10632 characters,
+and the built_in function-call counts, 10216 in all, are:
+= -- 930
+> -- 451
+< -- 16
++ -- 167
+- -- 129
+* -- 647
+:= -- 1517
+add.period$ -- 126
+call.type$ -- 38
+change.case$ -- 31
 chr.to.int$ -- 0
-cite$ -- 34
-duplicate$ -- 432
-empty$ -- 884
-format.name$ -- 113
-if$ -- 2072
+cite$ -- 38
+duplicate$ -- 499
+empty$ -- 1012
+format.name$ -- 129
+if$ -- 2388
 int.to.chr$ -- 0
-int.to.str$ -- 34
-missing$ -- 36
-newline$ -- 173
-num.names$ -- 31
-pop$ -- 154
+int.to.str$ -- 38
+missing$ -- 40
+newline$ -- 193
+num.names$ -- 35
+pop$ -- 173
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 210
+skip$ -- 249
 stack$ -- 0
-substring$ -- 540
-swap$ -- 131
-text.length$ -- 13
+substring$ -- 634
+swap$ -- 158
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 82
-width$ -- 36
-write$ -- 378
+while$ -- 97
+width$ -- 40
+write$ -- 424

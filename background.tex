@@ -107,7 +107,20 @@ The ORTE consists of four major subsystems (Figure \ref{fig:orte-architecture})\
 
 \section{High Performance ParalleX (HPX)}
 \label{sec:hpx}
-ParalleX is a new computation model that attempts to address the underlying sources of performance degradation (starvation, latency, overhead, and waiting) and the difficulties of programmer productivity like explicit locality management and scheduling, performance tuning, fragmented memory, and synchronous global barriers to dramatically enhance the broad effectiveness of parallel processing for high end computing.~\cite{4228212}
+ParalleX~\cite{kaiser2009parallex} is a new computation model that attempts to address the underlying sources of performance degradation~\cite{sterling2010enabling}:
+
+\begin{enumerate}
+\item \textbf{Starvation}\\
+  Starvation is the phenomenon of resourses being idle performing no useful action because the amount of concurrent work available to the resources is insufficient to utilize all of them.
+\item \textbf{Latency}\\
+  Latency is the amount of time a message takes to traverse a system. Accessing remote resources imposes a minimum delay equivalent to latency.
+\item \textbf{Overhead}\\
+  Management of parallel resources requires extra work which is not necessary in the case of utilizing sequential resources.
+\item \textbf{Waiting}\\
+  In systems with shared resources, the possibility of contention exists. When there is such a contention, it needs to be resolved. Hence, there is a delay due to waiting for contention resolution.
+\end{enumerate}
+
+ParalleX also tries to address the difficulties of programmer productivity like explicit locality management and scheduling, performance tuning, fragmented memory, and synchronous global barriers to dramatically enhance the broad effectiveness of parallel processing for high end computing~\cite{4228212}. ParalleX changes the fundamental model of parallel computation from communicating sequential processes (e.g., MPI) to an innovative combination of concepts using message-driven work-queue execution in the context of a global address space.~\cite{tabbal2011preliminary,sterling2014towards}
 
 
 
