@@ -105,8 +105,8 @@ The ORTE consists of four major subsystems (Figure \ref{fig:orte-architecture})\
 \label{fig:orte-architecture}
 \end{figure}
 
-\section{High Performance ParalleX (HPX)}
-\label{sec:hpx}
+\section{ParalleX}
+\label{sec:parallex}
 ParalleX~\cite{kaiser2009parallex} is a new computation model that attempts to address the underlying sources of performance degradation~\cite{sterling2010enabling}:
 
 \begin{enumerate}
@@ -137,6 +137,23 @@ Main components of ParalleX include~\cite{gao2007parallex,kaiser2009parallex,dek
 \item \textbf{Percolation}\\
   Percolation is a technique for using resources by moving the work to the resource while both hiding the latency of such action and eliminating the overhead of such action from the target resource. 
 \end{enumerate}
+
+
+\section{High Performance ParalleX (HPX)}
+\label{sec:hpx}
+High Performance ParalleX (HPX) is the first open source runtime system implementation for the ParalleX execution model~\cite{huck2013early,kaiser2014hpx}.
+
+HPX, like many recent programming models is based on lightweight tasks. Task based parallel programming models can be divided into three major categories~\cite{kaiser2014hpx,podobas2010comparison}:
+
+\begin{itemize}
+  \item \textbf{Libraries}\\
+    Intel TBB~\cite{pheatt2008intel}, Qthreads~\cite{wheeler2008qthreads}, and StarPU~\cite{augonnet2011starpu} are some known examples for library solutions.
+  \item \textbf{Language Extensions}\\
+    OpenMP~\cite{dagum1998openmp} and Intel Cilk Plus~\cite{robison2012cilk} are examples of language extensions.
+  \item \textbf{Experimental Programming Languages}\\
+    Chapel~\cite{chamberlain2007parallel}, X10~\cite{pharr2012ispc}, and Intel ISPC~\cite{pharr2012ispc} are notable examples in this category.
+\end{itemize}
+
 
 
 \begin{figure}[h!]

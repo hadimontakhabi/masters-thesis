@@ -263,4 +263,67 @@ UPC Consortium et~al.
 \newblock Upc language specifications v1. 2.
 \newblock {\em Lawrence Berkeley National Laboratory}, 2005.
 
+\bibitem{huck2013early}
+Kevin Huck, Sameer Shende, Allen Malony, Hartmut Kaiser, Allan Porterfield, Rob
+  Fowler, and Ron Brightwell.
+\newblock An early prototype of an autonomic performance environment for
+  exascale.
+\newblock In {\em Proceedings of the 3rd International Workshop on Runtime and
+  Operating Systems for Supercomputers}, page~8. ACM, 2013.
+
+\bibitem{kaiser2014hpx}
+Hartmut Kaiser, Thomas Heller, Bryce Adelstein-Lelbach, Adrian Serio, and
+  Dietmar Fey.
+\newblock Hpx: A task based programming model in a global address space.
+\newblock In {\em Proceedings of the 8th International Conference on
+  Partitioned Global Address Space Programming Models}, page~6. ACM, 2014.
+
+\bibitem{podobas2010comparison}
+Artur Podobas, Mats Brorsson, and Karl-Filip Fax{\'e}n.
+\newblock A comparison of some recent task-based parallel programming models.
+\newblock 2010.
+
+\bibitem{pheatt2008intel}
+Chuck Pheatt.
+\newblock Intel{\textregistered} threading building blocks.
+\newblock {\em Journal of Computing Sciences in Colleges}, 23(4):298--298,
+  2008.
+
+\bibitem{wheeler2008qthreads}
+Kyle~B Wheeler, Richard~C Murphy, and Douglas Thain.
+\newblock Qthreads: An api for programming with millions of lightweight
+  threads.
+\newblock In {\em Parallel and Distributed Processing, 2008. IPDPS 2008. IEEE
+  International Symposium on}, pages 1--8. IEEE, 2008.
+
+\bibitem{augonnet2011starpu}
+C{\'e}dric Augonnet, Samuel Thibault, Raymond Namyst, and Pierre-Andr{\'e}
+  Wacrenier.
+\newblock Starpu: a unified platform for task scheduling on heterogeneous
+  multicore architectures.
+\newblock {\em Concurrency and Computation: Practice and Experience},
+  23(2):187--198, 2011.
+
+\bibitem{dagum1998openmp}
+Leonardo Dagum and Rameshm Enon.
+\newblock Openmp: an industry standard api for shared-memory programming.
+\newblock {\em Computational Science \& Engineering, IEEE}, 5(1):46--55, 1998.
+
+\bibitem{robison2012cilk}
+Arch~D Robison.
+\newblock Cilk plus: Language support for thread and vector parallelism.
+\newblock {\em Talk at HP-CAST}, 18, 2012.
+
+\bibitem{chamberlain2007parallel}
+Bradford~L Chamberlain, David Callahan, and Hans~P Zima.
+\newblock Parallel programmability and the chapel language.
+\newblock {\em International Journal of High Performance Computing
+  Applications}, 21(3):291--312, 2007.
+
+\bibitem{pharr2012ispc}
+Matt Pharr and William~R Mark.
+\newblock ispc: A spmd compiler for high-performance cpu programming.
+\newblock In {\em Innovative Parallel Computing (InPar), 2012}, pages 1--13.
+  IEEE, 2012.
+
 \end{thebibliography}
