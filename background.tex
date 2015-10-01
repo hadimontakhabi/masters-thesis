@@ -179,7 +179,7 @@ HPX follows a set of design principles that have been around for years. However,
   It is obvious that the amount of data for a particular operation is very often much smaller than the amount of data the operation is performed on. Although this is possible using MPI, it is not deeply built into MPI model. Having a system that could provide this capability would reduce overhead of unnecessary data movement.
   
 \item \textbf{Message Driven Computation instead of Message Passing}\\
-  In message passing models like MPI, the receiver of a message needs to spend time waiting for the incoming messages. However, message driven computation allows sending messages without the receiver actively waiting for them. Incoming message are handled asynchronously. 
+  In message passing models like MPI, the receiver of a message needs to spend time waiting for the incoming messages. However, message driven computation allows sending messages without the receiver actively waiting for them. Incoming message are handled asynchronously. This allows the overlap of communication with useful work.
   
 \end{enumerate}
 
