@@ -13,6 +13,13 @@ Hartmut Kaiser, Maciej Brodowicz, and Thomas Sterling.
 \newblock In {\em Parallel Processing Workshops, 2009. ICPPW'09. International
   Conference on}, pages 394--401. IEEE, 2009.
 
+\bibitem{kaiser2014hpx}
+Hartmut Kaiser, Thomas Heller, Bryce Adelstein-Lelbach, Adrian Serio, and
+  Dietmar Fey.
+\newblock Hpx: A task based programming model in a global address space.
+\newblock In {\em Proceedings of the 8th International Conference on
+  Partitioned Global Address Space Programming Models}, page~6. ACM, 2014.
+
 \bibitem{barney2010introduction}
 Blaise Barney et~al.
 \newblock Introduction to parallel computing.
@@ -270,13 +277,6 @@ Kevin Huck, Sameer Shende, Allen Malony, Hartmut Kaiser, Allan Porterfield, Rob
   exascale.
 \newblock In {\em Proceedings of the 3rd International Workshop on Runtime and
   Operating Systems for Supercomputers}, page~8. ACM, 2013.
-
-\bibitem{kaiser2014hpx}
-Hartmut Kaiser, Thomas Heller, Bryce Adelstein-Lelbach, Adrian Serio, and
-  Dietmar Fey.
-\newblock Hpx: A task based programming model in a global address space.
-\newblock In {\em Proceedings of the 8th International Conference on
-  Partitioned Global Address Space Programming Models}, page~6. ACM, 2014.
 
 \bibitem{podobas2010comparison}
 Artur Podobas, Mats Brorsson, and Karl-Filip Fax{\'e}n.

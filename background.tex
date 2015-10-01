@@ -141,7 +141,7 @@ Main components of ParalleX include~\cite{gao2007parallex,kaiser2009parallex,dek
 
 \section{High Performance ParalleX (HPX)}
 \label{sec:hpx}
-High Performance ParalleX (HPX) is the first open source runtime system implementation for the ParalleX execution model~\cite{huck2013early,kaiser2014hpx}.
+High Performance ParalleX (HPX) is the first open source general purpose C++ runtime system implementation for the ParalleX execution model~\cite{huck2013early,kaiser2014hpx}.
 
 HPX, like many recent programming models is based on lightweight tasks. Task based parallel programming models can be divided into three major categories~\cite{kaiser2014hpx,podobas2010comparison}:
 
@@ -154,7 +154,10 @@ HPX, like many recent programming models is based on lightweight tasks. Task bas
     Chapel~\cite{chamberlain2007parallel}, X10~\cite{pharr2012ispc}, and Intel ISPC~\cite{pharr2012ispc} are notable examples in this category.
 \end{itemize}
 
+The majority of the mentioned task based programming models focus on node level parallelism. Providing a solution for homogeneous execution of local and remote operations is what distinguishes HPX from those models.
 
+``HPX represents an innovative mixture of a global system-wide address space, fine grain parallelism, and lightweight synchronization combined with implicit, work queue based, message driven computation, full semantic equivalence of local and remote execution, and explicit support for hardware accelerators
+through percolation.''~\cite{kaiser2014hpx}
 
 \begin{figure}[h!]
 \centering
@@ -163,3 +166,9 @@ HPX, like many recent programming models is based on lightweight tasks. Task bas
 \label{fig:hpx-structure}
 \end{figure}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{images/hpx_the_api.png}
+\caption{Overview of the main API exposed by HPX~\cite{kaiser2014hpx}}
+\label{fig:hpx-api}
+\end{figure}
