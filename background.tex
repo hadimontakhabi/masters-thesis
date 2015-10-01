@@ -167,14 +167,19 @@ HPX follows a set of design principles that have been around for years. However,
   It is impossible to have no latency in a system. However, to hide the latency, some unrelated useful work can be done during that time. This is one of the main concepts integrated into the design of HPX.
   
 \item \textbf{Fine-grained Parallelism instead of Heavyweight Threads}\\
-  To hide latencies for very short operations, low overhead of context swithing is a must. The overall system utilization improves by smaller overhead of a context switch and finer granularity of the threading system. 
-\item \textbf{Constrained Based Synchronization to replace Global Barriers}\\
+  To hide latencies for very short operations, low overhead of context swithing is a must. The overall system utilization improves by smaller overhead of a context switch and finer granularity of the threading system.
+  
+\item \textbf{Constrained Based Synchronization to Replace Global Barriers}\\
+  Having all threads or processes wait for a particular operation to be finished is waste of resources that could otherwise be utilized. Replacing such barriers with constraint based synchronization through dataflow techniques could improve the overall performance of a system.
   
 \item \textbf{Adaptive Locality Control instead of Static Data Distribution}\\
+  MPI leaves the responsibility of data distribution to the programmer. The easy approach for most programmers is to distribute the data statically. PGAS systems rely on static data distribution as well. When there is an imbalance in the workload, this becomes a problem. In such cases, migrating part of the application data to different localities (nodes) by the runtime system could increase overall utilization and make programmers job easier.
   
 \item \textbf{Moving Work to the Data instead of Moving Data to the Work}\\
+  It is obvious that the amount of data for a particular operation is very often much smaller than the amount of data the operation is performed on. Although this is possible using MPI, it is not deeply built into MPI model. Having a system that could provide this capability would reduce overhead of unnecessary data movement.
   
 \item \textbf{Message Driven Computation instead of Message Passing}\\
+  In message passing models like MPI, the receiver of a message needs to spend time waiting for the incoming messages. However, message driven computation allows sending messages without the receiver actively waiting for them. Incoming message are handled asynchronously. 
   
 \end{enumerate}
 
