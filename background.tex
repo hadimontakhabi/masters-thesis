@@ -160,7 +160,23 @@ The majority of the mentioned task based programming models focus on node level 
 through percolation.''~\cite{kaiser2014hpx}
 
 \subsection{HPX Design Principles}
+HPX follows a set of design principles that have been around for years. However, HPX gathers all these principles into a unified system~\cite{kaiser2014hpx}.
 
+\begin{enumerate}
+\item \textbf{Latency Hiding instead of Latency Avoidance}\\
+  It is impossible to have no latency in a system. However, to hide the latency, some unrelated useful work can be done during that time. This is one of the main concepts integrated into the design of HPX.
+  
+\item \textbf{Fine-grained Parallelism instead of Heavyweight Threads}\\
+  To hide latencies for very short operations, low overhead of context swithing is a must. The overall system utilization improves by smaller overhead of a context switch and finer granularity of the threading system. 
+\item \textbf{Constrained Based Synchronization to replace Global Barriers}\\
+  
+\item \textbf{Adaptive Locality Control instead of Static Data Distribution}\\
+  
+\item \textbf{Moving Work to the Data instead of Moving Data to the Work}\\
+  
+\item \textbf{Message Driven Computation instead of Message Passing}\\
+  
+\end{enumerate}
 
 \begin{figure}[h!]
 \centering
