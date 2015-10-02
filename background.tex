@@ -25,14 +25,14 @@ Features implemented or in short-term development for Open MPI include:
 \end{itemize}
     
 \subsection{The Architectire of Open MPI}
-Open MPI is built based on a component architecture called the Modular Component Architecture (MCA). Component based archtirecture makes large software projects extensible and maintainable~\cite{barrett2005analysis,graham2006open}. It also allows users to build their own costumized components and integrate it into Open MPI. Component based architectures are popular in the high performance computing community~\cite{squyres2003component,bernholdt2006component}.
+Open MPI is built based on a component architecture called the Modular Component Architecture (MCA). Component based archtirecture makes large software projects extensible and maintainable~\cite{barrett2005analysis,graham2006open}. It also allows users to build their own costumized components and integrate them into Open MPI. Component based architectures are popular in the high performance computing community~\cite{squyres2003component,bernholdt2006component}.
 
 Open MPI is comprised of three main functional areas (Figure \ref{fig:MCA_framework})~\cite{graham2006open}:
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.4]{images/MCA_framework.png}
-\caption{MCA, component frameworks, and the components}
+\caption{MCA, component frameworks, and the components~\cite{graham2006open}}
 \label{fig:MCA_framework}
 \end{figure}
 
@@ -40,15 +40,15 @@ Open MPI is comprised of three main functional areas (Figure \ref{fig:MCA_framew
 \item \textbf {MCA}\\
   The backbone modular component architecture that provides management services for all other layers.
   
-  The MCA is responsible for management of the component frameworks and providing them services they use. For instance, the MCA provides the ability to accept run-time parameters from higher-level abstractions (e.g., mpirun) and pass them down through the component framework to individual components. It also finds components at build-time and invokes their corresponding hooks for configuration, building, and installation.
+  The MCA is responsible for management of the component frameworks and providing them services they use. For instance, the MCA provides the ability to accept run time parameters from higher level abstractions (e.g., mpirun) and pass them down through the component framework to individual components. It also finds components at build time and invokes their corresponding hooks for configuration, building, and installation.
   
 \item \textbf{Component frameworks}\\
-  Each major functional area in Open MPI has a corresponding back-end component framework, which manages modules.
+  Each major functional area in Open MPI has a corresponding back end component framework, which manages modules.
   
-  Each component framework is a construct that is created for a single, targeted task. For example, \textbf{btl} (Byte Transfer Layer) framework is used to send and receive data on different types of networks, \textbf{allocator} framework is responsible for memory allocation, and \textbf{coll} framework which is dedicated to MPI collective algorithms. A framework uses MCA's services to discover, load, use, and unload components at run time. Each framework has different policies and use case scenarios; some only use one component at a time while others use all available components simultaneously.
+  Each component framework is a construct that is created for a single, targeted task. For example, \textbf{btl} (Byte Transfer Layer) framework is used to send and receive data on different types of networks, \textbf{allocator} framework is responsible for memory allocation, and \textbf{coll} framework is dedicated to MPI collective algorithms. A framework uses MCA's services to discover, load, use, and unload components at run time. Each framework has different policies and use cases; some only use one component at a time while others use all available components simultaneously.
 
 \item \textbf {Components}\\
-  Self-contained software units that can configure, build, and install themselves. A component is an implementation of a framework's interface. Components are also known as ``plugins''. Each instance of a component is called a ``module''. 
+  Components are self contained software units that can configure, build, and install themselves. A component is an implementation of a framework's interface. Components are also known as ``plugins''. Each instance of a component is called a ``module''. 
 
   The Open MPI software has three classes of components: Open MPI (OMPI) components, Open Runtime Environment (ORTE) components, and Open Portable Access Layer (OPAL) components. (Figure \ref{fig:open-mpi-layers})
 
@@ -65,7 +65,7 @@ Open MPI is comprised of three main functional areas (Figure \ref{fig:MCA_framew
 
 \section{Open Runtime Environment (ORTE)}
 \label{sec:orte}
-Developing software environments for high performance computing applications in heterogenous distributed systems poses a significant challenge. The runtime environment (RTE) must be capable of supporting heterogeneous operations, efficiently scaling from one to large numbers of processors, and providing effective strategies for dealing with fault scenarios that are expected as our systems continue to scale~\cite{kronstadt2005peta}.
+Developing software environments for high performance computing applications in heterogenous distributed systems poses a significant challenge. The runtime environment (RTE) must be capable of supporting heterogeneous operations, efficiently scaling from one to large numbers of processors, and providing effective strategies for dealing with fault scenarios that are expected as our systems continue to scale to exaflop systems~\cite{kronstadt2005peta}.
 
 There has been a number of studies with different approaches to this challenge. Each approach focuses on a particular aspect of the overall problem. For example, LAM/MPI emphasis was on ease of portability and performance~\cite{squyres2004component}. LA-MPI focused on data fault tolerance~\cite{aulwes2004architecture}, and HARNESS FT-MPI focused on system fault tolerance~\cite{fagg2002harness}.
 
