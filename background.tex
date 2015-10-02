@@ -32,7 +32,7 @@ Open MPI is comprised of three main functional areas (Figure \ref{fig:MCA_framew
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.4]{images/MCA_framework.png}
-\caption{MCA, component frameworks, and the components~\cite{graham2006open}}
+\caption[MCA, component frameworks, and the components]{MCA, component frameworks, and the components~\cite{graham2006open}}
 \label{fig:MCA_framework}
 \end{figure}
 
@@ -87,23 +87,24 @@ The Open Runtime Environment (ORTE) was developed as a part of the Open MPI proj
 
 The ORTE consists of four major subsystems (Figure \ref{fig:orte-architecture})\cite{castain2005open,castain2008open,Castain2008153}:
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{images/orte.png}
+\caption[The ORTE architecture]{The ORTE architecture~\cite{hpcwire}}
+\label{fig:orte-architecture}
+\end{figure}
+
 \begin{enumerate}
 \item \textbf{General Purpose Registry (GPR)}\\
   The GPR is the core subsystem in the ORTE architecture. It provides a mechanism for exchanging of communication connection data, in the form of key-value pairs, among processes.  The GPR is also used to synchronize events across the system. It asynchronously notifies subscribers of events such as data changes in the registry or new data being entered to the registry.
 \item \textbf{Resource Management}\\
-  The Resource management subsystem consists four smaller subsystems: \textit{Resource Discovery Subsytem (RDS)}, \textit{Resource Allocation Subsystem (RAS)}, \textit{Resource Mapping Subsystem}, and \textit{Process Launch Subsystem (PLS)}. These four subsystems together provide services for resource discovery, allocation, mapping, and process launch. 
+  The resource management subsystem consists of four smaller subsystems: \textit{Resource Discovery Subsytem (RDS)}, \textit{Resource Allocation Subsystem (RAS)}, \textit{Resource Mapping Subsystem}, and \textit{Process Launch Subsystem (PLS)}. These four subsystems together provide services for resource discovery, allocation, mapping, and process launch. 
 \item \textbf{Error Management}\\
   The \textit{State Monitoring and Reporting (SMR)} subsystem and the \textit{Error Manager} subsystem are two smaller subsystems constructing the error management subsystem. The error management subsystem brings the fault tolerance capability to the ORTE.
 \item \textbf{Support Services}\\
   There are four subsystems comprising the support services subsystem: The \textit{Runtime Messaging Layer (RML)} is responsible for providing administrative communication services across all ORTE subsystems. The \textit{Name Services (NS)} subsystem assigns each application, and each process within each application, a unique identifier. The \textit{I/O Forwarding (IOF)} subsystem is responsible for transporting standard input, output, and error messages between the remote processes and the user. And finally, the \textit{Data Services (DS)} subsystem is responsible for facilities like providing a single interface for all declared data types, packing/unpacking network communications, and support for transparent data manipulation within the ORTE.
 \end{enumerate}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.5]{images/orte.png}
-\caption{The ORTE architecture~\cite{hpcwire}}
-\label{fig:orte-architecture}
-\end{figure}
 
 \section{ParalleX}
 \label{sec:parallex}
@@ -186,13 +187,13 @@ HPX follows a set of design principles that have been around for years. However,
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.4]{images/hpx.png}
-\caption{Modular Structure of HPX Implementation~\cite{kaiser2009parallex}}
+\caption[Modular Structure of HPX Implementation]{Modular Structure of HPX Implementation~\cite{kaiser2009parallex}}
 \label{fig:hpx-structure}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.7]{images/hpx_the_api.png}
-\caption{Overview of the main API exposed by HPX~\cite{kaiser2014hpx}}
+\caption[Overview of the main API exposed by HPX]{Overview of the main API exposed by HPX~\cite{kaiser2014hpx}}
 \label{fig:hpx-api}
 \end{figure}
