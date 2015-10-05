@@ -326,4 +326,20 @@ Matt Pharr and William~R Mark.
 \newblock In {\em Innovative Parallel Computing (InPar), 2012}, pages 1--13.
   IEEE, 2012.
 
+\bibitem{c++14}
+Working draft, standard for programming language c++.
+\newblock
+  \url{http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4296.pdf}.
+\newblock Accessed: 2015-10-05.
+
+\bibitem{dawes2009boost}
+Beman Dawes, David Abrahams, and Rene Rivera.
+\newblock Boost c++ libraries.
+\newblock {\em URL http://www. boost. org}, 35:36, 2009.
+
+\bibitem{anderson2011application}
+Matthew Anderson, Maciej Brodowicz, Hartmut Kaiser, and Thomas Sterling.
+\newblock An application driven analysis of the parallex execution model.
+\newblock {\em arXiv preprint arXiv:1109.5201}, 2011.
+
 \end{thebibliography}
