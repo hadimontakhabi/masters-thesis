@@ -202,7 +202,20 @@ The API exposed by HPX is aligned with the latest C++11 Standard~\cite{c++11} an
 
 Actions in HPX are special types used to describe possibly remote operations. ``Applying the action'' is the process of invoking a global function (or a member function of an object) with the help of the associated action. Actions can have arguments, which will be supplied while the action is applied. At least one parameter is required to apply an action: the id of the locality the associated function should be invoked on for global functions, or the id of the component instance for member functions~\cite{ghimire2014data}.
 
-HPX provides several ways to apply an action. Figure \ref{fig:hpx-api} shows the function invocation syntax as defined by the C++ language (dark gray), the additional invocation syntax as provided through C++ Standard Library features (medium gray), and the extensions added by HPX (light gray)\cite{kaiser2014hpx}.
+HPX provides several ways to apply an action. Its API exposes three different ways of executing a function, locally on the same physical locality as the invocation site or remotely on a different locality:
+
+\begin{itemize}
+\item ``\textbf{Synchronous function execution}\\
+  This is the most natural way of invoking a C++ function. The caller ’waits’ for the function to return, possibly providing the result of the function execution. In HPX, synchronously executing an action suspends the current thread relinquishing the processing unit for other available work. Once the function is executed, the current thread is rescheduled.
+
+\item \textbf{Asynchronous function execution}\\
+  Asynchronous invocation of a function means that it will be scheduled as a new HPX thread (either locally or on another locality). The call to async will return almost immediately providing a new future instance which represents the result of the function execution. Asynchronous function execution is the fundamental way of orchestrating asynchronous parallelism in HPX.
+
+\item \textbf{Fire \& Forget function execution}\\
+  This is similar to asynchronous execution except that the caller has no means of synchronizing with the result of the operation. The call to apply simply schedules a local (or remote) HPX-thread which runs to completion at its own pace. Any result returned from that function (or any exception thrown) is being ignored. This leads to less communication by not having to notify the caller.''\cite{kaiser2014hpx}
+\end{itemize}
+
+Figure \ref{fig:hpx-api} shows the function invocation syntax as defined by the C++ language (dark gray), the additional invocation syntax as provided through C++ Standard Library features (medium gray), and the extensions added by HPX (light gray)\cite{kaiser2014hpx}.
 
 
 \begin{figure}[h!]
