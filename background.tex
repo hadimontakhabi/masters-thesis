@@ -185,7 +185,9 @@ HPX follows a set of design principles that have been around for years. However,
   In message passing models like MPI, the receiver of a message needs to spend time waiting for the incoming messages. However, message driven computation allows sending messages without the receiver actively waiting for them. Incoming message are handled asynchronously. This allows the overlap of communication with useful work.
 \end{enumerate}
 
-The implementation of HPX is feature complete. It supports all the main components of ParalleX (Figure \ref{fig:hpx-structure}). HPX has a modular architecture. This allows easy compile time customization and minimizes the runtime memory footprint. Similar to the implementation of Open MPI, HPX enables dynamically loaded modules to extend the available functionality at runtime. Modules could be statically binded at link time as well. HPX extends the C++14~\cite{c++14} standard and utilizes Boost~\cite{dawes2009boost} C++ libraries to facilitate distributed operations, enable fine grained constraint based parallelism, and support runtime adaptive resource management\cite{kaiser2014hpx}.
+\subsection{HPX Implementation Feautures}
+
+The implementation of HPX is feature complete. It supports all the main components of ParalleX (Figure \ref{fig:hpx-structure}). HPX has a modular architecture. This allows easy compile time customization and minimizes the runtime memory footprint. Similar to the implementation of Open MPI, HPX enables dynamically loaded modules to extend the available functionality at runtime. Modules could be statically binded at link time as well. The API exposed by HPX is aligned with the latest C++11 Standard~\cite{c++11} and the C++14 Standard~\cite{c++14} as much as possible and utilizes Boost~\cite{dawes2009boost} C++ libraries to facilitate distributed operations, enable fine grained constraint based parallelism, and support runtime adaptive resource management\cite{kaiser2014hpx}.
 
 \begin{figure}[h!]
 \centering
@@ -194,11 +196,15 @@ The implementation of HPX is feature complete. It supports all the main componen
 \label{fig:hpx-structure}
 \end{figure}
 
-Figure \ref{fig:hpx-api} shows the function invocation syntax as defined by the C++ language (dark gray), the additional invocation syntax as provided through C++ Standard Library features (medium gray), and the extensions added by HPX (light gray)\cite{kaiser2014hpx}.
+Actions in HPX are special types used to describe possibly remote operations. ``Applying the action'' is the process of invoking a global function (or a member function of an object) with the help of the associated action. Actions can have arguments, which will be supplied while the action is applied. At the minimum, one parameter is required to apply any action - the id of the locality the associated function should be invoked on (for global functions), or the id of the component instance (for member functions)~\cite{ghimire2014data}.
+
+HPX provides several ways to apply an action. Figure \ref{fig:hpx-api} shows the function invocation syntax as defined by the C++ language (dark gray), the additional invocation syntax as provided through C++ Standard Library features (medium gray), and the extensions added by HPX (light gray)\cite{kaiser2014hpx}.
+
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.7]{images/hpx_the_api.png}
+\includegraphics[scale=0.73]{images/hpx_the_api.png}
 \caption[Overview of the main API exposed by HPX]{Overview of the main API exposed by HPX~\cite{kaiser2014hpx}}
 \label{fig:hpx-api}
 \end{figure}
+
