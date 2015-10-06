@@ -345,10 +345,13 @@ Beman Dawes, David Abrahams, and Rene Rivera.
 \newblock Boost c++ libraries.
 \newblock {\em URL http://www.boost.org}, 35:36, 2009.
 
-\bibitem{anderson2011application}
-Matthew Anderson, Maciej Brodowicz, Hartmut Kaiser, and Thomas Sterling.
-\newblock An application driven analysis of the parallex execution model.
-\newblock {\em arXiv preprint arXiv:1109.5201}, 2011.
+\bibitem{anderson2013tabulated}
+Matthew Anderson, Maciej Brodowicz, Thomas Sterling, Hartmut Kaiser, and Bryce
+  Adelstein-Lelbach.
+\newblock Tabulated equations of state with a many-tasking execution model.
+\newblock In {\em Parallel and Distributed Processing Symposium Workshops \&
+  PhD Forum (IPDPSW), 2013 IEEE 27th International}, pages 1691--1699. IEEE,
+  2013.
 
 \bibitem{ghimire2014data}
 Bibek Ghimire.
@@ -357,5 +360,10 @@ Bibek Ghimire.
   Agricultural and Mechanical College in partial fulfillment of the
   requirements for the degree of Master of (degree) in System Science by Bibek
   Ghimire BS, Louisiana State University, 2014.
+
+\bibitem{stroustrup2013c++}
+Bjarne Stroustrup.
+\newblock {\em The C++ programming language}.
+\newblock Pearson Education, 2013.
 
 \end{thebibliography}
