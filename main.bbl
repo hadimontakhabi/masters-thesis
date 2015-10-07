@@ -366,4 +366,10 @@ Bjarne Stroustrup.
 \newblock {\em The C++ programming language}.
 \newblock Pearson Education, 2013.
 
+\bibitem{brightwell2013xpress}
+Ronald~Brian Brightwell.
+\newblock Xpress project overview.
+\newblock Technical report, Sandia National Laboratories (SNL-NM), Albuquerque,
+  NM (United States), 2013.
+
 \end{thebibliography}
