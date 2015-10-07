@@ -372,4 +372,10 @@ Ronald~Brian Brightwell.
 \newblock Technical report, Sandia National Laboratories (SNL-NM), Albuquerque,
   NM (United States), 2013.
 
+\bibitem{xpress}
+Ron Brightwell.
+\newblock Xpress - extreme scale software stack - x-stack.
+\newblock \url{https://xstackwiki.modelado.org/XPRESS}.
+\newblock Accessed: 2015-10-07.
+
 \end{thebibliography}
