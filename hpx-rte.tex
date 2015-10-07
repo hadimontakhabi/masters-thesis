@@ -14,7 +14,7 @@ This project is a collaboration between Sandia National Laboratories (SNL), Indi
 
 Figure \ref{fig:openx} illustrates the OpenX software architecture. Support for legacy applications, and specifically support for MPI applications is this thesis' target.
 
-\begin{figure}[ht]
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=0.8]{images/openx.png}
 \caption[The OpenX Software Architecture]{The OpenX Software Architecture}
@@ -38,21 +38,24 @@ The main goal of this project that led to the development of HPX-RTE was to prov
 \end{figure}
   
 \item \textbf{Functionality}\\
+  The main focus of this work is to have the MPI applications work on HPX infrastructure. To do this, most of the effort is put on having the functionality in place before tackling any possible consequences such as its effect on performance, efficiency, or power consumption. Such potential side effects could be the topic for other studies after having the new runtime functional.
   
-\item \textbf{Simplicity}\\
-  s
-\item \textbf{Code reuse}\\
-  s
+%\item \textbf{Simplicity}\\
+ % s
+%\item \textbf{Code reuse}\\
+%  s
 
 \end{itemize}
 
 \section{Challenges}
 \label{sec:challenges}
 
-\subsection{C and C++}
-\subsection{Imperfect Abstraction in ORTE}
-\subsection{Fundamental Differences}
-\subsection{Configuration Logic}
+%\subsection{C and C++}
+%\subsection{Imperfect Abstraction in ORTE}
+%\subsection{Fundamental Differences}
+%\subsection{Configuration Logic}
+
+\iffalse
 
 \section{Architecture}
 \label{sec:architecture}
@@ -64,7 +67,6 @@ The main goal of this project that led to the development of HPX-RTE was to prov
 \label{fig:open-mpi-layers-hpx-rte}
 \end{figure}
 
-\iffalse
  This is the public RTE interface to the OMPI layer. Any RTE can be
  connected to the OMPI layer by creating a new static component in
  this framework, assigning it a priority and including a configure.m4
@@ -209,13 +211,10 @@ The main goal of this project that led to the development of HPX-RTE was to prov
 
   (g) Communication support
 
-\fi
 
 \section{Implementation}
 \label{sec:implementation}
 MPI system level adjustment, and change of configuration logic
-
-\iffalse
 
 what we have done?
 Open MPI has an abstraction layer for runtime environments.
