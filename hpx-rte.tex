@@ -1,9 +1,30 @@
 \chapter{HPX-RTE}
 \label{sec:HPX-RTE}
 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.8]{images/openx.png}
+\caption[The OpenX Software Architecture]{The OpenX Software Architecture}
+\label{fig:openx}
+\end{figure}
+
+eXascale Programming Environment and System Software (XPRESS) Project
+
+Sandia National Laboratories (SNL): LXK operating system, OpenX software architecture, Applications
+Indiana University (IU): Parallex Execution Model, OpenX software architecture, HPX‐4 runtime system, XPI
+Lawrence Berkeley National Laboratory (LBNL): Applications
+Louisiana State University (LSU): HPX‐4 runtime system
+Oak Ridge National Laboratory (ORNL): Applications
+University of Houston (UH): Application migration
+University of North Carolina at Chapel Hill/RENCI (UNC/RENCI): XPI, HPX‐4, APEX
+University of Oregon (UO): Performance instrumentation (APEX)
 \section{Design Principles}
 \label{sec:design}
+
 \begin{itemize}
+\item \textbf{Functionality}\\
+  
 \item \textbf{Simplicity}\\
   
 \item \textbf{Code reuse}\\
@@ -11,6 +32,20 @@
 \item \textbf{Modularity}\\
 
 \end{itemize}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{images/open-mpi-layers-hpx-rte.png}
+\caption[Open MPI Layers using HPX-RTE]{Open MPI Layers using HPX-RTE}
+\label{fig:open-mpi-layers-hpx-rte}
+\end{figure}
+
+\section{Challenges}
+\label{sec:challenges}
+
+\subsection{C and C++}
+\subsection{Imperfect Abstraction in ORTE}
+\subsection{Fundamental Differences}
 
 \section{Architecture}
 \label{sec:architecture}
@@ -164,6 +199,7 @@
 
 \section{Implementation}
 \label{sec:implementation}
+MPI system level adjustment, and change of configuration logic
 
 \iffalse
 
