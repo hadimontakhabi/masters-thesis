@@ -29,7 +29,7 @@ Open MPI is built based on a component architecture called the Modular Component
 
 Open MPI is comprised of three main functional areas (Figure \ref{fig:MCA_framework})~\cite{graham2006open}:
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{images/MCA_framework.png}
 \caption[MCA, component frameworks, and the components]{MCA, component frameworks, and the components~\cite{graham2006open}}
@@ -55,9 +55,9 @@ Open MPI is comprised of three main functional areas (Figure \ref{fig:MCA_framew
   Frameworks, components, and modules can be either dynamic or static. This means, they can be available as plugins or they can be compiled statically into libraries.
 \end{enumerate}
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
-\includegraphics[scale=0.4]{images/open-mpi-layers.png}
+\includegraphics[scale=0.45]{images/open-mpi-layers.png}
 \caption{Open MPI Layers}
 \label{fig:open-mpi-layers}
 \end{figure}
@@ -87,7 +87,7 @@ The Open Runtime Environment (ORTE) was developed as a part of the Open MPI proj
 
 The ORTE consists of four major subsystems (Figure \ref{fig:orte-architecture})\cite{castain2005open,castain2008open,Castain2008153}:
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{images/orte.png}
 \caption[The ORTE architecture]{The ORTE architecture~\cite{hpcwire}}
@@ -193,7 +193,7 @@ HPX has a modular architecture. This allows easy compile time customization and 
 
 The API exposed by HPX is aligned with the latest C++11 Standard~\cite{c++11} and the C++14 Standard~\cite{c++14} as much as possible and utilizes Boost~\cite{dawes2009boost} C++ libraries to facilitate distributed operations, enable fine grained constraint based parallelism, and support runtime adaptive resource management\cite{kaiser2014hpx}.
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{images/hpx.png}
 \caption[Modular Structure of HPX Implementation]{Modular Structure of HPX Implementation~\cite{anderson2013tabulated}}
@@ -204,7 +204,7 @@ Actions in HPX are special types used to describe possibly remote operations. ``
 
 Figure \ref{fig:hpx-api} shows the function invocation syntax as defined by the C++ language (dark gray), the additional invocation syntax as provided through C++ Standard Library features (medium gray), and the extensions added by HPX (light gray)\cite{kaiser2014hpx}.
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.72]{images/hpx_the_api.png}
 \caption[Overview of the main API exposed by HPX]{Overview of the main API exposed by HPX~\cite{kaiser2014hpx}}
@@ -225,7 +225,7 @@ HPX provides several ways to apply an action. Its API exposes three different wa
 \end{itemize}
 
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=1]{images/future_schematics.png}
 \caption[Schematic of a Future Execution]{Schematic of a Future Execution~\cite{kaiser2009parallex}}

@@ -6,14 +6,15 @@ ParalleX and HPX are both parts of the eXascale Programming Environment and Syst
 The goals of XPRESS project are:
 \begin{itemize}
 \item ``Enable exascale performance capability for current and future Department of Energy applications
-\item Develop and deliver a practical computing system software X‐stack, “OpenX”, for future practical DOE computing systems
+\item Develop and deliver a practical computing system software X‐stack, ``OpenX'', for future practical DOE computing systems
 \item Provide programming methods, environments, languages, and tools for effective means of expressing application and system software for portable exascale system execution''~\cite{xpress}
 \end{itemize}
 
 This project is a collaboration between Sandia National Laboratories (SNL), Indiana University (IU), Lawrence Berkeley National Laboratory (LBNL), Louisiana State University (LSU), Oak Ridge National Laboratory (ORNL), University of Houston (UH), University of North Carolina at Chapel Hill/RENCI (UNC/RENCI), and University of Oregon (UO).
 
+Figure \ref{fig:openx} illustrates the OpenX software architecture. Support for legacy applications, and specifically support for MPI applications is this thesis' target.
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.8]{images/openx.png}
 \caption[The OpenX Software Architecture]{The OpenX Software Architecture}
@@ -23,24 +24,27 @@ This project is a collaboration between Sandia National Laboratories (SNL), Indi
 
 \section{Design Principles}
 \label{sec:design}
+The main goal of this project that led to the development of HPX-RTE was to provide facilities for MPI applications to compile and run the exact same way in exascale software stack environment and be compatible with HPX runtime environment. This goal is achieved by replacing the current runtime environment (ORTE) with a new runtime environment developed from scratch to take advantage of the API provided by HPX. This choice was made by having a set of design principles in mind.
 
 \begin{itemize}
+\item \textbf{Modularity}\\
+  Utilizing the modular structure of the Open MPI project, there is a framework dedicated to the runtime environment (rte) in OMPI layer. This framework is designed to provide the interfce necessary for different runtime environments (Figure \ref{fig:MCA-hpx-rte}).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{images/MCA-hpx-rte.png}
+\caption[Modular Component Architecure with rte Framework]{Modular Component Architecure with rte Framework}
+\label{fig:MCA-hpx-rte}
+\end{figure}
+  
 \item \textbf{Functionality}\\
-  s
+  
 \item \textbf{Simplicity}\\
   s
 \item \textbf{Code reuse}\\
   s
-\item \textbf{Modularity}\\
-s
-\end{itemize}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.4]{images/open-mpi-layers-hpx-rte.png}
-\caption[Open MPI Layers using HPX-RTE]{Open MPI Layers using HPX-RTE}
-\label{fig:open-mpi-layers-hpx-rte}
-\end{figure}
+\end{itemize}
 
 \section{Challenges}
 \label{sec:challenges}
@@ -48,9 +52,17 @@ s
 \subsection{C and C++}
 \subsection{Imperfect Abstraction in ORTE}
 \subsection{Fundamental Differences}
+\subsection{Configuration Logic}
 
 \section{Architecture}
 \label{sec:architecture}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.45]{images/open-mpi-layers-hpx-rte.png}
+\caption[Open MPI Layers using HPX-RTE]{Open MPI Layers using HPX-RTE}
+\label{fig:open-mpi-layers-hpx-rte}
+\end{figure}
 
 \iffalse
  This is the public RTE interface to the OMPI layer. Any RTE can be
