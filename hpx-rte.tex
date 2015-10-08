@@ -89,9 +89,13 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
   
 \item \verb|ompi_rte_compare_name_fields|\\
   A function used to compare fields in the \verb|ompi_process_name_t| struct. The function prototype must be of the form:
-        int \verb|ompi_rte_compare_name_fields|(\verb|ompi_rte_cmp_bitmask_t| mask,                                        \verb|ompi_process_name_t| *name1,
-                                         \verb|ompi_process_name_t| *name2);
-        The bitmask must be defined to indicate the fields to be used
+  \begin{lstlisting}[language=C]
+    int ompi_rte_compare_name_fields(
+        ompi_rte_cmp_bitmask_t mask,
+        ompi_process_name_t *name1,
+        ompi_process_name_t *name2);
+  \end{lstlisting}
+                                         The bitmask must be defined to indicate the fields to be used
         in the comparison. Fields not included in the mask must be ignored.
         Supported bitmask values must include:
            b. \verb|OMPI_RTE_CMP_JOBID|
