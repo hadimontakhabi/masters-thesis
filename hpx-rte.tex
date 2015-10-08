@@ -62,46 +62,33 @@ The required functinality for HPX-RTE is implemented as a component of the runti
 \end{figure}
 
 \section{Runtime Environement Requirements}
-\label{sec:requirements}
-rte framework defines a required set of data structures and functions for every runtime environment components. 
+\label{sec:rte-requirements}
+The rte framework inside OMPI layer of Open MPI defines a required set of data structures and functions that every runtime environment component needs to provide implementation for~\cite{gabriel04:_open_mpi}:
 
+\subsection{Process Name Objects and Operations}
 
-\iffalse
+\begin{enumerate}
+\item \verb|ompi_jobid_t| \textbf{and} \verb|ompi_vpid_t|\\
+  These two need to be defined as integer types. The jobid must be unique for a given \verb|MPI_COMM_WORLD| capable of connecting to another \verb|OMPI_COMM_WORLD| and the vpid will be the process's rank in \verb|MPI_COMM_WORLD|.
 
-This is the public RTE interface to the OMPI layer. Any RTE can be
- connected to the OMPI layer by creating a new static component in
- this framework, assigning it a priority and including a configure.m4
- to define when it should be built.
+\item \verb|ompi_process_name_t|\\
+  This is a struct that must contain at least two fields of type integer:
+  \begin{enumerate}
+  \item \verb|ompi_jobid_t| jobid
+  \item \verb|ompi_vpid_t| vpid
+  \end{enumerate}
 
- Each component must provide a number of types and functions that mimic
- those provided by ORTE. These include (where flexibility exists, the
- ORTE data type is shown, but any compatible type is allowed. For example,
- the jobid field in \verb|ompi_process_name_t| could be any type of integer, but
- cannot be a string):
-
- (a) Process name objects and operations
-     1. Definitions for integral types \verb|ompi_jobid_t| and \verb|ompi_vpid_t|.
-        The jobid must be unique for a given \verb|MPI_COMM_WORLD| capable of
-        connecting to another \verb|OMPI_COMM_WORLD| and the vpid will be the
-        process's rank in \verb|MPI_COMM_WORLD|.
-     2. \verb|ompi_process_name_t| - a struct that must contain at least two integer-typed fields:
-           a. \verb|ompi_jobid_t| jobid
-           b. \verb|ompi_vpid_t| vpid
-        Note that the structure can contain any number of fields beyond these
-        two, so the process name struct for any particular RTE can be whatever
-        is desired.
-     3. \verb|OMPI_NAME_PRINT| - a macro that prints a process name when given
-        a pointer to \verb|ompi_process_name_t|. The output format is to be
-        a single string representing the name.  This function should
-        be thread-safe for multiple threads to call simultaneously.
-     4. \verb|OMPI_PROC_MY_NAME| - a pointer to a global variable containing
-        the \verb|ompi_process_name_t| for this process. Typically, this is
-        stored as a field in the \verb|ompi_process_info_t| struct, but that
-        is not a requirement.
-     5. \verb|OMPI_NAME_WILDCARD| - a wildcard name.
-     6. \verb|ompi_rte_compare_name_fields| - a function used to compare fields
-        in the \verb|ompi_process_name_t| struct. The function prototype must be
-        of the form:
+\item \verb|OMPI_NAME_PRINT|\\
+  When given a pointer to \verb|ompi_process_name_t|, this macro has to print a process name. The output format has to be a single string representing the name. This function should be thread-safe for multiple threads to call simultaneously.
+  
+\item \verb|OMPI_PROC_MY_NAME|\\
+  A pointer to a global variable containing the \verb|ompi_process_name_t| for this process.
+  
+\item \verb|OMPI_NAME_WILDCARD|\\
+  A wildcard name.
+  
+\item \verb|ompi_rte_compare_name_fields|\\
+  A function used to compare fields in the \verb|ompi_process_name_t| struct. The function prototype must be of the form:
         int \verb|ompi_rte_compare_name_fields|(\verb|ompi_rte_cmp_bitmask_t| mask,                                        \verb|ompi_process_name_t| *name1,
                                          \verb|ompi_process_name_t| *name2);
         The bitmask must be defined to indicate the fields to be used
@@ -110,11 +97,14 @@ This is the public RTE interface to the OMPI layer. Any RTE can be
            b. \verb|OMPI_RTE_CMP_JOBID|
            c. \verb|OMPI_RTE_CMP_VPID|
            d. \verb|OMPI_RTE_CMP_ALL|
-      7. \verb|uint64_t ompi_rte_hash_name|(name) - return a string hash uniquely
-         representing the \verb|ompi_process_name| passed in.
-      8. \verb|OMPI_NAME| - an Opal DSS constant for a handler already registered
-         to serialize/deserialize an \verb|ompi_process_name_t| structure.
+         \item \verb|uint64_t ompi_rte_hash_name|(name) - return a string hash uniquely representing the \verb|ompi_process_name| passed in.
+       \item \verb|OMPI_NAME| - an Opal DSS constant for a handler already registered to serialize/deserialize an \verb|ompi_process_name_t| structure.
 
+\end{enumerate}
+
+
+\iffalse
+         
  (b) Collective objects and operations
      1. \verb|ompi_rte_collective_t| - an OPAL object used during RTE collective operations such as modex and barrier. It must be an \verb|opal_list_item_t| and contain the following fields:
            a. id (ORTE type: \verb|int32_t|)
