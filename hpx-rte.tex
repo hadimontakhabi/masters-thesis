@@ -50,7 +50,9 @@ The main goal of this project that led to the development of HPX-RTE was to prov
 \section{Architecture}
 \label{sec:architecture}
 
-HPX-RTE is designed to replace the functionality of current Open MPI runtime (ORTE). Figure \ref{fig:open-mpi-layers-hpx-rte} illustates the logical layers of Open MPI software using HPX-RTE as runtime. This is achieved by utilizing the modular component architecture of Open MPI. The required functinality for HPX-RTE is implemented as a component of the runtime environment (rte) framework (Figure \ref{fig:MCA-hpx-rte}).
+HPX-RTE is designed to replace the functionality of current Open MPI runtime (ORTE). Figure \ref{fig:open-mpi-layers-hpx-rte} illustates the logical layers of Open MPI software using \mbox{HPX-RTE} as its runtime environment. The modular component architecture of Open MPI facilitates the implementation of this design.
+
+The required functinality for HPX-RTE is implemented as a component of the runtime environment (rte) framework (Figure \ref{fig:MCA-hpx-rte}) in OMPI layer. This design dictates a number of changes outside the rte framework. We will discuss those changes in the implementation section.
 
 \begin{figure}[ht]
 \centering
