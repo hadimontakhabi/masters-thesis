@@ -17,7 +17,7 @@ Figure \ref{fig:openx} illustrates the OpenX software architecture. Support for 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.75]{images/openx.png}
-\caption[The OpenX Software Architecture]{The OpenX Software Architecture}
+\caption[The OpenX Software Architecture]{The OpenX Software Architecture~\cite{xpress}}
 \label{fig:openx}
 \end{figure}
 
@@ -27,7 +27,7 @@ The main goal of this project that led to the development of HPX-RTE was to prov
 
 \begin{itemize}
 \item \textbf{Modularity}\\
-  Utilizing the modular structure of the Open MPI project, there is a framework dedicated to the runtime environment (rte) in OMPI layer. This framework is designed to provide the interfce necessary for different runtime environments (Figure \ref{fig:MCA-hpx-rte}).
+  Utilizing the modular structure of the Open MPI project, there is a framework dedicated to the runtime environment (rte) in OMPI layer. This framework is designed to provide the interfce necessary for different runtime environments (Figure \ref{fig:MCA-hpx-rte}). This allows different runtime environments to coexist independently inside the Open MPI project and be chosen by users based on their environment and application needs and priorities.
 
 \begin{figure}[ht]
 \centering
@@ -37,20 +37,20 @@ The main goal of this project that led to the development of HPX-RTE was to prov
 \end{figure}
   
 \item \textbf{Functionality}\\
-  The main focus of this work is to have the MPI applications work on HPX infrastructure. To do this, most of the effort is put on having the functionality in place before tackling any possible consequences such as its effect on performance, efficiency, or power consumption. Although caution is taken not to introduce sources of performance degradation, such potential side effects could be the topic for other studies after having the new runtime functional.
+  The main focus of this work is to have the MPI applications work on HPX infrastructure. To do this, most of the effort is put on having the functionality in place before tackling any possible consequences such as its effect on performance, efficiency, or power consumption. Although every possible consideration has been takeninto account not to introduce sources of performance degradation, such potential side effects could still happen. Those may be the topic for other studies after having the new runtime environment in place and functional.
   
 \item \textbf{Simplicity}\\
   Simplicity is a key factor is the design of HPX-RTE. We have avoided introducing any unnecessary algorithm or functionality. Implementing the required API, we have tried to keep implementation as simple and straightforward as possible.
 
 \item \textbf{Code Reuse}\\
-  HPX-RTE relies on a number of advanced features and concepts provided by the HPX API. Therefore, there was no need to reimplement what was already done. We have tried to take those features to a new level by integrating them tightly to the implementation of HPX-RTE.
+  HPX-RTE relies on a number of advanced features and concepts provided by the HPX API. Therefore, there was no need to reimplement what was already done. We have tried to take those features to a new level by integrating them tightly into the implementation of HPX-RTE.
 
 \end{itemize}
 
 \section{Architecture}
 \label{sec:architecture}
 
-HPX-RTE is designed to replace the functionality of current Open MPI runtime (ORTE). Figure \ref{fig:open-mpi-layers-hpx-rte} illustates the Open MPI layers using HPX-RTE as runtime. This is achieved by utilizing the modular component architecture of Open MPI. The required functinality for HPX-RTE is implemented as a component of the runtime environment (rte) framework (Figure \ref{fig:MCA-hpx-rte}).
+HPX-RTE is designed to replace the functionality of current Open MPI runtime (ORTE). Figure \ref{fig:open-mpi-layers-hpx-rte} illustates the logical layers of Open MPI software using HPX-RTE as runtime. This is achieved by utilizing the modular component architecture of Open MPI. The required functinality for HPX-RTE is implemented as a component of the runtime environment (rte) framework (Figure \ref{fig:MCA-hpx-rte}).
 
 \begin{figure}[ht]
 \centering
@@ -242,3 +242,11 @@ questions/topics to discuss:
 - slurm integration
 
 \fi
+
+\section{HPX-RTE Requirements}
+open mpi
+hpx
+boost
+
+features:
+automatic detection of boost installation and hpx installation
