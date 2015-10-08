@@ -90,80 +90,114 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 \item \verb|ompi_rte_compare_name_fields|\\
   A function used to compare fields in the \verb|ompi_process_name_t| struct. The function prototype must be of the form:
   \begin{lstlisting}[language=C]
-    int ompi_rte_compare_name_fields(
+  int ompi_rte_compare_name_fields(
         ompi_rte_cmp_bitmask_t mask,
         ompi_process_name_t *name1,
         ompi_process_name_t *name2);
   \end{lstlisting}
-                                         The bitmask must be defined to indicate the fields to be used
-        in the comparison. Fields not included in the mask must be ignored.
+  The bitmask must be defined to indicate the fields to be used in the comparison. Fields not included in the mask must be ignored.
         Supported bitmask values must include:
-           b. \verb|OMPI_RTE_CMP_JOBID|
-           c. \verb|OMPI_RTE_CMP_VPID|
-           d. \verb|OMPI_RTE_CMP_ALL|
-         \item \verb|uint64_t ompi_rte_hash_name|(name) - return a string hash uniquely representing the \verb|ompi_process_name| passed in.
-       \item \verb|OMPI_NAME| - an Opal DSS constant for a handler already registered to serialize/deserialize an \verb|ompi_process_name_t| structure.
+        \begin{enumerate}
+          \item \verb|OMPI_RTE_CMP_JOBID|
+          \item \verb|OMPI_RTE_CMP_VPID|
+          \item \verb|OMPI_RTE_CMP_ALL|
+        \end{enumerate}
+
+      \item \verb|uint64_t ompi_rte_hash_name|\textbf{(name)}\\
+        Return a string hash uniquely representing the \verb|ompi_process_name| passed in.
+
+      \item \verb|OMPI_NAME|\\
+        An OPAL Data Packing Subsystem(DSS) constant for a handler already registered to serialize/deserialize an \verb|ompi_process_name_t| structure.
 
 \end{enumerate}
 
 
+\subsection{Collective Objects and Operations}
+
+\begin{enumerate}
+\item \verb|ompi_rte_collective_t|\\
+  An OPAL object used during the runtime environment collective operations such as modex and barrier. This must be of type \verb|opal_list_item_t| and contain the following fields:
+  
+  \begin{enumerate}
+  \item \verb|int32_t| id
+  \item \verb|bool| active: A flag that user can poll on to know when collective operation has completed. If a user callback function is provided, this needs to be set to false just prior to calling it.
+  \end{enumerate}
+
+\item \verb|ompi_rte_modex|\\
+  A function that performs an exchange of endpoint information to wireup the MPI transports. The function prototype must be of the form:
+  \begin{lstlisting}[language=C]
+  int ompi_rte_modex(ompi_rte_collective_t *coll);
+  \end{lstlisting}
+  At the completion of the modex operation, the \verb|coll->active| flag must be set to false, and the endpoint information must be stored in the modex database.
+  This function must have barrier semantics across the \verb|MPI_COMM_WORLD| of the calling process.
+
+\item \verb|ompi_rte_barrier|\\
+  A function that performs a barrier operation within the RTE. The function prototype must be of the form:
+  \begin{lstlisting}[language=C]
+  int ompi_rte_barrier(ompi_rte_collective_t *coll);
+  \end{lstlisting}
+  At the completion of the barrier operation, the \verb|coll->active| flag must be set to false.
+\end{enumerate}
+
+
 \iffalse
-         
- (b) Collective objects and operations
-     1. \verb|ompi_rte_collective_t| - an OPAL object used during RTE collective operations such as modex and barrier. It must be an \verb|opal_list_item_t| and contain the following fields:
-           a. id (ORTE type: \verb|int32_t|)
-           b. bool active
-              flag that user can poll on to know when collective
-              has completed - set to false just prior to
-              calling user callback function, if provided
-     2. \verb|ompi_rte_modex| - a function that performs an exchange of endpoint information to wireup the MPI transports. The function prototype must be of the form:
-        int \verb|ompi_rte_modex(ompi_rte_collective_t *coll)|;
-        At the completion of the modex operation, the coll->active flag must be set to false, and the endpoint information must be stored in the modex database.
-        This function must have barrier semantics across the \verb|MPI_COMM_WORLD| of the calling process.
-     3. \verb|ompi_rte_barrier| - a function that performs a barrier operation within the RTE. The function prototype must be of the form:
-        int \verb|ompi_rte_barrier(ompi_rte_collective_t *coll)|;
-        At the completion of the barrier operation, the coll->active flag must be set to false
 
- (c) Process info struct
-     1. \verb|ompi_process_info_t| - a struct containing info about the current process.
-        The struct must contain at least the following fields:
-           a. \verb|app_num| -
-           b. pid - this process's pid.  Should be same as getpid().
-           c. \verb|num_procs| - Number of processes in this job (ie, MCW)
-           d. \verb|my_node_rank| - relative rank on local node to other peers this run-time instance knows about.  If doing dynamics, this may be something different than \verb|my_local_rank|, but will be \verb|my_local_rank| in a static job.
-           d. \verb|my_local_rank| - relative rank on local node with other peers in this job (ie, MCW)
-           e. \verb|num_local_peers| - Number of local peers (peers in MCW on your node)
-           f. \verb|my_hnp_uri| -
-           g. \verb|peer_modex| - a collective id for the modex operation
-           h. \verb|peer_init_barrier| - a collective id for the barrier during \verb|MPI_Init|
-           i. \verb|peer_fini_barrier| - a collective id for the barrier during \verb|MPI_Finalize|
-           j. \verb|job_session_dir| -
-           k. \verb|proc_session_dir| -
-           l. nodename - a string representation for the name of the node this
-              process is on
-           m. cpuset -
-     2. \verb|ompi_process_info| - a global instance of the \verb|ompi_process_t| structure.
-     3. \verb|ompi_rte_proc_is_bound| - global boolean that will be true if the runtime bound the process to a particular core or set of cores and is false otherwise.
+\subsection{Process Information Structure}
+\begin{enumerate}
+\item \verb|ompi_process_info_t|
+  A structure containing information about the current process. The following fields are mandatory within the struct:
+  \begin{enumerate}
+  \item \verb|app_num|
+  \item \verb|pid|\\
+    The current process's pid. This should be same as the output of getpid() function.
+  \item \verb|num_procs|\\
+    Number of processes in this job (ie, MCW)
+  \item \verb|my_node_rank|\\
+    Relative rank on local node to other peers this run-time instance knows about.  If doing dynamics, this may be something different than \verb|my_local_rank|, but will be \verb|my_local_rank| in a static job.
+  \item \verb|my_local_rank|\\
+    Relative rank on local node with other peers in this job (ie, MCW)
+  \item \verb|num_local_peers|\\
+    Number of local peers (peers in MCW on your node)
+  \item \verb|my_hnp_uri|
+  \item \verb|peer_modex| \\
+    A collective id for the modex operation
+  \item \verb|peer_init_barrier| \\
+    A collective id for the barrier during \verb|MPI_Init|
+  \item \verb|peer_fini_barrier| \\
+    A collective id for the barrier during \verb|MPI_Finalize|
+  \item \verb|job_session_dir| -
+  \item \verb|proc_session_dir| -
+  \item \verb|nodename| \\
+    A string representation for the name of the node this process is on
+  \item \verb|cpuset|
+  \item \verb|ompi_process_info| \\
+    A global instance of the \verb|ompi_process_t| structure.
+  \end{enumerate}
+  
+\item \verb|ompi_rte_proc_is_bound|\\
+  A global boolean that will be true if the runtime bound the process to a particular core or set of cores and is false otherwise.
+\end{enumerate}
 
- (d) Error handling objects and operations
-     1. void \verb|ompi_rte_abort(int err_code, char *fmt, ...)| - Abort the current process with the specified error code and message.
-     2. int \verb|ompi_rte_abort_peers(ompi_process_name_t *procs, size_t nprocs)| -
-        Abort the specified list of peers
-     3. \verb|OMPI_ERROR_LOG(rc)| - print error message regarding the given return code
-     4. \verb|ompi_rte_register_errhandler| - register a callback function for the RTE to report asynchronous errors to the caller
+\subsection{Error Handling Objects and Operations}
+\begin{enumerate}
+\item void \verb|ompi_rte_abort(int err_code, char *fmt, ...)| - Abort the current process with the specified error code and message.
+\item int \verb|ompi_rte_abort_peers(ompi_process_name_t *procs, size_t nprocs)| - Abort the specified list of peers
+\item \verb|OMPI_ERROR_LOG(rc)| - print error message regarding the given return code
+\item \verb|ompi_rte_register_errhandler| - register a callback function for the RTE to report asynchronous errors to the caller
+\end{enumerate}
 
- (e) Init and finalize objects and operations
-     1. \verb|ompi_rte_init| - a function to initialize the RTE. The function
-        prototype must be of the form:
+\subsection{Initializing and Finalizing Objects and Operations}
+\begin{enumerate}
+\item \verb|ompi_rte_init| - a function to initialize the RTE. The function prototype must be of the form:
         int \verb|ompi_rte_init(int *argc, char ***argv)|;
-     2. \verb|ompi_rte_finalize| - a function to finalize the RTE. The function
-        prototype must be of the form:
-        \verb|int ompi_rte_finalize(void)|;
-     3. void \verb|ompi_rte_wait_for_debugger(void)| - Called during \verb|MPI_Init|, this function is used to wait for debuggers to do their pre-MPI attach.
-        If there is no attached debugger, this function will not block.
+\item \verb|ompi_rte_finalize| - a function to finalize the RTE. The function prototype must be of the form:
+  \verb|int ompi_rte_finalize(void)|;
+\item void \verb|ompi_rte_wait_for_debugger(void)| - Called during \verb|MPI_Init|, this function is used to wait for debuggers to do their pre-MPI attach.
+  If there is no attached debugger, this function will not block.
+\end{enumerate}
 
- (f) Database operations
-     1. \verb|ompi_rte_db_store| - a function to store modex and other data in
+\subsection{Database Operations}
+\item \verb|ompi_rte_db_store| - a function to store modex and other data in
         a local database. The function is primarily used for storing modex
         data, but can be used for general purposes. The prototype must be
         of the form:
@@ -173,23 +207,23 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
         The implementation of this function must store a COPY of the data
         provided - the data is NOT guaranteed to be valid after return
         from the call.
-     3. \verb|ompi_rte_db_fetch| -
+      \item \verb|ompi_rte_db_fetch| -
         NOTE: Fetch accepts an '\verb|ompi_proc_t|'.
         int \verb|ompi_rte_db_fetch|(const struct \verb|ompi_proc_t| *proc,
                               const char *key,
                               void **data,
                               \verb|opal_data_type_t| type);
-     4. \verb|ompi_rte_db_fetch_pointer| -
+     \item \verb|ompi_rte_db_fetch_pointer| -
         NOTE: Fetch accepts an '\verb|ompi_proc_t|'.
         int \verb|ompi_rte_db_fetch_pointer|(const struct \verb|ompi_proc_t| *proc,
                                       const char *key,
                                       void **data,
                                       \verb|opal_data_type_t| type);
-     5. Pre-defined db keys (with associated values after \verb|rte_init|)
+     \item Pre-defined db keys (with associated values after \verb|rte_init|)
         a. \verb|OMPI_DB_HOSTNAME|
         b. \verb|OMPI_DB_LOCALITY|
-
-  (g) Communication support
+\end{enumerate}
+\subsection{Communication Support}
 
 \section{Challenges}
 \label{sec:challenges}
