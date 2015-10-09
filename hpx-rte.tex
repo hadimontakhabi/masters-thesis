@@ -1,6 +1,8 @@
 \chapter{HPX-RTE}
 \label{sec:HPX-RTE}
 
+\iffalse
+
 ParalleX and HPX are both parts of the eXascale Programming Environment and System Software (XPRESS)~\cite{huck2013early,brightwell2013xpress} project funded by the Department of Energy.
 
 The goals of XPRESS project are:
@@ -21,8 +23,11 @@ Figure \ref{fig:openx} illustrates the OpenX software architecture. Support for 
 \label{fig:openx}
 \end{figure}
 
+\fi
+
 \section{Design Principles}
 \label{sec:design}
+\iffalse
 The main goal of this project that led to the development of HPX-RTE was to provide facilities for MPI applications to compile and run the exact same way in exascale software stack environment and be compatible with HPX runtime environment. This goal is achieved by replacing the current runtime environment (ORTE) with a new runtime environment developed from scratch to take advantage of the API provided by HPX. This choice was made by having a set of design principles in mind.
 
 \begin{itemize}
@@ -46,10 +51,11 @@ The main goal of this project that led to the development of HPX-RTE was to prov
   HPX-RTE relies on a number of advanced features and concepts provided by the HPX API. Therefore, there was no need to reimplement what was already done. We have tried to take those features to a new level by integrating them tightly into the implementation of HPX-RTE.
 
 \end{itemize}
+\fi
 
 \section{Architecture}
 \label{sec:architecture}
-
+\iffalse
 HPX-RTE is designed to replace the functionality of current Open MPI runtime (ORTE). Figure \ref{fig:open-mpi-layers-hpx-rte} illustates the logical layers of Open MPI software using \mbox{HPX-RTE} as its runtime environment. The modular component architecture of Open MPI facilitates the implementation of this design.
 
 The required functinality for HPX-RTE is implemented as a component of the runtime environment (rte) framework (Figure \ref{fig:MCA-hpx-rte}) in OMPI layer. This design dictates a number of changes outside the rte framework. We will discuss those changes in the implementation section.
@@ -60,9 +66,10 @@ The required functinality for HPX-RTE is implemented as a component of the runti
 \caption[Open MPI Layers using HPX-RTE]{Open MPI Layers using HPX-RTE}
 \label{fig:open-mpi-layers-hpx-rte}
 \end{figure}
-
+\fi
 \section{Runtime Environement Requirements}
 \label{sec:rte-requirements}
+\iffalse
 The rte framework inside OMPI layer of Open MPI defines a required set of data structures and functions that every runtime environment component needs to provide implementation for~\cite{gabriel04:_open_mpi}:
 
 \subsection{Process Name Objects and Operations}
@@ -139,8 +146,6 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
   At the completion of the barrier operation, the \verb|coll->active| flag must be set to false.
 \end{enumerate}
 
-
-\iffalse
 
 \subsection{Process Information Structure}
 \begin{enumerate}
@@ -227,7 +232,7 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 
 \section{Challenges}
 \label{sec:challenges}
-
+\fi
 %\subsection{C and C++}
 %\subsection{Imperfect Abstraction in ORTE}
 %\subsection{Fundamental Differences}
@@ -237,6 +242,7 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 
 \section{Implementation}
 \label{sec:implementation}
+\iffalse
 MPI system level adjustment, and change of configuration logic
 
 what we have done?
@@ -271,7 +277,6 @@ questions/topics to discuss:
 - os functionalities and interactio with hpx: fork, pipe, mmap
 - slurm integration
 
-\fi
 
 \section{HPX-RTE Requirements}
 open mpi
@@ -280,3 +285,4 @@ boost
 
 features:
 automatic detection of boost installation and hpx installation
+\fi
