@@ -193,18 +193,18 @@ Ralph~H Castain, Timothy~S Woodall, David~J Daniel, Jeffrey~M Squyres, Brian
 \newblock In {\em Recent Advances in Parallel Virtual Machine and Message
   Passing Interface}, pages 225--232. Springer, 2005.
 
+\bibitem{hpcwire}
+An open source run-time for distributed hpc.
+\newblock
+  \url{http://www.hpcwire.com/2006/03/31/an_open_source_run-time_for_distributed_hpc-1/}.
+\newblock Accessed: 2015-09-29.
+
 \bibitem{castain2008open}
 Ralph~H Castain, Timothy~S Woodall, David~J Daniel, Jeffrey~M Squyres, Brian
   Barrett, and Graham~E Fagg.
 \newblock The open run-time environment (openrte): A transparent multicluster
   environment for high-performance computing.
 \newblock {\em Future Generation Computer Systems}, 24(2):153--157, 2008.
-
-\bibitem{hpcwire}
-An open source run-time for distributed hpc.
-\newblock
-  \url{http://www.hpcwire.com/2006/03/31/an_open_source_run-time_for_distributed_hpc-1/}.
-\newblock Accessed: 2015-09-29.
 
 \bibitem{kaiser2009parallex}
 Hartmut Kaiser, Maciej Brodowicz, and Thomas Sterling.
