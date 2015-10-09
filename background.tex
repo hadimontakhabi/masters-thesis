@@ -19,7 +19,6 @@ Some of the Open MPI features are~\cite{openmpi}:
   \item Run-time instrumentation
   \item Support for different operating systems (32 and 64 bit)
   \item Production quality software
-  \item High performance on all platforms
   \item Tunable by installers and end-users
   \item Modular component architecture
   \item Documentation for APIs
@@ -70,18 +69,17 @@ Developing software environments for high performance computing applications in 
 
 There has been a number of studies with different approaches to this challenge. Each approach focuses on a particular aspect of the overall problem. For example, LAM/MPI emphasis was on ease of portability and performance~\cite{squyres2004component}. LA-MPI focused on data fault tolerance~\cite{aulwes2004architecture}, and HARNESS FT-MPI focused on system fault tolerance~\cite{fagg2002harness}.
 
-``The major roles of the runtime are:
+The major roles of every runtime are~\cite{bosilca2011scalability}:
 \begin{enumerate}
 \item \textbf{Launch}\\
-  Launch the MPI application’s processes. This role is shared between the implementation runtime and the parallel machine scheduling/launching mechanism.
+  This task to launch the processes for an MPI application. This is shared between the runtime and the parallel scheduling/launching mechanism.
 \item \textbf{Connect}\\
-  Help the MPI library establish the necessary connections between the processes. Depending on the network used, hardware or configuration specific issues, the connection information (also known as the business card, or the URI of
-a process) may not be known before the MPI processes are launched. It is then necessary to distribute this information through an out-of-band messaging system. In most MPI implementations, this role is dedicated to the runtime.
+  The connection information (the URI of a process) may not be known before the MPI processes are launched. Therefore, it is necessary for the runtime to establish the connections between the processes.  It is then necessary to distribute this information through an out of band messaging system. 
 \item \textbf{Control}\\
-  Control the MPI processes: ensure that in case of a crash the entire environment is gracefully cleaned; depending on the operating system and implementation, forward signals to the MPI processes; ensure that completion codes
+  The control role is to ensure that the entire environment is gracefully cleaned in case of a crash. Depending on the operating system and implementation, control may also forward signals to the MPI processes and ensure that completion codes
 are returned to the user command: mpirun.
 \item \textbf{IO}\\
-  Forward the standard input/output: users usually expect that the information printed on the standard output should appear on the standard output of the command they launched. Because the command they launched does not necessarily run on the same machine as where the print is issued in an MPI application, it is necessary to ensure the transmission of this information.''~\cite{bosilca2011scalability}
+  The input/output commands launched do not necessarily run on the same machine as where they are issued in an MPI application . However, users usually expect the information printed on the standard output appear on the standard output of the command they launched.  Therefore, it is necessary to forward the standard input/output information to the machine users launch their application from. 
 \end{enumerate}
 
 The Open Runtime Environment (ORTE) was developed as a part of the Open MPI project to support distributed high performance computing applications operating in a heterogeneous environment. Implementation of the ORTE is based on the Modular Component Architecture (MCA). The main design objectives of the ORTE are ease of use, resilient operations, scalability, and extensibility. Interprocess communication, resource discovery and allocation, and process launch across different platforms in a transparet manner are main features of the ORTE.\cite{castain2005open}.
