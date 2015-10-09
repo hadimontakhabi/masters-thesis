@@ -110,9 +110,9 @@ Problem decomposition describes the way processes are expressed to break down a 
 \section{Message Passing Interface (MPI)}
 Message Passing Interface (MPI) is a language-independent communication application programming interface (API) used for programming in parallel environments. ``MPI is a specification for a standard library for message passing that was defined by the MPI Forum, a broadly based group of parallel computer vendors, library writers, and applications specialists.''~\cite{gropp1996high} MPI has become a de facto standard for communication among processes running on a distributed memory system.
 
-``The goal of the Message Passing Interface is to establish a portable, efficient, and flexible standard for message passing that will be widely used for writing message passing programs. As such, MPI is the first standardized, vendor independent, message passing library. The advantages of developing message passing software using MPI closely match the design goals of portability, efficiency, and flexibility. MPI is not an IEEE or ISO standard, but has in fact, become the ``industry standard'' for writing message passing programs on HPC platforms.''~\cite{barker2015message}
+Message Passing Interface aims to develop an efficient, portable, and flexible standard that will be widely used for writing message passing applications. MPI is the first standardized, vendor independent, message passing library. ``MPI is not an IEEE or ISO standard, but has in fact, become the ``industry standard'' for writing message passing programs on HPC platforms.''~\cite{barker2015message}
 
-Some of the main concepts of MPI include:~\cite{snir1998mpi,geist1996mpi,walker1996mpi,gropp1999using}
+Some of the main concepts of MPI include~\cite{snir1998mpi,geist1996mpi,walker1996mpi,gropp1999using}:
 \begin{itemize}
 \item \textbf{Communicators}\\
   A communicator can be thought of as a handle to a process group. A group is an ordered set of processes. Each process is associated with a rank. Ranks are contiguous and start from zero.
