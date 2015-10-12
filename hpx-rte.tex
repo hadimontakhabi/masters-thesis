@@ -182,17 +182,33 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
   A global boolean that will be set to true if the runtime bound the process to a particular core or set of cores. Otherwise, it will be false.
 \end{enumerate}
 
-\iffalse
 
 \subsection{Error Handling Objects and Operations}
 \begin{enumerate}
-\item void \verb|ompi_rte_abort(int err_code, char *fmt, ...)| - Abort the current process with the specified error code and message.
-\item int \verb|ompi_rte_abort_peers(ompi_process_name_t *procs, size_t nprocs)| - Abort the specified list of peers
-\item \verb|OMPI_ERROR_LOG(rc)| - print error message regarding the given return code
-\item \verb|ompi_rte_register_errhandler| - register a callback function for the RTE to report asynchronous errors to the caller
+\item
+  \begin{lstlisting}[language=C]
+  void ompi_rte_abort(int err_code, char *fmt, ...)
+  \end{lstlisting}
+  Abort the current process with the specified error code and message.
+
+\item
+  \begin{lstlisting}[language=C]
+  int ompi_rte_abort_peers(ompi_process_name_t *procs,
+                           size_t nprocs)
+  \end{lstlisting}
+  Abort the specified list of peers.
+  
+\item \verb|OMPI_ERROR_LOG(rc)|\\
+  This is a macro that prints the error message regarding the given return code.
+  
+\item \verb|ompi_rte_register_errhandler|\\
+  A function to register a callback function for the runtime environment to report asynchronous errors to the caller.
 \end{enumerate}
 
+
 \subsection{Initializing and Finalizing Objects and Operations}
+
+\iffalse
 \begin{enumerate}
 \item \verb|ompi_rte_init| - a function to initialize the RTE. The function prototype must be of the form:
         int \verb|ompi_rte_init(int *argc, char ***argv)|;
