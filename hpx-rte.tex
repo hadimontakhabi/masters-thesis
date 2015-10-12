@@ -181,6 +181,7 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
   A global boolean that will be true if the runtime bound the process to a particular core or set of cores and is false otherwise.
 \end{enumerate}
 
+
 \subsection{Error Handling Objects and Operations}
 \begin{enumerate}
 \item void \verb|ompi_rte_abort(int err_code, char *fmt, ...)| - Abort the current process with the specified error code and message.
@@ -199,7 +200,7 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
   If there is no attached debugger, this function will not block.
 \end{enumerate}
 
-\fi
+\iffalse
 \subsection{Database Operations}
 \item \verb|ompi_rte_db_store| - a function to store modex and other data in
         a local database. The function is primarily used for storing modex
@@ -237,7 +238,7 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 %\subsection{Fundamental Differences}
 %\subsection{Configuration Logic}
 
-
+\fi
 
 \section{Implementation}
 \label{sec:implementation}
