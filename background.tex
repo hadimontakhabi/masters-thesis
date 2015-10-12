@@ -226,8 +226,9 @@ HPX provides several ways to apply an action. Its API exposes three different wa
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=1]{images/future_schematics.png}
-\caption[Schematic of a Future Execution]{Schematic of a Future Execution~\cite{kaiser2009parallex}}
+\includegraphics[scale=0.8]{images/future_schematics.png}
+\caption[Schematic of a Future Execution]{Schematic of a Future Execution}
 \label{fig:future_schematics}
 \end{figure}
+
 In C++, a future encapsulates a delayed computation. A future holds the result of an asynchronous call because the computation of the result has not completed yet~\cite{stroustrup2013c++}. HPX uses futures to synchronize the access to the value in a future by suspending any HPX threads requesting the result until the value is available. When a future is created, it spawns a new HPX thread which will execute the action associated with the future. The new thread is spawned either remotely with a parcel or locally by being placed into the thread queue.  Utilizing futuers allows HPX to schedule work early in a program so that when the function value is needed it will already be calculated and available (Figure \ref{fig:future_schematics})~\cite{kaiser2009parallex}.
