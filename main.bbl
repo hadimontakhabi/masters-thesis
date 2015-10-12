@@ -326,6 +326,14 @@ Matt Pharr and William~R Mark.
 \newblock In {\em Innovative Parallel Computing (InPar), 2012}, pages 1--13.
   IEEE, 2012.
 
+\bibitem{anderson2013tabulated}
+Matthew Anderson, Maciej Brodowicz, Thomas Sterling, Hartmut Kaiser, and Bryce
+  Adelstein-Lelbach.
+\newblock Tabulated equations of state with a many-tasking execution model.
+\newblock In {\em Parallel and Distributed Processing Symposium Workshops \&
+  PhD Forum (IPDPSW), 2013 IEEE 27th International}, pages 1691--1699. IEEE,
+  2013.
+
 \bibitem{c++11}
 The C++~Standards Committee.
 \newblock “iso/iec 14882:2011, standard for programming language c++.
@@ -344,14 +352,6 @@ The C++~Standards Committee.
 Beman Dawes, David Abrahams, and Rene Rivera.
 \newblock Boost c++ libraries.
 \newblock {\em URL http://www.boost.org}, 35:36, 2009.
-
-\bibitem{anderson2013tabulated}
-Matthew Anderson, Maciej Brodowicz, Thomas Sterling, Hartmut Kaiser, and Bryce
-  Adelstein-Lelbach.
-\newblock Tabulated equations of state with a many-tasking execution model.
-\newblock In {\em Parallel and Distributed Processing Symposium Workshops \&
-  PhD Forum (IPDPSW), 2013 IEEE 27th International}, pages 1691--1699. IEEE,
-  2013.
 
 \bibitem{ghimire2014data}
 Bibek Ghimire.
