@@ -67,7 +67,7 @@ The required functinality for HPX-RTE is implemented as a component of the runti
 
 \section{Runtime Environement Requirements}
 \label{sec:rte-requirements}
-\iffalse
+
 The rte framework inside OMPI layer of Open MPI defines a required set of data structures and functions that every runtime environment component needs to provide implementation for~\cite{gabriel04:_open_mpi}:
 
 \subsection{Process Name Objects and Operations}
@@ -199,6 +199,7 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
   If there is no attached debugger, this function will not block.
 \end{enumerate}
 
+\fi
 \subsection{Database Operations}
 \item \verb|ompi_rte_db_store| - a function to store modex and other data in
         a local database. The function is primarily used for storing modex
@@ -230,7 +231,7 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 
 \section{Challenges}
 \label{sec:challenges}
-\fi
+
 %\subsection{C and C++}
 %\subsection{Imperfect Abstraction in ORTE}
 %\subsection{Fundamental Differences}
