@@ -228,45 +228,44 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
   This function is called during \verb|MPI_Init|. It is used to wait for debuggers to do their pre-MPI attachment. This function will not block if no debugger is attached.
 \end{enumerate}
 
-\iffalse
+
 \subsection{Database Operations}
-\item \verb|ompi_rte_db_store| - a function to store modex and other data in
-        a local database. The function is primarily used for storing modex
-        data, but can be used for general purposes. The prototype must be
-        of the form:
-        int \verb|ompi_rte_db_store|(const \verb|ompi_process_name_t| *proc,
-                              const char *key, const void *data,
-                              \verb|opal_data_type_t| type);
-        The implementation of this function must store a COPY of the data
-        provided - the data is NOT guaranteed to be valid after return
-        from the call.
-      \item \verb|ompi_rte_db_fetch| -
-        NOTE: Fetch accepts an '\verb|ompi_proc_t|'.
-        int \verb|ompi_rte_db_fetch|(const struct \verb|ompi_proc_t| *proc,
-                              const char *key,
-                              void **data,
-                              \verb|opal_data_type_t| type);
-     \item \verb|ompi_rte_db_fetch_pointer| -
-        NOTE: Fetch accepts an '\verb|ompi_proc_t|'.
-        int \verb|ompi_rte_db_fetch_pointer|(const struct \verb|ompi_proc_t| *proc,
-                                      const char *key,
-                                      void **data,
-                                      \verb|opal_data_type_t| type);
-     \item Pre-defined db keys (with associated values after \verb|rte_init|)
-        a. \verb|OMPI_DB_HOSTNAME|
-        b. \verb|OMPI_DB_LOCALITY|
+\begin{enumerate}
+\item
+  \begin{lstlisting}[language=C]
+  int ompi_rte_db_store(const ompi_process_name_t *proc,
+                        const char *key,
+                        const void *data,
+                        opal_data_type_t type);
+  \end{lstlisting}
+  This function is used to store modex and other data in a local database. It is primarily used for storing modex data. The implementation of this function must store a copy of the data provided. The data is not guaranteed to be valid after return from the call.
+
+\item
+  \begin{lstlisting}[language=C]
+  int ompi_rte_db_fetch(const struct ompi_proc_t *proc,
+                        const char *key,
+                        void **data,
+                        opal_data_type_t type);
+  \end{lstlisting}
+  This function is used to fetch modex and other data from the database. Fetch accepts an \verb|ompi_proc_t|.
+
+\item
+  \begin{lstlisting}[language=C]
+  int ompi_rte_db_fetch_pointer(
+                  const struct ompi_proc_t *proc,
+                  const char *key,
+                  void **data,
+                  opal_data_type_t type);  
+  \end{lstlisting}
+    
+\item Pre-defined database keys (with associated values after \verb|rte_init|)
+  \begin{enumerate}
+    \item \verb|OMPI_DB_HOSTNAME|
+    \item \verb|OMPI_DB_LOCALITY|
+  \end{enumerate}
 \end{enumerate}
-\subsection{Communication Support}
 
-\section{Challenges}
-\label{sec:challenges}
-
-%\subsection{C and C++}
-%\subsection{Imperfect Abstraction in ORTE}
-%\subsection{Fundamental Differences}
-%\subsection{Configuration Logic}
-
-\fi
+%\subsection{Communication Support}
 
 \section{Implementation}
 \label{sec:implementation}
@@ -304,6 +303,15 @@ shared memory: -not tried recently, it did not work early on
 questions/topics to discuss:
 - os functionalities and interactio with hpx: fork, pipe, mmap
 - slurm integration
+
+
+\section{Challenges}
+\label{sec:challenges}
+
+%\subsection{C and C++}
+%\subsection{Imperfect Abstraction in ORTE}
+%\subsection{Fundamental Differences}
+%\subsection{Configuration Logic}
 
 
 \section{HPX-RTE Requirements}
