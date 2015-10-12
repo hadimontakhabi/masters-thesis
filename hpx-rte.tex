@@ -208,17 +208,27 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 
 \subsection{Initializing and Finalizing Objects and Operations}
 
-\iffalse
 \begin{enumerate}
-\item \verb|ompi_rte_init| - a function to initialize the RTE. The function prototype must be of the form:
-        int \verb|ompi_rte_init(int *argc, char ***argv)|;
-\item \verb|ompi_rte_finalize| - a function to finalize the RTE. The function prototype must be of the form:
-  \verb|int ompi_rte_finalize(void)|;
-\item void \verb|ompi_rte_wait_for_debugger(void)| - Called during \verb|MPI_Init|, this function is used to wait for debuggers to do their pre-MPI attach.
-  If there is no attached debugger, this function will not block.
+\item 
+  \begin{lstlisting}[language=C]
+  int ompi_rte_init(int *argc, char ***argv);
+  \end{lstlisting}
+  This function initializes the runtime environment.
+  
+\item 
+  \begin{lstlisting}[language=C]
+  int ompi_rte_finalize(void);
+  \end{lstlisting}
+  This function finalizes the runtime environment.
+  
+\item
+  \begin{lstlisting}[language=C]
+  void ompi_rte_wait_for_debugger(void);
+  \end{lstlisting}
+  This function is called during \verb|MPI_Init|. It is used to wait for debuggers to do their pre-MPI attachment. This function will not block if no debugger is attached.
 \end{enumerate}
 
-
+\iffalse
 \subsection{Database Operations}
 \item \verb|ompi_rte_db_store| - a function to store modex and other data in
         a local database. The function is primarily used for storing modex
