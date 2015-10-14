@@ -271,13 +271,8 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 \label{sec:implementation}
 
 \iffalse
-MPI system level adjustment, and change of configuration logic
+We have explained in precious sections that Open MPI has an abstraction layer for runtime environments. HPX-RTE provides an implementation of that abstraction layer using hpx. However, this abstraction layer is imperfect in practice. There is a lack of comprehensive documentation for it, and some of the interface independences were not implemented as they were designed.
 
-what we have done?
-Open MPI has an abstraction layer for runtime environments.
-We provide that abstraction layer using hpx.
-The abstraction is imperfect(lack of documentation,
-not perfect interface independences)
 Key components we had to develop?
 - distributed key-value store and fetch using hpx actions
 - barrier (synchronization point) using hpx actions
@@ -291,10 +286,10 @@ and modify the generated make files accordingly
 - manually exclude some components that are deeply entangled with rte
 - intercepting printf from c code to see the output
 
+MPI system level adjustment, and change of configuration logic
+
 
 current status:
-- hpx 0.9.9
-- openmpi 1.8.4
 - restrctions: - one rank per locality
 - launch with ssh
 - communication protocols:
@@ -303,11 +298,12 @@ shared memory: -not tried recently, it did not work early on
 
 
 \subsection{HPX-RTE Requirements}
-open mpi
-hpx
-boost
+- hpx 0.9.9
+- openmpi 1.8.4
+- boost
 
-features:
+\subsection{Features}
+Database: local store, local or remote fetch
 automatic detection of boost installation and hpx installation
 
 \subsection{Challenges}
