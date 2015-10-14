@@ -272,8 +272,8 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 We have explained in previous sections that Open MPI has an abstraction layer for runtime environments. HPX-RTE provides an implementation of that abstraction layer using HPX features and facilities.
 
 \subsection{HPX-RTE Requirements}
-Since both Open MPI and HPX project are under active development, we decided to fix our implementation target to specific versions of these two softwares during the development cycle. HPX-RTE was built on a fork of Open MPI version 1.8.4 branch. We used the released HPX version 0.9.10. HPX library is dependent on the Boost libraries. Boost libraries version 1.55.0 were installed on the development machines.
-To summerize, users will need to have Open MPI 1.8.4, HPX 0.9.10, and Boost 1.55.0 as requirements to take advantage of HPX-RTE.
+Since both Open MPI and HPX project are under active development, we decided to fix our implementation target to specific versions of these two softwares during the development cycle. HPX-RTE was built on a fork of Open MPI version 1.8 branch. We used the released HPX version 0.9.10. HPX library is dependent on the Boost libraries. Boost libraries version 1.55.0 were installed on the development machines.
+To summerize, users will need to have Open MPI 1.8, HPX 0.9.10, and Boost 1.55.0 as requirements to take advantage of HPX-RTE.
 
 \subsection{Features}
 Some of the main implementation features of HPX-RTE include:
@@ -282,18 +282,42 @@ Some of the main implementation features of HPX-RTE include:
 \item \textbf{Distributed Database}\\
   For the runtime environment, we need to store a set of key-value pairs in a database accessible to all the localities participating in a job. Utilizing HPX actions, HPX-RTE stores the data on local node at the time a store operation is issued. However, to retrieve the data the processes take advantage of HPX actions (remote function calls) to fetch the stored data from the database on the locality it is stored on. In theory, this database scheme eliminates the bottleneck of accessing a centralized database, or storing copies of all the database entries in every single locality. Therefore, it distributes the database, uses less space, and makes accessing to the stored data faster.
 \item \textbf{Barrier Semantics}\\
-  HPX strives not to have barriers that would stall all processes or threads for a particular operation to be completed. Instead, there are fine-grained mechanisms available for synchronization. However, a barrier (global synchronization point) is a requirement for the runtime component in Open MPI. We have developed an algorithm that implements barrier semantics by making effective use of HPX actions and remote asynchronous function calls.
+  HPX strives not to have barriers that would stall all processes or threads for a particular operation to be completed. Instead, there are fine-grained mechanisms available for synchronization. However, a barrier (global synchronization point) is a requirement for the runtime component in Open MPI. We have developed an algorithm that implements barrier semantics by making effective use of HPX actions and remote asynchronous function calls (Listing \ref{lst:barrier}).
+\item \textbf{Mapping Localities to Ranks}\\
+  HPX uses the notion of locality. ``A locality represents a set of hardware resources with bounded, finite latencies.''~\cite{kaiser2014hpx} MPI uses ranks. We have provided a translation table from HPX localities to mpi ranks.
+\item \textbf{Populating Internal Data Structures}\\
+  A number of internal data structures need to be polulated within the runtime environment before starting the MPI initialization. This is done in the runtime initialization function.
 
+  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Barrier Implementation\label{lst:barrier}]
+  void rte_hpx_barrier()
+  {
+    std::vector<hpx::naming::id_type> localities =
+    hpx::find_all_localities();
+    
+    std::vector<hpx::lcos::future<void> > futures;
+    futures.reserve(localities.size());
+    
+    BOOST_FOREACH(hpx::naming::id_type const& node, localities) {
+      futures.push_back(hpx::async<rte_hpx_one_action>(node));
+    }
+    hpx::wait_all(futures);
+    
+    while(sum != (int) localities.size()) {
+    }
+    sum = 0;
+    return;
+  }
+  \end{lstlisting}
   
-  \item translation table from hpx localities to mpi ranks
-  \item populating some internal data structures
-  \item extract and populate some key-value pairs into the db: some are set in orte layer and used in ompi layer
+\item extract and populate some key-value pairs into the db: some are set in orte layer and used in ompi layer
   \item  hacking the configure logic to detect and handle boost and HPX libraries
 and modify the generated make files accordingly
   \item using c++ to compile a number of components
   \item manually exclude some components that are deeply entangled with rte
   \item intercepting printf from c code to see the output
   \item automatic detection of boost installation and hpx installation
+    
+
 \end{enumerate}
 
 \iffalse
