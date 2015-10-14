@@ -269,6 +269,7 @@ The rte framework inside OMPI layer of Open MPI defines a required set of data s
 
 \section{Implementation}
 \label{sec:implementation}
+
 \iffalse
 MPI system level adjustment, and change of configuration logic
 
@@ -300,25 +301,20 @@ current status:
 tcp: - tests (including communication) are running now
 shared memory: -not tried recently, it did not work early on
 
-questions/topics to discuss:
-- os functionalities and interactio with hpx: fork, pipe, mmap
-- slurm integration
 
-
-\section{Challenges}
-\label{sec:challenges}
-
-%\subsection{C and C++}
-%\subsection{Imperfect Abstraction in ORTE}
-%\subsection{Fundamental Differences}
-%\subsection{Configuration Logic}
-
-
-\section{HPX-RTE Requirements}
+\subsection{HPX-RTE Requirements}
 open mpi
 hpx
 boost
 
 features:
 automatic detection of boost installation and hpx installation
+
+\subsection{Challenges}
+
+C and C++
+Imperfect Abstraction in ORTE
+Fundamental Differences
+Configuration Logic
+
 \fi
