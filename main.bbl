@@ -47,6 +47,12 @@ Michael~J. Quinn.
 \newblock {\em Parallel Programming in C with MPI and OpenMP}.
 \newblock McGraw-Hill Education Group, 2003.
 
+\bibitem{mpi}
+Message Passing~Interface Forum.
+\newblock Mpi 3.0 standard.
+\newblock \url{http://www.mpi-forum.org/docs/mpi-3.0/mpi30-report.pdf}.
+\newblock Accessed: 2015-10-14.
+
 \bibitem{gropp1996high}
 William Gropp, Ewing Lusk, Nathan Doss, and Anthony Skjellum.
 \newblock A high-performance, portable implementation of the mpi message
