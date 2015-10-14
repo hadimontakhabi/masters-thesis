@@ -279,11 +279,10 @@ To summerize, users will need to have Open MPI 1.8.4, HPX 0.9.10, and Boost 1.55
 Some of the main implementation features of HPX-RTE include:
 
 \begin{enumerate}
-\item \textbf{Database}
-  local store, local or remote fetch
-  \item automatic detection of boost installation and hpx installation
-  \item distributed key-value store and fetch using hpx actions
-  \item barrier (synchronization point) using hpx actions
+\item \textbf{Distributed Database}\\
+  For the runtime environment, we need to store a set of key-value pairs in a database accessible to all the localities participating in a job. Utilizing HPX actions, HPX-RTE stores the data on local node at the time a store operation is issued. However, to retrieve the data the processes take advantage of HPX actions (remote function calls) to fetch the stored data from the database on the locality it is stored on. In theory, this database scheme eliminates the bottleneck of accessing a centralized database, or storing copies of all the database entries in every single locality. Therefore, it distributes the database, uses less space, and makes accessing to the stored data faster.
+\item \textbf{Barrier Semantics}\\
+HPX strives not to have barriers that would stall all processes or threads for a particular operation to be completed. However, a barrier synchronization point is a requirement for the runtime component in Open MPI. We have developed an algorithm that implements barrier semantics by making effective use of HPX actions.
   \item translation table from hpx localities to mpi ranks
   \item populating some internal data structures
   \item extract and populate some key-value pairs into the db: some are set in orte layer and used in ompi layer
@@ -292,6 +291,7 @@ and modify the generated make files accordingly
   \item using c++ to compile a number of components
   \item manually exclude some components that are deeply entangled with rte
   \item intercepting printf from c code to see the output
+  \item automatic detection of boost installation and hpx installation
 \end{enumerate}
 
 \iffalse
