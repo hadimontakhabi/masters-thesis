@@ -316,7 +316,67 @@ Some of the main implementation features of HPX-RTE include:
 \item \textbf{Automatic Boost and HPX Detection}\\
   Since Boost and HPX are required to be installed before the installation of Open MPI with HPX-RTE, we modified the configure logic of Open MPI to detect the installation paths of these libraries and accordingly modify the generated make files.
 \item \textbf{C and C++ Compatibility}\\
-  The majority of Open MPI source code is written in C language. HPX is completely written in C++ with extensive use of recent C++14 features. This definitely causes compatibility issues which needed to be handled in the code. For instance, we had to use C++ to compile a number of components in Open MPI.
+  The majority of Open MPI source code is written in C language. HPX is completely written in C++ with extensive use of recent C++14 features. This definitely causes compatibility issues which needed to be handled in the code. For instance, the header file is Listing \ref{lst:rte_hpx_db} illustrates how different headers and function prototypes are made visible to either C or C++ compiler. As another example, we had to use C++ to compile a number of components in Open MPI.
+  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=rte_hpx_db.h\label{lst:rte_hpx_db}]
+
+  #ifndef MCA_OMPI_RTE_HPX_DB_H
+  #define MCA_OMPI_RTE_HPX_DB_H
+
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <string.h>
+  #include <unistd.h>
+
+  #if defined(__cplusplus)
+
+  #include <hpx/hpx_main.hpp>
+  #include <hpx/hpx_finalize.hpp>
+  #include <hpx/include/lcos.hpp>
+  #include <hpx/include/actions.hpp>
+  #include <hpx/include/iostreams.hpp>
+
+  #include <vector>
+  #include <list>
+  #include <set>
+  #include <string>
+  #include <iostream>
+  #include <atomic>
+
+  #include <boost/ref.hpp>
+  #include <boost/foreach.hpp>
+  #include <boost/format.hpp>
+
+  #endif
+
+
+  #if defined(__cplusplus)
+  extern ``C'' {
+
+    struct Node{
+      struct Node *next;
+      std::string key;
+      std::vector<char> value;
+      int originator;
+    };
+    typedef struct Node Node;
+
+    void rte_hpx_one(void);
+    int rte_hpx_vpid(void);
+    int rte_hpx_num_localities(void);
+    int rte_hpx_cpp_put(char* key, int keysize, char* val, int valsize);
+    int rte_hpx_put(const std::string& key, const std::vector<char>& val);
+    void rte_hpx_local_map(void);
+    int rte_hpx_cpp_get(int vpid, char* key, char** value);
+    std::vector<char> rte_hpx_get(const std::string& key);
+    void rte_hpx_barrier(void);
+    int rte_hpx_cpp_get_vpid_from_locality ( hpx::naming::id_type locality);
+    hpx::naming::id_type  rte_hpx_cpp_get_locality_from_vpid ( int vpid );
+    int rte_hpx_cpp_printf(char* out);
+  }
+  #endif
+  #endif
+  \end{lstlisting}
+  
 \item manually exclude some components that are deeply entangled with rte
     
 \end{enumerate}
