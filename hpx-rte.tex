@@ -311,13 +311,13 @@ Some of the main implementation features of HPX-RTE include:
   
 \item \textbf{Populate Key-Value Pairs in the Database}\\
   Since the defined abstraction layer is not implemented perfectly, there was a number of key-value pairs that were needed to be populated into the database. In theory, this shouldn't be the case. But this is a matter of implementation practices. For instance, some of these key-value pairs are set in ORTE layer (which is supposedly an independent layer) and used in OMPI layer. Identifying and extracting those pairs was a challenging task.
-  \item  hacking the configure logic to detect and handle boost and HPX libraries
-and modify the generated make files accordingly
-  \item using c++ to compile a number of components
-  \item manually exclude some components that are deeply entangled with rte
-  \item \textbf{Intercepting printf}
-    In order to see the output from C part of the code, we needed to intercept the printf function in C and send its output to C++ output stream.
-  \item automatic detection of boost installation and hpx installation
+\item \textbf{Intercepting printf}\\
+  In order to see the output from C part of the code, we needed to intercept the printf function in C and send its output to C++ output stream.
+\item \textbf{Automatic Boost and HPX Detection}\\
+  Since Boost and HPX are required to be installed before the installation of Open MPI with HPX-RTE, we modified the configure logic of Open MPI to detect the installation paths of these libraries and accordingly modify the generated make files.
+\item \textbf{C and C++ Compatibility}\\
+  The majority of Open MPI source code is written in C language. HPX is completely written in C++ with extensive use of recent C++14 features. This definitely causes compatibility issues which needed to be handled in the code. For instance, we had to use C++ to compile a number of components in Open MPI.
+\item manually exclude some components that are deeply entangled with rte
     
 \end{enumerate}
 
