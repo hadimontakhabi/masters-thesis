@@ -312,46 +312,42 @@ Some of the main implementation features of HPX-RTE include:
 \item \textbf{Populate Key-Value Pairs in the Database}\\
   Since the defined abstraction layer is not implemented perfectly, there was a number of key-value pairs that were needed to be populated into the database. In theory, this shouldn't be the case. But this is a matter of implementation practices. For instance, some of these key-value pairs are set in ORTE layer (which is supposedly an independent layer) and used in OMPI layer. Identifying and extracting those pairs was a challenging task.
 \item \textbf{Intercepting printf}\\
-  In order to see the output from C part of the code, we needed to intercept the printf function in C and send its output to C++ output stream.
+  In order to see the output from C part of the code, we needed to intercept the printf function in C and send its output to C++ output stream. Listing \ref{lst:printf} shows our implementation of print function.
+
+  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Intercepting printf\label{lst:printf}]
+  int printf(const char *restrict format, ...)
+  {
+    char     out[1024];
+    va_list  args;
+    va_start ( args, format );
+    vsnprintf ( out, 1024, format, args );
+    va_end   ( args );
+    rte_hpx_cpp_printf(out);
+    return (strlen(out));
+  }
+  \end{lstlisting}
+
 \item \textbf{Automatic Boost and HPX Detection}\\
   Since Boost and HPX are required to be installed before the installation of Open MPI with HPX-RTE, we modified the configure logic of Open MPI to detect the installation paths of these libraries and accordingly modify the generated make files.
 \item \textbf{C and C++ Compatibility}\\
-  The majority of Open MPI source code is written in C language. HPX is completely written in C++ with extensive use of recent C++14 features. This definitely causes compatibility issues which needed to be handled in the code. For instance, the header file is Listing \ref{lst:rte_hpx_db} illustrates how different headers and function prototypes are made visible to either C or C++ compiler. As another example, we had to use C++ to compile a number of components in Open MPI.
-  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=rte_hpx_db.h\label{lst:rte_hpx_db}]
-
-  #ifndef MCA_OMPI_RTE_HPX_DB_H
-  #define MCA_OMPI_RTE_HPX_DB_H
-
+  The majority of Open MPI source code is written in C language. HPX is completely written in C++ with extensive use of recent C++14 features. This definitely causes compatibility issues which needed to be handled in the code. For instance, Listing \ref{lst:headers} illustrates an example on how different headers are made visible to either C or C++ compiler. 
+  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Exposing Different Headers to C and C++ Compilers\label{lst:headers}]
   #include <stdio.h>
   #include <stdlib.h>
-  #include <string.h>
   #include <unistd.h>
 
   #if defined(__cplusplus)
-
   #include <hpx/hpx_main.hpp>
   #include <hpx/hpx_finalize.hpp>
-  #include <hpx/include/lcos.hpp>
-  #include <hpx/include/actions.hpp>
   #include <hpx/include/iostreams.hpp>
-
-  #include <vector>
-  #include <list>
-  #include <set>
-  #include <string>
-  #include <iostream>
-  #include <atomic>
-
-  #include <boost/ref.hpp>
-  #include <boost/foreach.hpp>
-  #include <boost/format.hpp>
-
   #endif
+  \end{lstlisting}
 
-
+  The same technic is applied for functions that are written in C or C++. We also utilized \textbf{extern ``C''} to make function names in C++ have C linkage (compiler does not mangle the name) so that client C code can link to the functions using a C compatible header file that contains just the declaration of those functions. Listing \ref{lst:functions} illustrates the technique. Note that this listing does not contain all the function prototypes in the source code.
+  
+  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Exposing Different Functions to C and C++ Compilers\label{lst:functions}]
   #if defined(__cplusplus)
   extern ``C'' {
-
     struct Node{
       struct Node *next;
       std::string key;
@@ -359,23 +355,15 @@ Some of the main implementation features of HPX-RTE include:
       int originator;
     };
     typedef struct Node Node;
-
-    void rte_hpx_one(void);
     int rte_hpx_vpid(void);
     int rte_hpx_num_localities(void);
-    int rte_hpx_cpp_put(char* key, int keysize, char* val, int valsize);
-    int rte_hpx_put(const std::string& key, const std::vector<char>& val);
     void rte_hpx_local_map(void);
-    int rte_hpx_cpp_get(int vpid, char* key, char** value);
-    std::vector<char> rte_hpx_get(const std::string& key);
     void rte_hpx_barrier(void);
-    int rte_hpx_cpp_get_vpid_from_locality ( hpx::naming::id_type locality);
-    hpx::naming::id_type  rte_hpx_cpp_get_locality_from_vpid ( int vpid );
-    int rte_hpx_cpp_printf(char* out);
   }
   #endif
-  #endif
-  \end{lstlisting}
+\end{lstlisting}
+
+  We also had to use C++ to compile a number of components that were initially compiled by the C compiler in Open MPI.
   
 \item manually exclude some components that are deeply entangled with rte
     
