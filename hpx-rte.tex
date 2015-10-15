@@ -280,7 +280,37 @@ Some of the main implementation features of HPX-RTE include:
 
 \begin{enumerate}
 \item \textbf{Distributed Database}\\
-  For the runtime environment, we need to store a set of key-value pairs in a database accessible to all the localities participating in a job. Utilizing HPX actions, HPX-RTE stores the data on local node at the time a store operation is issued. However, to retrieve the data the processes take advantage of HPX actions (remote function calls) to fetch the stored data from the database on the locality it is stored on. In theory, this database scheme eliminates the bottleneck of accessing a centralized database, or storing copies of all the database entries in every single locality. Therefore, it distributes the database, uses less space, and makes accessing to the stored data faster.
+  For the runtime environment, we need to store a set of key-value pairs in a database accessible to all the localities participating in a job. Utilizing HPX actions, HPX-RTE stores the data on local node at the time a store operation is issued. However, to retrieve the data the processes take advantage of HPX actions (remote function calls) to fetch the stored data from the database on the locality it is stored on. In theory, this database scheme eliminates the bottleneck of accessing a centralized database, or storing copies of all the database entries in every single locality. Therefore, it distributes the database, uses less space, and makes accessing to the stored data faster. Listing \ref{lst:put} and \ref{lst:get} demononstrate two funtions (\verb|hpx_rte_cpp_put| and \verb|hpx_rte_cpp_get|) that store and fetch operations are built based on.
+
+  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Put Functionality\label{lst:put}]
+  int rte_hpx_cpp_put(char* key, int keysize,
+                      char* val, int valsize)
+  {
+    std::vector<char> vectorval (val, val + valsize);
+    rte_hpx_put( std::string (key), vectorval );
+    return 0;
+  }
+  \end{lstlisting}
+
+  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Get Functionality using HPX Asynchronous Actions\label{lst:get}]
+  int rte_hpx_cpp_get( int vpid, char* key, char** value )
+  {
+    hpx::naming::id_type const& node =
+      rte_hpx_cpp_get_locality_from_vpid (vpid);
+    std::string stringkey = key;
+    int counter;
+    *value = NULL;
+    std::vector<char> temp_vector =
+      hpx::async<rte_hpx_get_action>(node, stringkey).get();
+    if (temp_vector.size() != 0) {
+      char *temp_value = (char *) malloc (temp_vector.size());
+      memcpy(temp_value, temp_vector.data(), temp_vector.size());
+      *value = temp_value;
+    }
+    return (int) temp_vector.size();
+  }
+  \end{lstlisting}
+
 \item \textbf{Barrier Semantics}\\
   HPX strives not to have barriers that would stall all processes or threads for a particular operation to be completed. Instead, there are fine-grained mechanisms available for synchronization. However, a barrier (global synchronization point) is a requirement for the runtime component in Open MPI. We have developed an algorithm that implements barrier semantics by making effective use of HPX actions and remote asynchronous function calls (Listing \ref{lst:barrier}).
 \item \textbf{Mapping Localities to Ranks}\\
@@ -293,15 +323,12 @@ Some of the main implementation features of HPX-RTE include:
   {
     std::vector<hpx::naming::id_type> localities =
     hpx::find_all_localities();
-    
     std::vector<hpx::lcos::future<void> > futures;
     futures.reserve(localities.size());
-    
     BOOST_FOREACH(hpx::naming::id_type const& node, localities) {
       futures.push_back(hpx::async<rte_hpx_one_action>(node));
     }
     hpx::wait_all(futures);
-    
     while(sum != (int) localities.size()) {
     }
     sum = 0;
