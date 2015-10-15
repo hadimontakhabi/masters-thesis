@@ -384,4 +384,14 @@ Ronald~Brian Brightwell.
 \newblock \url{https://xstackwiki.modelado.org/XPRESS}.
 \newblock Accessed: 2015-10-07.
 
+\bibitem{1092259}
+V.~Cerf and R.E. Kahn.
+\newblock A protocol for packet network intercommunication.
+\newblock {\em Communications, IEEE Transactions on}, 22(5):637--648, May 1974.
+
+\bibitem{infiniband2000infiniband}
+InfiniBand~Trade Association et~al.
+\newblock {\em InfiniBand Architecture Specification: Release 1.0}.
+\newblock InfiniBand Trade Association, 2000.
+
 \end{thebibliography}
