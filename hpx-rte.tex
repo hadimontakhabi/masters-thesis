@@ -330,7 +330,7 @@ Some of the main implementation features of HPX-RTE include:
 \item \textbf{Automatic Boost and HPX Detection}\\
   Since Boost and HPX are required to be installed before the installation of Open MPI with HPX-RTE, we modified the configure logic of Open MPI to detect the installation paths of these libraries and accordingly modify the generated make files with appropriate compilation and linkage flags.
 \item \textbf{C and C++ Compatibility}\\
-  The majority of Open MPI source code is written in C language. HPX is completely written in C++ with extensive use of recent C++14 features. This definitely causes compatibility issues which needed to be handled in the code. For instance, Listing \ref{lst:headers} illustrates an example on how different headers are made visible to either C or C++ compiler. 
+  The majority of the Open MPI source code is written in C language. HPX is completely written in C++ with extensive use of recent C++14 features. This definitely causes compatibility issues which needed to be handled in the code. For instance, Listing \ref{lst:headers} illustrates an example on how different headers are made visible to either C or C++ compiler. 
   \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Exposing Different Headers to C and C++ Compilers\label{lst:headers}]
   #include <stdio.h>
   #include <stdlib.h>
