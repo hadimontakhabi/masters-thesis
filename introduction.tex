@@ -41,7 +41,7 @@ Furthermore, shared-memory architectures can be classified as symmetric multipro
 \item \textbf{Non-Uniform Memory Access (NUMA)}\\
   Typically, these are made by physically connecting two or more SMPs. This way, one SMP can access memory of another SMP directly. However, access time to all memories is not equal to all processors.
   
-  \begin{figure}[h!]
+  \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.6]{images/numa.png}
     \caption{Shared Memory (NUMA)}
@@ -55,7 +55,7 @@ Furthermore, shared-memory architectures can be classified as symmetric multipro
 Each processing element has its own local memory. Therefore, there is no global address space. To connect inter-process memory units, a communication network is needed.
 Each processor operates independently. Changes that a processor makes to its local memory have no effect on the memory of other processors. If a processor needs to access data in another processor's memory, the programmer needs to explicitly define the communication mechanism.
 
-\begin{figure}[h!]
+\begin{figure}[ht]
   \centering
   \includegraphics[scale=0.6]{images/distributed_mem.png}
   \caption{Distributed Memory}
