@@ -50,7 +50,6 @@ Furthermore, shared-memory architectures can be classified as symmetric multipro
 
 \end{itemize}
 
-
 \subsection{Distributed Memory}
 Each processing element has its own local memory. Therefore, there is no global address space. To connect inter-process memory units, a communication network is needed.
 Each processor operates independently. Changes that a processor makes to its local memory have no effect on the memory of other processors. If a processor needs to access data in another processor's memory, the programmer needs to explicitly define the communication mechanism.
@@ -61,7 +60,6 @@ Each processor operates independently. Changes that a processor makes to its loc
   \caption{Distributed Memory}
   \label{fig:distributed_mem}
 \end{figure}
-
 
 \subsection{Hybrid Distributed-Shared Memory}
 By combining a shared memory and distributed memory model, we will have a hybrid distributed-shared memory system. An example for this category could be a cluster of nodes with each node having multiple cores that share the same memory (Figure \ref{fig:hybridd_mem}), or a cluster of nodes with each having multiple GPUs and cores (Figure \ref{fig:hybridd_mem2}).
