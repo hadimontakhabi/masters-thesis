@@ -1,6 +1,6 @@
 \chapter{Evaluation}
 \label{sec:Evaluation}
-
+\iffalse
 \subsection{Test Environment}
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Configure Line of Open MPI with HPX-RTE\label{lst:config-hpxrte}]
@@ -31,57 +31,9 @@
   -lprofiler -liostreams -L/lib64 -lrt -ldl -lutil -g -O0
 \end{lstlisting}
 
-HPX-RTE:
-
-hadi@crill:~> time ./mpi_hello
-RTE_HPX_CPP_PRINTF: Hello world from process 0 of 1
-
-real0m0.162s
-user0m0.092s
-sys0m0.062s
-
-
-hadi@crill:~> time ./mpi_hello
-RTE_HPX_CPP_PRINTF: Hello world from process 0 of 1
-
-real0m0.158s
-user0m0.094s
-sys0m0.056s
-
-
-hadi@crill:~> time ./mpi_hello
-RTE_HPX_CPP_PRINTF: Hello world from process 0 of 1
-
-real0m0.171s
-user0m0.113s
-sys0m0.050s
-
-OERE:
-hadi@crill:~> time ./mpi_hello
-Hello world from process 0 of 1
-
-real0m0.163s
-user0m0.098s
-sys0m0.057s
-
-hadi@crill:~> time ./mpi_hello
-Hello world from process 0 of 1
-
-real0m0.162s
-user0m0.097s
-sys0m0.056s
-
-hadi@crill:~> time ./mpi_hello
-Hello world from process 0 of 1
-
-real0m0.161s
-user0m0.095s
-sys0m0.058s
-
-
-
 
 \subsection{Sequential Execution}
 
 
 \subsection{Code Size}
+\fi
