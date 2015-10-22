@@ -3,9 +3,33 @@
 
 \subsection{Test Environment}
 
+\begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Configure Line of Open MPI with HPX-RTE\label{lst:config-hpxrte}]
+  $ ./configure CFLAGS=``-g -O0'' CXXFLAGS=``-g -O0''
+    --prefix=/home/hadi/opt/openmpi
+    --with-hpx=/opt/hpx-0.9.10-release
+    --with-boost=/opt/boost/1-55-0
+    --disable-vt --enable-mca-no-build=coll-ml,vprotocol
+    --enable-oshmem=no --enable-mpi-profile=no
+    --enable-static --with-orte=no
+\end{lstlisting}
 
-$ ./configure CFLAGS=-g -O0 CXXFLAGS=-g -O0 --prefix=/home/hadi/opt/openmpi --with-hpx=/opt/hpx-0.9.10-release --with-boost=/opt/boost/1-55-0 --disable-vt --enable-mca-no-build=coll-ml,vprotocol --enable-oshmem=no --enable-mpi-profile=no --enable-static --with-orte=no
 
+\begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Compile line for Hello World\label{lst:compile}]
+  $ mpicxx -o mpi_hello mpi_hello.c -rdynamic -fPIC -std=c++11
+  -Wall -Wno-unused-local-typedefs -Wno-strict-aliasing
+  -Wsign-promo -Wno-cast-align -Werror=vla -Werror=return-type
+  -fdiagnostics-show-option  -Werror=uninitialized -pthread
+  -DHPX_DEBUG -D_GNU_SOURCE  -I${HPX_DIR}/include/hpx/external
+  -I${HPX_DIR}/include -I/usr/include/google
+  -DHPX_APPLICATION_EXPORTS -DHPX_ENABLE_ASSERT_HANDLER
+  -DHPX_DEBUG -finline-functions -I/opt/boost/1-55-0/include
+  -L/opt/boost/1-55-0/lib -Wl,-rpath,:${HPX_DIR}/lib/hpx
+  -L${HPX_DIR}/lib/hpx -L${HPX_DIR}/lib -lhpx -lhpx_init
+  -lhpx_serialization -lboost_date_time -lboost_filesystem
+  -lboost_program_options -lboost_regex -lboost_serialization
+  -lboost_system -lboost_thread -lboost_atomic -lboost_chrono
+  -lprofiler -liostreams -L/lib64 -lrt -ldl -lutil -g -O0
+\end{lstlisting}
 
 \subsection{Sequential Execution}
 
