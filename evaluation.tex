@@ -1,7 +1,42 @@
 \chapter{Evaluation}
 \label{sec:Evaluation}
 %\iffalse
-\subsection{Test Environment}
+
+\section{Test Environment}
+
+\subsection{Crill Cluster Hardware Specification}
+\begin{itemize}
+\item \textbf{16 NLE Systems nodes (crill-001 - crill-016)}\\
+  Four 2.2 GHz 12-core AMD Opteron processors (48 cores total)\\
+  64 GB main memory\\
+  Two dual-port 4xDDR InfiniBand HCAs
+
+\item \textbf{2 Appro 1326G4 nodes (crill-101 - crill-102)}\\
+  Two 2.2 GHz 12-core AMD Opteron processors (24 cores total)\\
+  32 GB main memory\\
+  Four NVIDIA Tesla M2050 GPUs (448 cores each)\\
+  4xDDR InfiniBand HCA
+
+\item \textbf{4 HP DL 160 Gen 8 nodes (crill-200 - crill-203)}\\
+  Two 2.4 GHz quad-core Intel Xeon E5-2665 processors (24 cores total)\\
+  8 GB main memory\\
+  4xDDR InfiniBand HCA
+  
+\item \textbf{Network Interconnect}
+  144 port 4xInfiniBand DDR Voltaire Grid Director ISR 2012 switch (shared with whale cluster)\\
+  24 port 4xInfiniBand SDR switch (I/O switch to the SSD storage)\\
+  48 port Netgear GE switch
+
+\item \textbf{Storage}
+  2 TB RamSan 620 SSD storage (/pvfs2-ssd)\\
+  20 TB Sun StorageTek 6140 array (/home shared with shark cluster)\\
+  8 TB distributed PVFS2 storage (/pvfs2)
+  
+\end{itemize}
+
+\subsection{Crill Cluster Software Specification}
+
+
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Configure Line of Open MPI with HPX-RTE\label{lst:config-hpxrte}]
   $ ./configure CFLAGS=``-g -O0'' CXXFLAGS=``-g -O0''
@@ -32,8 +67,8 @@
 \end{lstlisting}
 
 
-\subsection{Sequential Execution}
+\section{Sequential Execution}
 
 
-\subsection{Code Size}
+\section{Code Size}
 %\fi
