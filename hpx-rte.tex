@@ -316,7 +316,6 @@ Some of the main implementation features of HPX-RTE include:
   }
   \end{lstlisting}
 
-
   
   \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Barrier Implementation\label{lst:barrier}]
   void rte_hpx_barrier()
@@ -371,8 +370,9 @@ Some of the main implementation features of HPX-RTE include:
   \end{lstlisting}
 
   The same technic is applied for functions that are written in C or C++. We also utilized \textbf{extern ``C''} to make function names in C++ have C linkage (compiler does not mangle the name) so that client C code can link to the functions using a C compatible header file that contains just the declaration of those functions. Listing \ref{lst:functions} illustrates the technique. Note that this listing does not contain all the function prototypes in the source code.
-  
-  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Exposing Different Functions to C and C++ Compilers\label{lst:functions}]
+  We also had to use C++ to compile a number of components that were initially compiled by the C compiler in Open MPI.
+
+    \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Exposing Different Functions to C and C++ Compilers\label{lst:functions}]
   #if defined(__cplusplus)
   extern ``C'' {
     struct Node{
@@ -390,8 +390,6 @@ Some of the main implementation features of HPX-RTE include:
   #endif
 \end{lstlisting}
 
-  We also had to use C++ to compile a number of components that were initially compiled by the C compiler in Open MPI.
-  
 \item \textbf{Communication Protocols}\\
   Current implementation of HPX-RTE supports Transmission Control Protocol(TCP)~\cite{1092259} and Infiniband~\cite{infiniband2000infiniband} communication protocol.
 
