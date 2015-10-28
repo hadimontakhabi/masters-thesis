@@ -289,6 +289,14 @@ Some of the main implementation features of HPX-RTE include:
   }
   \end{lstlisting}
 
+  
+\item \textbf{Barrier Semantics}\\
+  HPX strives not to have barriers that would stall all processes or threads for a particular operation to be completed. Instead, there are fine-grained mechanisms available for synchronization. However, a barrier (global synchronization point) is a requirement for the runtime component in Open MPI. We have developed an algorithm that implements barrier semantics by making effective use of HPX actions and remote asynchronous function calls (Listing \ref{lst:barrier}).
+\item \textbf{Mapping Localities to Ranks}\\
+  HPX uses the notion of locality. ``A locality represents a set of hardware resources with bounded, finite latencies.''~\cite{kaiser2014hpx} MPI uses ranks. We have provided a translation table from HPX localities to mpi ranks.
+\item \textbf{Populating Internal Data Structures}\\
+  A number of internal data structures need to be initialized within the runtime environment before starting the MPI initialization. This is done in the runtime initialization function.
+
   \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Get Functionality using HPX Asynchronous Actions\label{lst:get}]
   int rte_hpx_cpp_get( int vpid, char* key, char** value )
   {
@@ -308,13 +316,8 @@ Some of the main implementation features of HPX-RTE include:
   }
   \end{lstlisting}
 
-\item \textbf{Barrier Semantics}\\
-  HPX strives not to have barriers that would stall all processes or threads for a particular operation to be completed. Instead, there are fine-grained mechanisms available for synchronization. However, a barrier (global synchronization point) is a requirement for the runtime component in Open MPI. We have developed an algorithm that implements barrier semantics by making effective use of HPX actions and remote asynchronous function calls (Listing \ref{lst:barrier}).
-\item \textbf{Mapping Localities to Ranks}\\
-  HPX uses the notion of locality. ``A locality represents a set of hardware resources with bounded, finite latencies.''~\cite{kaiser2014hpx} MPI uses ranks. We have provided a translation table from HPX localities to mpi ranks.
-\item \textbf{Populating Internal Data Structures}\\
-  A number of internal data structures need to be initialized within the runtime environment before starting the MPI initialization. This is done in the runtime initialization function.
 
+  
   \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Barrier Implementation\label{lst:barrier}]
   void rte_hpx_barrier()
   {
