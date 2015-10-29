@@ -220,7 +220,7 @@ HPX provides several ways to apply an action. Its API exposes three different wa
   Asynchronous invocation of a function means that it will be scheduled as a new HPX thread (either locally or on another locality). The call to async will return almost immediately providing a new future instance which represents the result of the function execution. Asynchronous function execution is the fundamental way of orchestrating asynchronous parallelism in HPX.
 
 \item \textbf{Fire \& Forget function execution}\\
-  This is similar to asynchronous execution except that the caller has no means of synchronizing with the result of the operation. The call to apply simply schedules a local (or remote) HPX thread which runs to completion at its own pace. Any result returned from that function (or any exception thrown) is being ignored. This leads to less communication by not having to notify the caller.''\cite{kaiser2014hpx}
+  This is similar to asynchronous execution except that the caller has no means of synchronizing with the result of the operation. The call to apply schedules a local (or remote) HPX thread which runs to completion at its own pace. Any result returned from that function (or any exception thrown) is being ignored. This leads to less communication by not having to notify the caller.''\cite{kaiser2014hpx}
 \end{itemize}
 
 
@@ -232,3 +232,56 @@ HPX provides several ways to apply an action. Its API exposes three different wa
 \end{figure}
 
 In C++, a future encapsulates a delayed computation. A future holds the result of an asynchronous call because the computation of the result has not completed yet~\cite{stroustrup2013c++}. HPX uses futures to synchronize the access to the value in a future by suspending any HPX threads requesting the result until the value is available. When a future is created, it spawns a new HPX thread which will execute the action associated with the future. The new thread is spawned either remotely with a parcel or locally by being placed into the thread queue.  Utilizing futuers allows HPX to schedule work early in a program so that when the function value is needed it will already be calculated and available (Figure \ref{fig:future_schematics})~\cite{kaiser2009parallex}.
+
+\subsection{HPX Hello World Example}
+Listing \ref{lst:hpx_hello_world}~\cite{hpx_hello} is a simple program that prints out a hello world message on every OS-thread on every locality.
+
+\begin{lstlisting}[language=C, frame=single, numbers=left, basicstyle=\footnotesize, caption=HPX Hello World\label{lst:hpx_hello_world}]
+int main() {
+  std::vector<hpx::naming::id_type> localities =
+  hpx::find_all_localities();
+  std::vector<hpx::lcos::future<void> > futures;
+  futures.reserve(localities.size());
+  for (hpx::naming::id_type const& node : localities) {
+    typedef hello_world_foreman_action action_type;
+    futures.push_back(hpx::async<action_type>(node));
+  }
+  hpx::wait_all(futures);
+  return 0;
+}
+\end{lstlisting}
+
+Using the \verb|hpx::find_all_localities()| function, we get a list of all available localities and put them into a vector. Then, we reserve storage space for futures, one for each locality. Looping through all the localities, we asynchronously start a new task on each locality. The task is encapsulated in a future, which can be queried to determine if the task has completed. \verb|hpx::wait_all()| returns when all of the futures have finished.
+
+Listing \ref{lst:hello_world_foreman} ~\cite{hpx_hello} illustrates the \verb|hello_world_foreman()| function which is used to make \verb|hello_world_foreman| action. \verb|hpx::get_os_thread_count()| returns the number of worker OS-threads in use by the current locality. \verb|hpx::find_here()| returns the global name of the current locality. Inside the for loop, we populate a set with the OS-thread numbers of all OS-threads on this locality. When the hello world is printed on a particular OS-thread, we remove it from the set. As long as there are elements in the set, we keep scheduling HPX-threads. Note that because HPX features work-stealing task schedulers, we have no way of enforcing which worker OS-thread will actually execute each HPX-thread. Inside the while loop, in each iteration we create a task for each element in the set of OS-threads that have not said ``Hello world''. Each of these tasks is encapsulated in a future. Eventually, we wait for all of the futures to finish. The \verb|hpx::lcos::wait_each| function takes two arguments: a binary callback, and a vector of futures. The callback takes two arguments; the first is the index of the future in the vector, and the second is the return value of the future. \verb|hpx::lcos::wait_each| doesn't return until all the futures in the vector have returned. The macro \verb|HPX_PLAIN_ACTION| defines the boilerplate code necessary for the function \verb|hello_world_foreman| to be invoked as an HPX action.
+
+\begin{lstlisting}[language=C, frame=single, numbers=left, basicstyle=\footnotesize, caption=Hello World Foreman\label{lst:hello_world_foreman}]
+void hello_world_foreman() {
+  std::size_t const os_threads = hpx::get_os_thread_count();
+  hpx::naming::id_type const here = hpx::find_here();
+  std::set<std::size_t> attendance;
+  for (std::size_t os_thread = 0; os_thread < os_threads; ++os_thread) {
+    attendance.insert(os_thread);
+  }
+  while (!attendance.empty()) {
+    std::vector<hpx::lcos::future<std::size_t> > futures;
+    futures.reserve(attendance.size());
+    for (std::size_t worker : attendance) {
+      typedef hello_world_worker_action action_type;
+      futures.push_back(hpx::async<action_type>(here, worker));
+    }
+    hpx::lcos::local::spinlock mtx;
+    hpx::lcos::wait_each(
+    hpx::util::unwrapped([&](std::size_t t) {
+      if (std::size_t(-1) != t) {
+        boost::lock_guard<hpx::lcos::local::spinlock> lk(mtx);
+        attendance.erase(t);
+      }
+    }),
+    futures);
+  }
+}
+HPX_PLAIN_ACTION(hello_world_foreman, hello_world_foreman_action);
+\end{lstlisting}
+
+
