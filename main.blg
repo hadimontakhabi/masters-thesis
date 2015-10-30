@@ -11,45 +11,45 @@ The style file: unsrt.bst
 Database file #1: main.bib
 Warning--empty journal in bonachea2002gasnet
 Warning--empty journal in podobas2010comparison
-You've used 65 entries,
+You've used 64 entries,
             1791 wiz_defined-function locations,
-            795 strings with 15001 characters,
-and the built_in function-call counts, 15795 in all, are:
-= -- 1431
-> -- 691
+            790 strings with 14851 characters,
+and the built_in function-call counts, 15661 in all, are:
+= -- 1419
+> -- 687
 < -- 22
-+ -- 260
-- -- 195
++ -- 258
+- -- 194
 * -- 941
-:= -- 2402
-add.period$ -- 218
-call.type$ -- 65
-change.case$ -- 55
+:= -- 2381
+add.period$ -- 214
+call.type$ -- 64
+change.case$ -- 54
 chr.to.int$ -- 0
-cite$ -- 67
-duplicate$ -- 766
-empty$ -- 1590
-format.name$ -- 195
-if$ -- 3670
+cite$ -- 66
+duplicate$ -- 761
+empty$ -- 1572
+format.name$ -- 194
+if$ -- 3638
 int.to.chr$ -- 0
-int.to.str$ -- 65
+int.to.str$ -- 64
 missing$ -- 63
-newline$ -- 333
-num.names$ -- 62
-pop$ -- 292
+newline$ -- 327
+num.names$ -- 61
+pop$ -- 285
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 356
+skip$ -- 354
 stack$ -- 0
 substring$ -- 875
-swap$ -- 220
+swap$ -- 219
 text.length$ -- 22
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 150
-width$ -- 67
-write$ -- 719
+while$ -- 149
+width$ -- 66
+write$ -- 708
 (There were 2 warnings)

@@ -372,13 +372,6 @@ Bjarne Stroustrup.
 \newblock {\em The C++ programming language}.
 \newblock Pearson Education, 2013.
 
-\bibitem{hpx_hello}
-LSU Stellar~Group.
-\newblock Hpx 0.9.11.
-\newblock
-  \url{http://stellar-group.github.io/hpx/docs/html/hpx.html#hpx.tutorial.examples.hello_world}.
-\newblock Accessed: 2015-10-29.
-
 \bibitem{brightwell2013xpress}
 Ronald~Brian Brightwell.
 \newblock Xpress project overview.
