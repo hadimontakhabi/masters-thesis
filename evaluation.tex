@@ -1,6 +1,5 @@
 \chapter{Evaluation}
 \label{sec:Evaluation}
-\iffalse
 
 \section{Test Environment}
 
@@ -47,7 +46,7 @@
   Version 1.55.0
 \end{itemize}
 
-
+\section{Open MPI Configuration Parameteres}
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Configure Line of Open MPI with HPX-RTE\label{lst:config-hpxrte}]
   $ ./configure CFLAGS=``-g -O0'' CXXFLAGS=``-g -O0''
     --prefix=/home/hadi/opt/openmpi
@@ -77,8 +76,11 @@
 \end{lstlisting}
 
 
+%srun -N 2 -n 2 -c 2 ./mpi_hello --hpx:run-hpx-main --hpx:threads=2
+
 \section{Sequential Execution}
 
 
 \section{Code Size}
-\fi
+
+NAS parallel benchmarks~\cite{bailey1991parallel}

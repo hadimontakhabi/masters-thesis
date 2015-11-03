@@ -401,4 +401,12 @@ InfiniBand~Trade Association et~al.
 \newblock {\em InfiniBand Architecture Specification: Release 1.0}.
 \newblock InfiniBand Trade Association, 2000.
 
+\bibitem{bailey1991parallel}
+David~H Bailey, Eric Barszcz, John~T Barton, David~S Browning, Russell~L
+  Carter, Leonardo Dagum, Rod~A Fatoohi, Paul~O Frederickson, Thomas~A
+  Lasinski, Rob~S Schreiber, et~al.
+\newblock The nas parallel benchmarks.
+\newblock {\em International Journal of High Performance Computing
+  Applications}, 5(3):63--73, 1991.
+
 \end{thebibliography}
