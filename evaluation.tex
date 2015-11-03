@@ -49,7 +49,13 @@ For the purpose of evaluation, the crill cluster at the Research and Computing C
   Version 4.8.1
 \end{itemize}
 
-\section{Open MPI Configuration Parameteres}
+
+\section{Open MPI Installation and Application Compilation}
+
+\subsection{Open MPI Configuration Parameteres}
+For running different test cases, our evaluation is mostly focused on comparison between Open MPI using ORTE vs. Open MPI using HPX-RTE as runtime.
+Listing \ref{lst:config-hpxrte} shows the configure line for the Open MPI installation. The only parameter that needs to be changed is \verb|--with-orte|. When this parameter is set to ``yes'', Open MPI uses ORTE as runtime. If we set this parameter to ``no'', Open MPI will use HPX-RTE.
+
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Configure Line of Open MPI with HPX-RTE\label{lst:config-hpxrte}]
   $ ./configure CFLAGS=``-g -O0'' CXXFLAGS=``-g -O0''
     --prefix=/home/hadi/opt/openmpi
@@ -60,6 +66,8 @@ For the purpose of evaluation, the crill cluster at the Research and Computing C
     --enable-static --with-orte=no
 \end{lstlisting}
 
+\subsection{Compiling MPI Applications with Open MPI using HPX-RTE}
+Listing \ref{lst:compile} illustrates the compile line for our Hello World example. This line could be integrated into Open MPI software in future iterations of the development. Therefore, users will not have to manually insert all the parameters needed.
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Compile line for Hello World\label{lst:compile}]
   $ mpicxx -o mpi_hello mpi_hello.c -rdynamic -fPIC -std=c++11
