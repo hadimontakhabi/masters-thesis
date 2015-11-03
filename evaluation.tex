@@ -69,7 +69,7 @@ Listing \ref{lst:config-hpxrte} shows the configure line for the Open MPI instal
 \subsection{Compiling MPI Applications with Open MPI using HPX-RTE}
 Listing \ref{lst:compile} illustrates the compile line for our Hello World example. This line could be integrated into Open MPI software in future iterations of the development. Therefore, users will not have to manually insert all the parameters needed.
 
-\begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Compile line for Hello World\label{lst:compile}]
+\begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Compile Line for Hello World\label{lst:compile}]
   $ mpicxx -o mpi_hello mpi_hello.c -rdynamic -fPIC -std=c++11
   -Wall -Wno-unused-local-typedefs -Wno-strict-aliasing
   -Wsign-promo -Wno-cast-align -Werror=vla -Werror=return-type
@@ -87,11 +87,17 @@ Listing \ref{lst:compile} illustrates the compile line for our Hello World examp
 \end{lstlisting}
 
 
+\section{Evaluation}
+
+\subsection{Sequential Execution}
+Hello World - different number of nodes - ORTE vs. HPX-RTE
+HeatSolver - different number of nodes - ORTE vs. HPX-RTE
+
+
 %srun -N 2 -n 2 -c 2 ./mpi_hello --hpx:run-hpx-main --hpx:threads=2
 
-\section{Sequential Execution}
+\subsection{Parallel Execution}
 
-
-\section{Code Size}
+\subsection{Code Size}
 
 NAS parallel benchmarks~\cite{bailey1991parallel}
