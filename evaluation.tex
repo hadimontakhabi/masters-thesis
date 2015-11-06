@@ -46,7 +46,7 @@ For the purpose of evaluation, the crill cluster at the Research and Computing C
 \end{itemize}
 
 
-\section{Configuration and Compilation}
+\section{Configuration, Compilation, and Execution}
 
 \subsection{Open MPI Configuration Parameteres}
 For running different test cases, our evaluation is mostly focused on comparison between Open MPI using ORTE vs. Open MPI using HPX-RTE as runtime.
@@ -83,25 +83,29 @@ Listing \ref{lst:compile} illustrates the compile line for our Hello World examp
 \end{lstlisting}
 
 \subsection{Running MPI Applications}
+\iffalse
+
 For running applications using ORTE, we will use ``mpirun'' command, which is a soft link to ``orterun'' command. This is shown in listing \ref{lst:orterun}.
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Running MPI Applications Using ORTE \label{lst:orterun}]
 $ mpirun -np 1 -pernode ./mpi_hello
 \end{lstlisting}
 
+HPX provides support for Slurm(Simple linux utility for resource management)~\cite{yoo2003slurm}. To run applications using HPX-RTE, we use ``srun'' command. Listing \ref{lst:hpxrte-run} demonstrates an example.
+
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Running MPI Applications Using HPX-RTE \label{lst:hpxrte-run}]
-  $ srun -N 1  -n 1 --ntasks-per-node=1 ./mpi_hello --hpx:run-hpx-main
-    --hpx:threads=2
+$ srun -N 1  -n 1 --ntasks-per-node=1 ./mpi_hello --hpx:run-hpx-main
+  --hpx:threads=2
 \end{lstlisting}
 
 
 \section{Evaluation}
-\iffalse
-In our evaluations, there are two ways to measure the time in the case of each application: The total time measured by the ``time'' command in Linux (Listing \ref{lst:hpxrte-run} nad \ref{lst:orterun}), and the time reported by the application. The time reported by the application is reported on a per process basis. Numbers reported in this section are averge numbers reported by the application in each case.
 
+In our evaluations, there are two ways to measure the time in the case of each application: The total time measured by the ``time'' command in Linux (Listing \ref{lst:hpxrte-run} nad \ref{lst:orterun}), and measuring the time within the application. The time reported by the application is reported on a per process basis. Numbers reported in this section are averge numbers reported by the application when the application reported times are reported.
+
+Every test was run at lesat three times. The average of all three times is reported.
 
 \subsection{MPI Hello World}
-%trying to run mpi_hello using orte and srun
 
 \begin{figure}[h!]
 \centering
@@ -109,12 +113,6 @@ In our evaluations, there are two ways to measure the time in the case of each a
 \caption[Application Reported Time - Hello World - Infiniband]{Application Reported Time - Hello World - Infiniband}
 \label{fig:time-app-hello-world-infiniband}
 \end{figure}
-
-
-
-Hello World - different number of nodes - ORTE vs. HPX-RTE
-HeatSolver - different number of nodes - ORTE vs. HPX-RTE
-
 
 %srun -N 2 -n 2 -c 2 ./mpi_hello --hpx:run-hpx-main --hpx:threads=2
 
