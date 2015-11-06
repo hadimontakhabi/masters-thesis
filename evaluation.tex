@@ -62,8 +62,8 @@ Listing \ref{lst:config-hpxrte} shows the configure line for the Open MPI instal
     --enable-static --with-orte=no
 \end{lstlisting}
 
-\subsection{Compiling MPI Applications with Open MPI using HPX-RTE}
-Listing \ref{lst:compile} illustrates the compile line for our Hello World example. This line could be integrated into Open MPI software in future iterations of the development. Therefore, users will not have to manually insert all the parameters needed.
+\subsection{Compiling MPI Applications}
+Listing \ref{lst:compile} illustrates the compile line for our Hello World example. This line could be integrated into Open MPI software in future iterations of the development. Therefore, users will not have to manually insert all the compile and linkage flags needed. The same command can be used when ORTE is the installed runtime.
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Compile Line for Hello World\label{lst:compile}]
   $ mpicxx -o mpi_hello mpi_hello.c -rdynamic -fPIC -std=c++11
@@ -82,19 +82,22 @@ Listing \ref{lst:compile} illustrates the compile line for our Hello World examp
   -lprofiler -liostreams -L/lib64 -lrt -ldl -lutil -g -O0
 \end{lstlisting}
 
+\subsection{Running MPI Applications}
+For running applications using ORTE, we will use ``mpirun'' command, which is a soft link to ``orterun'' command. This is shown in listing \ref{lst:orterun}.
 
-\section{Evaluation}
-
-In our evaluations, there are two sets of measurements for each case: The total time measured by time command (Listing \ref{lst:hpxrte-run} nad \ref{lst:orte-run}), and the time reported by the application. The time reported by the application is reported on a per process basis. Numbers reported in this section are averge numbers reported by the application in each case.
+\begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Running MPI Applications Using ORTE \label{lst:orterun}]
+$ mpirun -np 1 -pernode ./mpi_hello
+\end{lstlisting}
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Running MPI Applications Using HPX-RTE \label{lst:hpxrte-run}]
   $ srun -N 1  -n 1 --ntasks-per-node=1 ./mpi_hello --hpx:run-hpx-main
     --hpx:threads=2
 \end{lstlisting}
 
-\begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Running MPI Applications Using ORTE \label{lst:orte-run}]
-$ mpirun -np 1 -pernode ./mpi_hello
-\end{lstlisting}
+
+\section{Evaluation}
+\iffalse
+In our evaluations, there are two ways to measure the time in the case of each application: The total time measured by the ``time'' command in Linux (Listing \ref{lst:hpxrte-run} nad \ref{lst:orterun}), and the time reported by the application. The time reported by the application is reported on a per process basis. Numbers reported in this section are averge numbers reported by the application in each case.
 
 
 \subsection{MPI Hello World}
@@ -136,3 +139,5 @@ HeatSolver - different number of nodes - ORTE vs. HPX-RTE
 \subsection{Code Size}
 
 NAS parallel benchmarks~\cite{bailey1991parallel}
+
+\fi

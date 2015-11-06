@@ -401,18 +401,4 @@ InfiniBand~Trade Association et~al.
 \newblock {\em InfiniBand Architecture Specification: Release 1.0}.
 \newblock InfiniBand Trade Association, 2000.
 
-\bibitem{resch1999comparison}
-Michael Resch, Bj{\"o}rn Sander, and Isabel Loebich.
-\newblock A comparison of openmp and mpi for the parallel cfd test case.
-\newblock In {\em Proc. of the First European Workshop on OpenMP}, pages
-  71--75, 1999.
-
-\bibitem{bailey1991parallel}
-David~H Bailey, Eric Barszcz, John~T Barton, David~S Browning, Russell~L
-  Carter, Leonardo Dagum, Rod~A Fatoohi, Paul~O Frederickson, Thomas~A
-  Lasinski, Rob~S Schreiber, et~al.
-\newblock The nas parallel benchmarks.
-\newblock {\em International Journal of High Performance Computing
-  Applications}, 5(3):63--73, 1991.
-
 \end{thebibliography}
