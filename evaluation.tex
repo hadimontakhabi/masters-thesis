@@ -39,14 +39,10 @@ For the purpose of evaluation, the crill cluster at the Research and Computing C
 \item \textbf{Operating System}\\
   Linux kernel version 3.11.10-21-desktop\\
   Distribution: openSUSE 13.1 (x86\_64)
-\item \textbf{Open MPI}\\
-  Version 1.8
-\item \textbf{HPX}\\
-  Version 0.9.10 release
-\item \textbf{Boost}\\
-  Version 1.55.0
-\item \textbf{GCC and G++}\\
-  Version 4.8.1
+\item \textbf{Open MPI} version 1.8
+\item \textbf{HPX} version 0.9.10 release
+\item \textbf{Boost} version 1.55.0
+\item \textbf{GCC and G++} version 4.8.1
 \end{itemize}
 
 
@@ -119,7 +115,23 @@ HeatSolver - different number of nodes - ORTE vs. HPX-RTE
 
 %srun -N 2 -n 2 -c 2 ./mpi_hello --hpx:run-hpx-main --hpx:threads=2
 
-\subsection{Parallel Execution}
+\subsection{Heat Solver}
+~\cite{resch1999comparison}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{images/time-all-heatsolver-80-infiniband.png}
+\caption[Application Reported Time - Hello World - Infiniband]{Time - Heat Solver - Problem Size 80x80x80 - Infiniband}
+\label{fig:time-all-heatsolver-80-infiniband.png}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{images/time-app-heatsolver-80-infiniband.png}
+\caption[Application Reported Time - Hello World - Infiniband]{Application Reported Time - Heat Solver - Problem Size 80x80x80 - Infiniband}
+\label{fig:time-app-heatsolver-80-infiniband.png}
+\end{figure}
+
 
 \subsection{Code Size}
 
