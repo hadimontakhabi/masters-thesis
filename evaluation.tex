@@ -153,27 +153,44 @@ Figure \ref{fig:time-app-hello-world-infiniband} shows the time measured startin
 \subsection{Parallel Smoothing}
 This application performs smoothing on an input image on a pized by pixel basis. The algorithm changes the class that a pixel has been assigned to if majority of neighboring elements have a different class. For each pixel, we consider an area of 5x5 pixels (two pixels in each direction). Input file contains the integer value of the class that it belongs to for each pixel. The algorithm is performed iteratively 10 times, and the result is written to an output file.
 
+Figure \ref{fig:time-all-smoother-1024-infiniband} and \ref{images/time-app-smoother-1024-infiniband.png} show the running time and application reported time accordingly. The input image size is 1024x1024 pixels.
+
+We can see a slight performance benefit using HPX-RTE in both cases. However, this is more obvious in the overal reported times. In the case of application reported time in this algorithm, the application is reporting only the smoothing part (communication and computation). Reading from the input file and writing to the output file are not inside the section of the code the application is reporting the time for. This shows that the computation and communication times are very close, and the actual difference comes from the choice of runtime.
+
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.7]{images/time-all-smoother-1024-infiniband.png}
-\caption[Time - Parallel Smoothing]{Time - Parallel Smoothing}
+\caption[Time - Parallel Smoothing - 1024x1024]{Time - Parallel Smoothing - 1024x1024}
 \label{fig:time-all-smoother-1024-infiniband}
 \end{figure}
-
-In this case, the application is reporting only the smoothing part (communication and computation). Reading from the input file and writing to the output file are not inside the section of the code the application is reporting the time for.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.7]{images/time-app-smoother-1024-infiniband.png}
-\caption[Application Reported Time - Parallel Smoothing]{Application Reported Time - Parallel Smoothing}
+\caption[Application Reported Time - Parallel Smoothing - 1024x1024]{Application Reported Time - Parallel Smoothing - 1024x1024}
 \label{fig:time-app-smoother-1024-infiniband}
 \end{figure}
 
+We ran the same test on an input image of size 2048x2048 pixels. The results are shown in Figure \ref{fig:time-all-smoother-2048-infiniband} and Figure \ref{fig:time-app-smoother-2048-infiniband}.
 
-%srun -N 2 -n 2 -c 2 ./mpi_hello --hpx:run-hpx-main --hpx:threads=2
+The comparison between two different input sizes shows that by increasing the problem size, the different between two runtimes becomes smaller and smaller. This is in accordance with what we suggested previously that the HPX-RTE runtime by itself is faster than ORTE, but the difference shows itself when the application is not dominated by communicational and computational work load.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{images/time-all-smoother-2048-infiniband.png}
+\caption[Time - Parallel Smoothing - 2048x2048]{Time - Parallel Smoothing - 2048x2048}
+\label{fig:time-all-smoother-2048-infiniband}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{images/time-app-smoother-2048-infiniband.png}
+\caption[Application Reported Time - Parallel Smoothing - 2048x2048]{Application Reported Time - Parallel Smoothing - 2048x2048}
+\label{fig:time-app-smoother-2048-infiniband}
+\end{figure}
+
 
 \iffalse
-
 \subsection{Code Size}
 
 NAS parallel benchmarks~\cite{bailey1991parallel}
