@@ -401,4 +401,10 @@ InfiniBand~Trade Association et~al.
 \newblock {\em InfiniBand Architecture Specification: Release 1.0}.
 \newblock InfiniBand Trade Association, 2000.
 
+\bibitem{yoo2003slurm}
+Andy~B Yoo, Morris~A Jette, and Mark Grondona.
+\newblock Slurm: Simple linux utility for resource management.
+\newblock In {\em Job Scheduling Strategies for Parallel Processing}, pages
+  44--60. Springer, 2003.
+
 \end{thebibliography}

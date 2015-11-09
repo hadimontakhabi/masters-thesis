@@ -83,7 +83,6 @@ Listing \ref{lst:compile} illustrates the compile line for our Hello World examp
 \end{lstlisting}
 
 \subsection{Running MPI Applications}
-\iffalse
 
 For running applications using ORTE, we will use ``mpirun'' command, which is a soft link to ``orterun'' command. This is shown in listing \ref{lst:orterun}.
 
@@ -91,13 +90,14 @@ For running applications using ORTE, we will use ``mpirun'' command, which is a 
 $ mpirun -np 1 -pernode ./mpi_hello
 \end{lstlisting}
 
-HPX provides support for Slurm(Simple linux utility for resource management)~\cite{yoo2003slurm}. To run applications using HPX-RTE, we use ``srun'' command. Listing \ref{lst:hpxrte-run} demonstrates an example.
+HPX provides support for Slurm (Simple linux utility for resource management)~\cite{yoo2003slurm}. To run applications using HPX-RTE, we use ``srun'' command. Listing \ref{lst:hpxrte-run} demonstrates an example.
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Running MPI Applications Using HPX-RTE \label{lst:hpxrte-run}]
 $ srun -N 1  -n 1 --ntasks-per-node=1 ./mpi_hello --hpx:run-hpx-main
   --hpx:threads=2
 \end{lstlisting}
 
+\iffalse
 
 \section{Evaluation}
 
