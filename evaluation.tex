@@ -100,11 +100,14 @@ $ srun -N 1  -n 1 --ntasks-per-node=1 ./mpi_hello --hpx:run-hpx-main
 \section{Evaluation}
 In our evaluations, there are two ways to measure the time in the case of each application: The total time measured by the ``time'' command in Linux (Listing \ref{lst:hpxrte-run} nad \ref{lst:orterun}), and measuring the time within the application. The time reported by the application is reported on a per process basis. Numbers reported in this section are averge numbers reported by the application when the application reported times are reported. Every test was run at lesat three times. The average of all three times is reported.
 
-\iffalse
 
-
-\subsection{Heat Solver}
-~\cite{resch1999comparison}
+\subsection{Parallel Computational Fluid Dynamics}
+We use an MPI implementation~\cite{resch1999comparison} of a computational fluid dynamics (CFD) test case defined by Ecer, Satofuka, Periaux, and Taylor, 2006~\cite{ecer1996parallel}.
+The objective is to solve the following partial differential equation (PDE) on a parallel computer:
+\[
+\frac{df}{f} = \Delta f
+\]
+This test case uses an explicit scheme with forward time and centered space. The equation is solved over a cube of unit dimensions. The initial conditions everywhere inside the cube are: f = 0. The boundary conditions are: f = x on all edges. The implementation calculates the steady-state solution.
 
 \begin{figure}[h!]
 \centering
@@ -120,7 +123,7 @@ In our evaluations, there are two ways to measure the time in the case of each a
 \label{fig:time-app-heatsolver-80-infiniband.png}
 \end{figure}
 
-
+\iffalse
 \subsection{MPI Hello World}
 
 \begin{figure}[h!]
