@@ -407,16 +407,16 @@ Andy~B Yoo, Morris~A Jette, and Mark Grondona.
 \newblock In {\em Job Scheduling Strategies for Parallel Processing}, pages
   44--60. Springer, 2003.
 
-\bibitem{ecer1996parallel}
-Akin Ecer, N~Satofuka, Jacques Periaux, and S~Taylor.
-\newblock {\em Parallel Computational Fluid Dynamics' 95: Implementations and
-  Results Using Parallel Computers}.
-\newblock Elsevier, 1996.
-
 \bibitem{resch1999comparison}
 Michael Resch, Bj{\"o}rn Sander, and Isabel Loebich.
 \newblock A comparison of openmp and mpi for the parallel cfd test case.
 \newblock In {\em Proc. of the First European Workshop on OpenMP}, pages
   71--75, 1999.
+
+\bibitem{ecer1996parallel}
+Akin Ecer, N~Satofuka, Jacques Periaux, and S~Taylor.
+\newblock {\em Parallel Computational Fluid Dynamics' 95: Implementations and
+  Results Using Parallel Computers}.
+\newblock Elsevier, 1996.
 
 \end{thebibliography}

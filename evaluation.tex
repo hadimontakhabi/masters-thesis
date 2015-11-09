@@ -109,31 +109,70 @@ The objective is to solve the following partial differential equation (PDE) on a
 \]
 This test case uses an explicit scheme with forward time and centered space. The equation is solved over a cube of unit dimensions. The initial conditions everywhere inside the cube are: f = 0. The boundary conditions are: f = x on all edges. The implementation calculates the steady-state solution.
 
+Figure \ref{fig:time-all-heatsolver-80-infiniband} shows the time spent running the application using ORTE and HPX-RTE. We ran the application with different number of processes (1, 2, 4, 8, and 16).
+
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.7]{images/time-all-heatsolver-80-infiniband.png}
-\caption[Application Reported Time - Hello World - Infiniband]{Time - Heat Solver - Problem Size 80x80x80 - Infiniband}
-\label{fig:time-all-heatsolver-80-infiniband.png}
+\caption[CFD Running Time]{CFD Running Time}
+\label{fig:time-all-heatsolver-80-infiniband}
 \end{figure}
+
+Figure \ref{fig:time-app-heatsolver-80-infiniband} illustrates the times reported by the application using ORTE and HPX-RTE.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.7]{images/time-app-heatsolver-80-infiniband.png}
-\caption[Application Reported Time - Hello World - Infiniband]{Application Reported Time - Heat Solver - Problem Size 80x80x80 - Infiniband}
-\label{fig:time-app-heatsolver-80-infiniband.png}
+\caption[CFD Application Reported Time]{CFD Application Reported Time}
+\label{fig:time-app-heatsolver-80-infiniband}
 \end{figure}
 
-\iffalse
+Both Figure \ref{fig:time-all-heatsolver-80-infiniband} and Figure \ref{fig:time-app-heatsolver-80-infiniband} demonstrate that despite slight better time performance using HPX-RTE in most cases, the overall times are very close. We believe this is because the overall time is dominated by communication and computation over the time spent by the runtime. To better understand the effect of the runtime, we can study an example with minimal communication and computation. 
+
+
 \subsection{MPI Hello World}
+A very good example to study the performance of the runtime with eliminating the communication and computation times would be a simple ``Hello World'' example. Figure \ref{fig:time-all-hello-world-infiniband} illustrates the running time measured by the ``time'' command.
+
+Figure \ref{fig:time-app-hello-world-infiniband} shows the time measured starting before \verb|MPI_Init()| until after \verb|MPI_Finalize()| funtion. This example demonstrates an improvement ranging from 31 to 53 percent using HPX-RTE over ORTE.
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.7]{images/time-all-hello-world-infiniband.png}
+%\caption[Time - Hello World]{Time - Hello World}
+%\label{fig:time-all-hello-world-infiniband}
+%\end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.7]{images/time-app-hello-world-infiniband.png}
-\caption[Application Reported Time - Hello World - Infiniband]{Application Reported Time - Hello World - Infiniband}
+\caption[Application Reported Time - Hello World]{Application Reported Time - Hello World}
 \label{fig:time-app-hello-world-infiniband}
 \end{figure}
 
+
+\subsection{Parallel Smoothing}
+This application performs smoothing on an input image on a pized by pixel basis. The algorithm changes the class that a pixel has been assigned to if majority of neighboring elements have a different class. For each pixel, we consider an area of 5x5 pixels (two pixels in each direction). Input file contains the integer value of the class that it belongs to for each pixel. The algorithm is performed iteratively 10 times, and the result is written to an output file.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{images/time-all-smoother-1024-infiniband.png}
+\caption[Time - Parallel Smoothing]{Time - Parallel Smoothing}
+\label{fig:time-all-smoother-1024-infiniband}
+\end{figure}
+
+In this case, the application is reporting only the smoothing part (communication and computation). Reading from the input file and writing to the output file are not inside the section of the code the application is reporting the time for.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{images/time-app-smoother-1024-infiniband.png}
+\caption[Application Reported Time - Parallel Smoothing]{Application Reported Time - Parallel Smoothing}
+\label{fig:time-app-smoother-1024-infiniband}
+\end{figure}
+
+
 %srun -N 2 -n 2 -c 2 ./mpi_hello --hpx:run-hpx-main --hpx:threads=2
+
+\iffalse
 
 \subsection{Code Size}
 
