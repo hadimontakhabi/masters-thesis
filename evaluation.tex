@@ -83,7 +83,6 @@ Listing \ref{lst:compile} illustrates the compile line for our Hello World examp
 \end{lstlisting}
 
 \subsection{Running MPI Applications}
-
 For running applications using ORTE, we will use ``mpirun'' command, which is a soft link to ``orterun'' command. This is shown in listing \ref{lst:orterun}.
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Running MPI Applications Using ORTE \label{lst:orterun}]
@@ -97,24 +96,12 @@ $ srun -N 1  -n 1 --ntasks-per-node=1 ./mpi_hello --hpx:run-hpx-main
   --hpx:threads=2
 \end{lstlisting}
 
-\iffalse
 
 \section{Evaluation}
+In our evaluations, there are two ways to measure the time in the case of each application: The total time measured by the ``time'' command in Linux (Listing \ref{lst:hpxrte-run} nad \ref{lst:orterun}), and measuring the time within the application. The time reported by the application is reported on a per process basis. Numbers reported in this section are averge numbers reported by the application when the application reported times are reported. Every test was run at lesat three times. The average of all three times is reported.
 
-In our evaluations, there are two ways to measure the time in the case of each application: The total time measured by the ``time'' command in Linux (Listing \ref{lst:hpxrte-run} nad \ref{lst:orterun}), and measuring the time within the application. The time reported by the application is reported on a per process basis. Numbers reported in this section are averge numbers reported by the application when the application reported times are reported.
+\iffalse
 
-Every test was run at lesat three times. The average of all three times is reported.
-
-\subsection{MPI Hello World}
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-app-hello-world-infiniband.png}
-\caption[Application Reported Time - Hello World - Infiniband]{Application Reported Time - Hello World - Infiniband}
-\label{fig:time-app-hello-world-infiniband}
-\end{figure}
-
-%srun -N 2 -n 2 -c 2 ./mpi_hello --hpx:run-hpx-main --hpx:threads=2
 
 \subsection{Heat Solver}
 ~\cite{resch1999comparison}
@@ -133,6 +120,17 @@ Every test was run at lesat three times. The average of all three times is repor
 \label{fig:time-app-heatsolver-80-infiniband.png}
 \end{figure}
 
+
+\subsection{MPI Hello World}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{images/time-app-hello-world-infiniband.png}
+\caption[Application Reported Time - Hello World - Infiniband]{Application Reported Time - Hello World - Infiniband}
+\label{fig:time-app-hello-world-infiniband}
+\end{figure}
+
+%srun -N 2 -n 2 -c 2 ./mpi_hello --hpx:run-hpx-main --hpx:threads=2
 
 \subsection{Code Size}
 

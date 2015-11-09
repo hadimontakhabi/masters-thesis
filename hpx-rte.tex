@@ -277,7 +277,7 @@ Some of the main implementation features of HPX-RTE include:
 
 \begin{enumerate}
 \item \textbf{Distributed Database}\\
-  For the runtime environment, we need to store a set of key-value pairs in a database accessible to all the localities participating in a job. Utilizing HPX actions, HPX-RTE stores the data on local node at the time a store operation is issued. However, to retrieve the data the processes take advantage of HPX actions (remote function calls) to fetch the stored data from the database on the locality it is stored on. In theory, this database scheme eliminates the bottleneck of accessing a centralized database, or storing copies of all the database entries in every single locality. Therefore, it distributes the database, uses less space, and makes accessing the stored data faster. Listing \ref{lst:put} and \ref{lst:get} demononstrate two funtions (\verb|hpx_rte_cpp_put| and \verb|hpx_rte_cpp_get|) that store and fetch operations are built based on.
+  For the runtime environment, we need to store a set of key-value pairs in a database accessible to all the localities participating in a job. Utilizing HPX actions, HPX-RTE stores the data on local node at the time a store operation is issued. We have used singly linked list to store the data. However, to retrieve the data the processes take advantage of HPX actions (remote function calls) to fetch the stored data from the database on the locality it is stored on. In theory, this database scheme eliminates the bottleneck of accessing a centralized database, or storing copies of all the database entries in every single locality. Therefore, it distributes the database, uses less space, and makes accessing the stored data faster. Listing \ref{lst:put} and \ref{lst:get} demononstrate two funtions (\verb|hpx_rte_cpp_put| and \verb|hpx_rte_cpp_get|) that store and fetch operations are built based on.
 
   \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Put Functionality\label{lst:put}]
   int rte_hpx_cpp_put(char* key, int keysize,
@@ -289,14 +289,10 @@ Some of the main implementation features of HPX-RTE include:
   }
   \end{lstlisting}
 
-  
 \item \textbf{Barrier Semantics}\\
-  HPX strives not to have barriers that would stall all processes or threads for a particular operation to be completed. Instead, there are fine-grained mechanisms available for synchronization. However, a barrier (global synchronization point) is a requirement for the runtime component in Open MPI. We have developed an algorithm that implements barrier semantics by making effective use of HPX actions and remote asynchronous function calls (Listing \ref{lst:barrier}).
-\item \textbf{Mapping Localities to Ranks}\\
-  HPX uses the notion of locality. ``A locality represents a set of hardware resources with bounded, finite latencies.''~\cite{kaiser2014hpx} MPI uses ranks. We have provided a translation table from HPX localities to mpi ranks.
-\item \textbf{Populating Internal Data Structures}\\
-  A number of internal data structures need to be initialized within the runtime environment before starting the MPI initialization. This is done in the runtime initialization function.
+  HPX strives not to have barriers that would stall all processes or threads for a particular operation to be completed. Instead, there are fine-grained mechanisms available for synchronization. However, a barrier (global synchronization point) is a requirement for the runtime component in Open MPI. We have developed an algorithm that implements barrier semantics by making effective use of HPX actions and remote asynchronous function calls (Listing \ref{lst:barrier}). We create a vector of futures with its size equal to the number of localities. Then, we asynchronously call an action to add one to a globally shared atomic counter on each locality. When this counter reaches the total number of localities, the synchronization is accomplished.
 
+  
   \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Get Functionality using HPX Asynchronous Actions\label{lst:get}]
   int rte_hpx_cpp_get( int vpid, char* key, char** value )
   {
@@ -316,6 +312,12 @@ Some of the main implementation features of HPX-RTE include:
   }
   \end{lstlisting}
 
+
+\item \textbf{Mapping Localities to Ranks}\\
+  HPX uses the notion of locality. ``A locality represents a set of hardware resources with bounded, finite latencies.''~\cite{kaiser2014hpx} MPI uses ranks. We have provided a translation table from HPX localities to mpi ranks.
+
+\item \textbf{Populating Internal Data Structures}\\
+  A number of internal data structures need to be initialized within the runtime environment before starting the MPI initialization. This is done in the runtime initialization function.
   
   \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Barrier Implementation\label{lst:barrier}]
   void rte_hpx_barrier()
@@ -337,8 +339,9 @@ Some of the main implementation features of HPX-RTE include:
   
 \item \textbf{Populate Key-Value Pairs in the Database}\\
   Since the defined abstraction layer is not implemented perfectly, there was a number of key-value pairs that were needed to be populated into the database. In theory, this shouldn't be the case. But this is a matter of implementation practices. For instance, some of these key-value pairs are set in ORTE layer (which is supposedly an independent layer) and used in OMPI layer. Identifying and extracting those pairs was a challenging task.
-\item \textbf{Intercepting printf}\\
-  In order to see the output from C part of the code, we needed to intercept the printf function in C and send its output to C++ output stream. Listing \ref{lst:printf} shows our implementation of print function.
+
+\item \textbf{Intercepting C Standard Output}\\
+  In order to see the output from C part of the code, we needed to intercept the printf function in C and send its output to C++ output stream. Listing \ref{lst:printf} shows our implementation of print function. This technique can be used for any other standard output function in C.
 
   \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Intercepting printf\label{lst:printf}]
   int printf(const char *restrict format, ...)
@@ -369,29 +372,28 @@ Some of the main implementation features of HPX-RTE include:
   #endif
   \end{lstlisting}
 
-  
-  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Exposing Different Functions to C and C++ Compilers\label{lst:functions}]
-  #if defined(__cplusplus)
-  extern ``C'' {
-    struct Node{
-      struct Node *next;
-      std::string key;
-      std::vector<char> value;
-      int originator;
-    };
-    typedef struct Node Node;
-    int rte_hpx_vpid(void);
-    int rte_hpx_num_localities(void);
-    void rte_hpx_local_map(void);
-    void rte_hpx_barrier(void);
-  }
-  #endif
-\end{lstlisting}
-
   The same technique is applied for functions that are written in C or C++. We also utilized \textbf{extern ``C''} to make function names in C++ have C linkage (compiler does not mangle the name) so that client C code can link to the functions using a C compatible header file that contains just the declaration of those functions. Listing \ref{lst:functions} illustrates the technique. Note that this listing does not contain all the function prototypes in the source code.
   
   We also had to use C++ to compile a number of components that were initially compiled by the C compiler in Open MPI.
-  
+
+  \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Exposing Different Functions to C and C++ Compilers\label{lst:functions}]
+    #if defined(__cplusplus)
+    extern ``C'' {
+      struct Node{
+        struct Node *next;
+        std::string key;
+        std::vector<char> value;
+        int originator;
+      };
+      typedef struct Node Node;
+      int rte_hpx_vpid(void);
+      int rte_hpx_num_localities(void);
+      void rte_hpx_local_map(void);
+      void rte_hpx_barrier(void);
+    }
+    #endif
+  \end{lstlisting}
+
 \item \textbf{Communication Protocols}\\
   Current implementation of HPX-RTE supports Transmission Control Protocol(TCP)~\cite{1092259} and Infiniband~\cite{infiniband2000infiniband} communication protocol.
 \end{enumerate}
