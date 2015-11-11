@@ -109,39 +109,40 @@ The objective is to solve the following partial differential equation (PDE) on a
 \]
 This test case uses an explicit scheme with forward time and centered space. The equation is solved over a cube of unit dimensions. The initial conditions everywhere inside the cube are: f = 0. The boundary conditions are: f = x on all edges. The implementation calculates the steady-state solution.
 
-Figure \ref{fig:time-all-heatsolver-80-infiniband} shows the time spent running the application using ORTE and HPX-RTE. We ran the application with different number of processes (1, 2, 4, 8, and 16). The grid dimensions is 80x80x80.
+Figure \ref{fig:time-all-heatsolver-100-infiniband} shows the time spent running the application using ORTE and HPX-RTE. Figure \ref{fig:time-app-heatsolver-100-infiniband} illustrates the times reported by the application using ORTE and HPX-RTE. We ran the application with different number of processes (1, 2, 4, 8, and 16). The grid dimensions is 100x100x100.
+
 
 \begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-all-heatsolver-80-infiniband.png}
-\caption[CFD Running Time - 80x80x80]{CFD Running Time - 80x80x80}
-\label{fig:time-all-heatsolver-80-infiniband}
-\end{figure}
-
-Figure \ref{fig:time-app-heatsolver-80-infiniband} illustrates the times reported by the application using ORTE and HPX-RTE.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-app-heatsolver-80-infiniband.png}
-\caption[CFD Application Reported Time - 80x80x80]{CFD Application Reported Time - 80x80x80}
-\label{fig:time-app-heatsolver-80-infiniband}
-\end{figure}
-
-Both Figure \ref{fig:time-all-heatsolver-80-infiniband} and Figure \ref{fig:time-app-heatsolver-80-infiniband} demonstrate that despite slight better time performance using HPX-RTE in most cases, the overall times are very close. We believe this is because the overall time is dominated by communication and computation over the time spent by the runtime. To verify this, we increased the problem size and used a grid of size 100x100x100. The results are shown in Figure \ref{fig:time-all-heatsolver-100-infiniband} and Figure \ref{fig:time-app-heatsolver-100-infiniband}. To better understand the effect of the runtime, we can study an example with minimal communication and computation. 
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-all-heatsolver-100-infiniband.png}
-\caption[CFD Running Time - 100x100x100]{CFD Running Time - 100x100x100}
-\label{fig:time-all-heatsolver-100-infiniband}
+  \centering
+  \includegraphics[scale=0.7]{images/time-all-heatsolver-100-infiniband.png}
+  \caption[CFD Running Time - 100x100x100]{CFD Running Time - 100x100x100}
+  \label{fig:time-all-heatsolver-100-infiniband}
 \end{figure}
 
 \begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-app-heatsolver-100-infiniband.png}
-\caption[CFD Application Reported Time - 100x100x100]{CFD Application Reported Time - 100x100x100}
-\label{fig:time-app-heatsolver-100-infiniband}
+  \centering
+  \includegraphics[scale=0.7]{images/time-app-heatsolver-100-infiniband.png}
+  \caption[CFD Application Reported Time - 100x100x100]{CFD Application Reported Time - 100x100x100}
+  \label{fig:time-app-heatsolver-100-infiniband}
 \end{figure}
+
+Both Figure \ref{fig:time-all-heatsolver-100-infiniband} and Figure \ref{fig:time-app-heatsolver-100-infiniband} demonstrate that despite slight better time performance using HPX-RTE in most cases, the overall times are very close. We believe this is because the overall time is dominated by communication and computation over the time spent by the runtime. To verify this, we decreased the problem size and used a grid of size 80x80x80. The results are shown in Figure \ref{fig:time-all-heatsolver-80-infiniband} and Figure \ref{fig:time-app-heatsolver-80-infiniband}. 
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.7]{images/time-all-heatsolver-80-infiniband.png}
+  \caption[CFD Running Time - 80x80x80]{CFD Running Time - 80x80x80}
+  \label{fig:time-all-heatsolver-80-infiniband}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.7]{images/time-app-heatsolver-80-infiniband.png}
+  \caption[CFD Application Reported Time - 80x80x80]{CFD Application Reported Time - 80x80x80}
+  \label{fig:time-app-heatsolver-80-infiniband}
+\end{figure}
+    
+To better understand the effect of the runtime, we can study an example with minimal communication and computation. 
 
 
 \subsection{MPI Hello World}
