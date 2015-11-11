@@ -126,7 +126,8 @@ Figure \ref{fig:time-all-heatsolver-100-infiniband} shows the time spent running
   \label{fig:time-app-heatsolver-100-infiniband}
 \end{figure}
 
-Both Figure \ref{fig:time-all-heatsolver-100-infiniband} and Figure \ref{fig:time-app-heatsolver-100-infiniband} demonstrate that despite slight better time performance using HPX-RTE in most cases, the overall times are very close. We believe this is because the overall time is dominated by communication and computation over the time spent by the runtime. To verify this, we decreased the problem size and used a grid of size 80x80x80. The results are shown in Figure \ref{fig:time-all-heatsolver-80-infiniband} and Figure \ref{fig:time-app-heatsolver-80-infiniband}. 
+Both Figure \ref{fig:time-all-heatsolver-100-infiniband} and Figure \ref{fig:time-app-heatsolver-100-infiniband} demonstrate that despite slight better time performance using HPX-RTE in most cases, the overall times are very close. We believe this is because the overall time is dominated by communication and computation over the time spent by the runtime. To verify this, we decreased the problem size and used a grid of size 80x80x80. The results shown in Figure \ref{fig:time-all-heatsolver-80-infiniband} and Figure \ref{fig:time-app-heatsolver-80-infiniband} support this hypothesis. As we decrease the problem size, the time difference becomes more distinct.
+
 
 \begin{figure}[h!]
   \centering
@@ -135,7 +136,7 @@ Both Figure \ref{fig:time-all-heatsolver-100-infiniband} and Figure \ref{fig:tim
   \label{fig:time-all-heatsolver-80-infiniband}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[h]
   \centering
   \includegraphics[scale=0.7]{images/time-app-heatsolver-80-infiniband.png}
   \caption[CFD Application Reported Time - 80x80x80]{CFD Application Reported Time - 80x80x80}
