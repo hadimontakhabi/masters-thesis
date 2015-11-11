@@ -111,7 +111,6 @@ This test case uses an explicit scheme with forward time and centered space. The
 
 Figure \ref{fig:time-all-heatsolver-100-infiniband} shows the time spent running the application using ORTE and HPX-RTE. Figure \ref{fig:time-app-heatsolver-100-infiniband} illustrates the times reported by the application using ORTE and HPX-RTE. We ran the application with different number of processes (1, 2, 4, 8, and 16). The grid dimensions is 100x100x100.
 
-
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.7]{images/time-all-heatsolver-100-infiniband.png}
@@ -128,7 +127,6 @@ Figure \ref{fig:time-all-heatsolver-100-infiniband} shows the time spent running
 
 Both Figure \ref{fig:time-all-heatsolver-100-infiniband} and Figure \ref{fig:time-app-heatsolver-100-infiniband} demonstrate that despite slight better time performance using HPX-RTE in most cases, the overall times are very close. We believe this is because the overall time is dominated by communication and computation over the time spent by the runtime. To verify this, we decreased the problem size and used a grid of size 80x80x80. The results shown in Figure \ref{fig:time-all-heatsolver-80-infiniband} and Figure \ref{fig:time-app-heatsolver-80-infiniband} support this hypothesis. As we decrease the problem size, the time difference becomes more distinct.
 
-
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.7]{images/time-all-heatsolver-80-infiniband.png}
@@ -142,12 +140,12 @@ Both Figure \ref{fig:time-all-heatsolver-100-infiniband} and Figure \ref{fig:tim
   \caption[CFD Application Reported Time - 80x80x80]{CFD Application Reported Time - 80x80x80}
   \label{fig:time-app-heatsolver-80-infiniband}
 \end{figure}
-    
+
 To better understand the effect of the runtime, we can study an example with minimal communication and computation. 
 
-
+\clearpage
 \subsection{MPI Hello World}
-A very good example to study the performance of the runtime with eliminating the communication and computation times would be a simple ``Hello World'' example. Figure \ref{fig:time-all-hello-world-infiniband} illustrates the running time measured by the ``time'' command. Figure \ref{fig:time-app-hello-world-infiniband} shows the time measured starting before \verb|MPI_Init()| until after \verb|MPI_Finalize()| funtion. This example demonstrates an improvement of up to 53 percent using HPX-RTE over ORTE.
+A very good example to study the performance of the runtime would be a simple ``Hello World'' example. Since this simple application includes minimum communication and computation time, it could give us a better picture of the time spent in the runtime. Figure \ref{fig:time-all-hello-world-infiniband} illustrates the running time measured by the ``time'' command. Figure \ref{fig:time-app-hello-world-infiniband} shows the time measured starting before \verb|MPI_Init()| until after \verb|MPI_Finalize()| funtion. There is an improvement of up to 53 percent using HPX-RTE over ORTE.
 
 \begin{figure}[h!]
 \centering
@@ -165,24 +163,24 @@ A very good example to study the performance of the runtime with eliminating the
 
 
 \subsection{Parallel Smoothing}
-This application performs smoothing on an input image on a pized by pixel basis. The algorithm changes the class that a pixel has been assigned to if majority of neighboring elements have a different class. For each pixel, we consider an area of 5x5 pixels (two pixels in each direction). Input file contains the integer value of the class that it belongs to for each pixel. The algorithm is performed iteratively 10 times, and the result is written to an output file.
+This application performs smoothing on an input image on a pixel by pixel basis. The algorithm changes the class that a pixel has been assigned to if majority of neighboring elements have a different class. For each pixel, we consider an area of 5x5 pixels (two pixels in each direction). Input file contains the integer value of the class that it belongs to for each pixel. The algorithm is performed iteratively 10 times, and the result is written to an output file.
 
-Figure \ref{fig:time-all-smoother-1024-infiniband} and \ref{images/time-app-smoother-1024-infiniband.png} show the running time and application reported time accordingly. The input image size is 1024x1024 pixels.
+Figure \ref{fig:time-all-smoother-1024-infiniband} and \ref{fig:time-app-smoother-1024-infiniband} show the running time and application reported time accordingly. The input image size is 1024x1024 pixels.
 
 We can see a slight performance benefit using HPX-RTE in both cases. However, this is more obvious in the overal reported times. In the case of application reported time in this algorithm, the application is reporting only the smoothing part (communication and computation). Reading from the input file and writing to the output file are not inside the section of the code the application is reporting the time for. This shows that the computation and communication times are very close, and the actual difference comes from the choice of runtime.
 
 \begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-all-smoother-1024-infiniband.png}
-\caption[Time - Parallel Smoothing - 1024x1024]{Time - Parallel Smoothing - 1024x1024}
-\label{fig:time-all-smoother-1024-infiniband}
+  \centering
+  \includegraphics[scale=0.7]{images/time-all-smoother-1024-infiniband.png}
+  \caption[Time - Parallel Smoothing - 1024x1024]{Time - Parallel Smoothing - 1024x1024}
+  \label{fig:time-all-smoother-1024-infiniband}
 \end{figure}
 
 \begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-app-smoother-1024-infiniband.png}
-\caption[Application Reported Time - Parallel Smoothing - 1024x1024]{Application Reported Time - Parallel Smoothing - 1024x1024}
-\label{fig:time-app-smoother-1024-infiniband}
+  \centering
+  \includegraphics[scale=0.7]{images/time-app-smoother-1024-infiniband.png}
+  \caption[Application Reported Time - Parallel Smoothing - 1024x1024]{Application Reported Time - Parallel Smoothing - 1024x1024}
+  \label{fig:time-app-smoother-1024-infiniband}
 \end{figure}
 
 We ran the same test on an input image of size 2048x2048 pixels. The results are shown in Figure \ref{fig:time-all-smoother-2048-infiniband} and Figure \ref{fig:time-app-smoother-2048-infiniband}.
@@ -190,17 +188,17 @@ We ran the same test on an input image of size 2048x2048 pixels. The results are
 The comparison between two different input sizes shows that by increasing the problem size, the different between two runtimes becomes smaller and smaller. This is in accordance with what we suggested previously that the HPX-RTE runtime by itself is faster than ORTE, but the difference shows itself when the application is not dominated by communicational and computational work load.
 
 \begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-all-smoother-2048-infiniband.png}
-\caption[Time - Parallel Smoothing - 2048x2048]{Time - Parallel Smoothing - 2048x2048}
-\label{fig:time-all-smoother-2048-infiniband}
+  \centering
+  \includegraphics[scale=0.7]{images/time-all-smoother-2048-infiniband.png}
+  \caption[Time - Parallel Smoothing - 2048x2048]{Time - Parallel Smoothing - 2048x2048}
+  \label{fig:time-all-smoother-2048-infiniband}
 \end{figure}
 
 \begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{images/time-app-smoother-2048-infiniband.png}
-\caption[Application Reported Time - Parallel Smoothing - 2048x2048]{Application Reported Time - Parallel Smoothing - 2048x2048}
-\label{fig:time-app-smoother-2048-infiniband}
+  \centering
+  \includegraphics[scale=0.7]{images/time-app-smoother-2048-infiniband.png}
+  \caption[Application Reported Time - Parallel Smoothing - 2048x2048]{Application Reported Time - Parallel Smoothing - 2048x2048}
+  \label{fig:time-app-smoother-2048-infiniband}
 \end{figure}
 
 
