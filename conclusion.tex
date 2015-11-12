@@ -6,19 +6,26 @@ High performance computing systems are growing toward hundreds of thousands to m
 HPX-RTE is a new, light weight, and open source runtime system specifically designed for the emerging exascale computing environment. The system is designed relying on HPX project advanced features such as asynchronous remote function calls (actions) and C++ futures to allow for easy extension and transparent scalability. HPX-RTE provides full compatibility for current MPI applications to run on HPX runtime system. 
 
 \section{Performance}
-Even though funcionality was the main priority in the design of HPX-RTE, our evaluations of HPX-RTE show better or equivalent performance compared to ORTE. We demonstrated the results of three different applications: Parallel computational fluid dynamics, hello world, and parallel smoothing.
+Even though funcionality was the main priority in the design of HPX-RTE, our evaluations of HPX-RTE show better or equivalent performance compared to ORTE. We demonstrated the results of three different applications with different problem sizes: Parallel computational fluid dynamics, hello world, and parallel smoothing.
+
+The source code size for HPX-RTE is more than \textbf{99.36\%} smaller than ORTE's source code. This makes the source code much simpler and easier to understand. Moreover, based on our evaluations the significant smaller size of runtime has not sacrificed the performance.
 
 \section{Future Extensions}
+HPX-RTE and the features it utilizes can be further integrated into Open MPI project in future. Some of the ways this could be accomplished include:
+
+\begin{itemize}
+
+\item \textbf{Further Evaluation and Performance Optimization}\\
+Since performance was not the main focus of the implementation of HPX-RTE, further evaluations can provide better insight into different performance aspects of HPX-RTE that can be improved. Future developments of HPX-RTE can specifically target performance and make further improvements to the source code. 
+
+\item \textbf{More Than One Locality Per Node}\\
 Current version of HPX-RTE is limited to one locality per node. Adding support for more than one locality (process) per node could be an extension in future versions.
-Future developments of HPX-RTE can specifically target performance and make further improvements to the source code. 
 
-HPX-RTE provides an easy and simple path for transition from MPI to HPX. 
+\item \textbf{Hybrid Programming Models}\\
+With the tight integration of HPX into Open MPI runtime provided by HPX-RTE, the possibility of hybrid programming models such as HPX-MPI is not far from reach. HPX-RTE also makes the transition from MPI to HPX easy. Application developers can replace parts of their code with HPX based implementation while their entire application does not need to be replaced and application functionality is maintained.
 
-\section{Hybrid Programming Models}
-With the tight integration of HPX into Open MPI runtime provided by HPX-RTE, the possibility of hybrid programming models such as HPX-MPI is not far from reach. HPX-RTE also makes the transition from MPI to HPX easy. Application developers can replace parts of their code with HPX based implementation while their whole application functionality is maintained.
+\item \textbf{Incorporating HPX Features into Open MPI Frameworks}\\
+Taking advantage of the compatibility provided by HPX-RTE, Open MPI developers could incorporate features from HPX project into the implementaion of components in other frameworks within the Open MPI project with similar design principles we had in mind for HPX-RTE. This could potentially improve performance, decrease the source code size, and provide simpler code.    
+\end{itemize}
 
-\section{More Evaluations}
-better insight
 
-optimization
-and integration of more features from HPX into Open MPI.
