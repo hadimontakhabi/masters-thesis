@@ -149,10 +149,10 @@ To better understand the effect of the runtime, we can study an example with min
 A very good example to study the performance of the runtime would be a simple ``Hello World'' example (Listing \ref{lst:mpi_hello}). Since this simple application includes minimum communication and computation time, it could give us a better picture of the time spent in the runtime. Figure \ref{fig:time-all-hello-world-infiniband} illustrates the running time measured by the ``time'' command. Figure \ref{fig:time-app-hello-world-infiniband} shows the time measured starting before \verb|MPI_Init()| until after \verb|MPI_Finalize()| funtion. There is an improvement of up to 53 percent using HPX-RTE over ORTE.
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=MPI Hello World \label{lst:mpi_hello}]
-#include <stdio.h>
 #include <mpi.h>
 #include <hpx/hpx_main.hpp>
-int main (int argc, char** argv) {
+int main (int argc, char** argv)
+{
   int rank, size;
   double t1, t2;
   t1 = MPI_Wtime();
