@@ -8,7 +8,10 @@ HPX-RTE is a new, light weight, and open source runtime system specifically desi
 \section{Performance}
 Even though funcionality was the main priority in the design of HPX-RTE, our evaluations of HPX-RTE show better or equivalent performance compared to ORTE. We demonstrated the results of three different applications with different problem sizes: Parallel computational fluid dynamics, hello world, and parallel smoothing.
 
-The source code size for HPX-RTE is more than \textbf{99.36\%} smaller than ORTE's source code. This makes the source code much simpler and easier to understand. Moreover, based on our evaluations the significant smaller size of runtime has not sacrificed the performance.
+The source code size for HPX-RTE is more than \textbf{99.36\%} smaller than ORTE's source code. This is partly because of utlizing HPX external library and also not supporting all the features provided by ORTE. The smaller code base makes the source code much simpler and easier to understand. Moreover, based on our evaluations the significant smaller size of runtime has not sacrificed the performance.
+
+ORTE also supports a direct launch mechanism which avoids creating the ORTE daemons on individual compute nodes but uses the native resource manager instead for the management services, e.g. an application can be started directly using the srun command in a SLURM enviornment. This version has lower startup costs, but reduces the functionality of the runtime environment.
+
 
 \section{Future Extensions}
 HPX-RTE and the features it utilizes can be further integrated into Open MPI project in future. Some of the ways this could be accomplished include:

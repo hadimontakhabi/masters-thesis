@@ -82,9 +82,9 @@ Listing \ref{lst:compile} illustrates the compile line for our Hello World examp
   -lprofiler -liostreams -L/lib64 -lrt -ldl -lutil -g -O0
 \end{lstlisting}
 
-\clearpage
+
 \subsection{Running MPI Applications}
-For running applications using ORTE, we will use ``mpirun'' command, which is a soft link to ``orterun'' command. This is shown in listing \ref{lst:orterun}.
+For running applications using ORTE, we will use ``mpirun'' command, which is a soft link to ``orterun'' command. This is shown in listing \ref{lst:orterun}. ORTE also supports a direct launch mechanism which avoids creating the ORTE daemons on individual compute nodes but uses the native resource manager instead for the management services, e.g. an application can be started directly using the srun command in a SLURM enviornment. This version has lower startup costs, but reduces the functionality of the runtime environment.
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=Running MPI Applications Using ORTE \label{lst:orterun}]
 $ mpirun -np 1 -pernode ./mpi_hello
@@ -232,5 +232,5 @@ Figure \ref{fig:code-size} shows a comparison between HPX-RTE and ORTE code size
   \label{fig:code-size}
 \end{figure}
 
-As it is shown in Figure \ref{fig:code-size}, the source code size for HPX-RTE is less than \textbf{0.64\%} of the code base for ORTE. Our evaluations in previous sections showed significant runtime performance improvement and very close overall performance using HPX-RTE over ORTE. Achieveing this level of performance with reducing the code size of the runtime by more than \textbf{99.36\%} is a significant improvement.
+As it is shown in Figure \ref{fig:code-size}, the source code size for HPX-RTE is less than \textbf{0.64\%} of the code base for ORTE. This is partly because HPX-RTE is taking advantage of the HPX library and HPX-RTE component does not currently provide support for a number of features such as failure handling and dynamic process management that are supported by ORTE. Our evaluations in previous sections showed significant runtime performance improvement and very close overall performance using HPX-RTE over ORTE. Achieveing this level of performance with reducing the code size of the runtime by more than \textbf{99.36\%} is a significant improvement.
 
