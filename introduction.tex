@@ -24,7 +24,7 @@ There are four categories defined:
 Main memory in a parallel computer is either shared or distributed~\cite{patterson2013computer}.
 
 \subsection{Shared Memory}
-In a shared memory parallel computer, the memory is shared between all processing elements as a single global address space. Multiple processors can share the same memory resources and operate independently. Changes in a memory location by one processor are visible to all other processors.\\ 
+In a shared-memory parallel computer, the memory is shared between all processing elements as a single global address space. Multiple processors can share the same memory resources and operate independently. Changes in a memory location by one processor are visible to all other processors.\\ 
 Furthermore, shared-memory architectures can be classified as symmetric multiprocessors with uniform memory access (UMA) or as non-uniform memory access (NUMA) architectures based on memory access time~\cite{kshemkalyani2008distributed,sutter2005free}.
 
 \begin{itemize}
@@ -62,7 +62,7 @@ Each processor operates independently. Changes that a processor makes to its loc
 \end{figure}
 
 \subsection{Hybrid Distributed-Shared Memory}
-By combining a shared memory and distributed memory model, we will have a hybrid distributed-shared memory system. An example for this category could be a cluster of nodes with each node having multiple cores that share the same memory (Figure \ref{fig:hybridd_mem}), or a cluster of nodes with each having multiple GPUs and cores (Figure \ref{fig:hybridd_mem2}).
+By combining a shared-memory and distributed-memory model, we will have a hybrid distributed-shared memory system. An example for this category could be a cluster of nodes with each node having multiple cores that share the same memory (Figure \ref{fig:hybridd_mem}), or a cluster of nodes with each having multiple GPUs and cores (Figure \ref{fig:hybridd_mem2}).
 
 \begin{figure}[ht]
   \centering
@@ -106,7 +106,7 @@ Problem decomposition describes the way processes are expressed to break down a 
 
 
 \section{Message Passing Interface (MPI)}
-Message Passing Interface (MPI)~\cite{mpi} is a language-independent communication application programming interface (API) used for programming in parallel environments. ``MPI is a specification for a standard library for message passing that was defined by the MPI Forum, a broadly based group of parallel computer vendors, library writers, and applications specialists.''~\cite{gropp1996high} MPI has become a de facto standard for communication among processes running on a distributed memory system.
+Message Passing Interface (MPI)~\cite{mpi} is a language-independent communication application programming interface (API) used for programming in parallel environments. ``MPI is a specification for a standard library for message passing that was defined by the MPI Forum, a broadly based group of parallel computer vendors, library writers, and applications specialists.''~\cite{gropp1996high} MPI has become a de-facto standard for communication among processes running on a distributed memory system.
 
 Message Passing Interface aims to develop an efficient, portable, and flexible standard that will be widely used for writing message passing applications. MPI is the first standardized, vendor independent, message passing library. ``MPI is not an IEEE or ISO standard, but has in fact, become the ``industry standard'' for writing message passing programs on HPC platforms.''~\cite{barker2015message}
 
@@ -136,15 +136,15 @@ There are several implementations of MPI, including some that are in the public 
 
 
 \section{Runtime Environments and MPI Jobs}
-High performance computing systems are growing toward hundreds of thousands to million node machines, utilizing the computing power of billions of cores. Running parallel applications on such large machines efficiently will require optimized runtime environments that are scalable and resilient.
+High-performance computing systems are growing toward hundreds-of-thousands to million-node machines, utilizing the computing power of billions of cores. Running parallel applications on such large machines efficiently will require optimized runtime environments that are scalable and resilient.
 
 Considering a future where MPI remains a major programming paradigm, the MPI implementations will have to seamlessly adapt to launching and managing large scale applications on resources considerably larger than today's.~\cite{bosilca2011scalability}
 
 \section{Challenges for Runtime Environments}
-Multi and many core chip architectures in large scale supercomputers pose several new challenges to designers of operating systems and runtime environments.\\
+Multi- and many-core chip architectures in large scale supercomputers pose several new challenges to designers of operating systems and runtime environments.\\
 ``Operating systems and runtime environments on supercomputers have similar goals: both seek to provide an environment for executing applications in a scalable and high-performing way. Achieving this goal often requires minimizing the layers of indirection between the application and the architecture.''~\cite{Hoefler:2012:OSR:2237840.2237848}
 
-Developing a software environment to support high performance computing applications in today's distributed systems poses a significant challenge. The runtime environment (RTE) must be capable of supporting heterogeneous operations, scale from one to large numbers of processors in an efficient manner, and provide strategies for dealing with fault scenarios that are expected of computing systems effectively. Furthermore, the runtime must be easy to use, providing users with a transparent interface to the computing environment in a manner that avoids the need to customize applications when moving between specific computing resources.~\cite{Castain2008153}
+Developing a software environment to support high-performance computing applications in today's distributed systems poses a significant challenge. The runtime environment (RTE) must be capable of supporting heterogeneous operations, scale from one to large numbers of processors in an efficient manner, and provide strategies for dealing with fault scenarios that are expected of computing systems effectively. Furthermore, the runtime must be easy to use, providing users with a transparent interface to the computing environment in a manner that avoids the need to customize applications when moving between specific computing resources.~\cite{Castain2008153}
 
 \section{The Goal of this Thesis}
 ParalleX~\cite{4228212} is a new (and still experimental) general purpose parallel execution model aiming to overcome the limitations imposed by the current hardware and the way we write applications today. High Performance ParalleX (HPX)~\cite{Kaiser:2014:HTB:2676870.2676883} is an experimental runtime system for ParalleX.
@@ -157,4 +157,4 @@ The goal of this thesis is to provide a compatibility mechanism for MPI applicat
 Design and implementation of HPX-RTE, the new runtime environment for Open MPI, is the main contribution of this thesis. HPX-RTE provides a compatibility layer for MPI applications to run on HPX runtime environment without any modification to the applications written in MPI. HPX-RTE facilitates the transition from MPI to ParalleX programming model. HPX-RTE makes it possible for new programming paradigms such as MPI-HPX hybrid model to emerge. This thesis also presents a set of performance comparisons between HPX-RTE and ORTE (Open MPI's default runtime environment).
 
 \section{Organization of the Document}
-Chapter \ref{sec:Background} provides a background and the state of art approaches to parallel runtime enviroment challenges. Open MPI as an implementation of choice will be introduced. We will discuss the project features and its architecture. Open Runtime Environment (ORTE), the current runtime environment for Open MPI project, and its features will be discussed in detail in secion \ref{sec:orte}. ParalleX and High Perfomance ParalleX (HPX) will be presented in section \ref{sec:hpx}. Chapter \ref{sec:HPX-RTE} covers the design principles, architecture, and implementation of our runtime environment for Open MPI (HPX-RTE) in sections \ref{sec:design}, \ref{sec:architecture}, and \ref{sec:implementation} accordingly. Chapter \ref{sec:Evaluation} is dedicated to evaluation of our developed runtime environment and its performance compared to the current runtime environment in Open MPI (ORTE). And finally, Chapter \ref{sec:Conclusion} concludes this document.
+Chapter \ref{sec:Background} provides a background and the state-of-the-art approaches to parallel runtime enviroment challenges. Open MPI as an implementation of choice will be introduced. We will discuss the project features and its architecture. Open Runtime Environment (ORTE), the current runtime environment for Open MPI project, and its features will be discussed in detail in secion \ref{sec:orte}. ParalleX and High-Perfomance ParalleX (HPX) will be presented in section \ref{sec:hpx}. Chapter \ref{sec:HPX-RTE} covers the design principles, architecture, and implementation of our runtime environment for Open MPI (HPX-RTE) in sections \ref{sec:design}, \ref{sec:architecture}, and \ref{sec:implementation} accordingly. Chapter \ref{sec:Evaluation} is dedicated to evaluation of our developed runtime environment and its performance compared to the current runtime environment in Open MPI (ORTE). And finally, Chapter \ref{sec:Conclusion} concludes this document.
