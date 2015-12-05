@@ -1,7 +1,7 @@
 \chapter{Conclusion}
 \label{sec:Conclusion}
 
-High performance computing systems are growing toward hundreds of thousands to million node machines, utilizing the computing power of billions of cores. Running parallel applications on such large machines efficiently will require optimized runtime environments that are scalable and resilient. Multi and many core chip architectures in large scale supercomputers pose several new challenges to designers of operating systems and runtime environments.
+High-performance computing systems are growing toward hundreds-of-thousands to million-node machines, utilizing the computing power of billions of cores. Running parallel applications on such large machines efficiently will require optimized runtime environments that are scalable and resilient. Multi and many core chip architectures in large scale supercomputers pose several new challenges to designers of operating systems and runtime environments.
 
 HPX-RTE is a new, light weight, and open source runtime system specifically designed for the emerging exascale computing environment. The system is designed relying on HPX project advanced features such as asynchronous remote function calls (actions) and C++ futures to allow for easy extension and transparent scalability. HPX-RTE provides full compatibility for current MPI applications to run on HPX runtime system. 
 
@@ -10,7 +10,7 @@ Even though funcionality was the main priority in the design of HPX-RTE, our eva
 
 The source code size for HPX-RTE is more than \textbf{99.36\%} smaller than ORTE's source code. This is partly because of utlizing HPX external library and also not supporting all the features provided by ORTE. The smaller code base makes the source code much simpler and easier to understand. Moreover, based on our evaluations the significant smaller size of runtime has not sacrificed the performance.
 
-ORTE also supports a direct launch mechanism which avoids creating the ORTE daemons on individual compute nodes but uses the native resource manager instead for the management services, e.g. an application can be started directly using the srun command in a SLURM enviornment. This version has lower startup costs, but reduces the functionality of the runtime environment.
+ORTE also supports a direct launch mechanism which avoids creating the ORTE daemons on individual compute nodes but uses the native resource manager instead for the management services, e.g., an application can be started directly using the srun command in a SLURM enviornment. This version has lower startup costs, but reduces the functionality of the runtime environment.
 
 
 \section{Future Extensions}
