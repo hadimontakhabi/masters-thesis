@@ -146,7 +146,7 @@ To better understand the effect of the runtime, we can study an example with min
 
 \clearpage
 \subsection{MPI Hello World}
-A very good example to study the performance of the runtime would be a simple ``Hello World'' example (Listing \ref{lst:mpi_hello}). Since this simple application includes minimum communication and computation time, it could give us a better picture of the time spent in the runtime. Figure \ref{fig:time-all-hello-world-infiniband} illustrates the running time measured by the ``time'' command. Figure \ref{fig:time-app-hello-world-infiniband} shows the time measured starting before \verb|MPI_Init()| until after \verb|MPI_Finalize()| funtion. There is an improvement of up to \textbf{53\%} using HPX-RTE over ORTE.
+A very-good example to study the performance of the runtime would be a simple ``Hello World'' example (Listing \ref{lst:mpi_hello}). Since this simple application includes minimum communication and computation time, it could give us a better picture of the time spent in the runtime. Figure \ref{fig:time-all-hello-world-infiniband} illustrates the running time measured by the ``time'' command. Figure \ref{fig:time-app-hello-world-infiniband} shows the time measured starting before \verb|MPI_Init()| until after \verb|MPI_Finalize()| funtion. There is an improvement of up to \textbf{53\%} using HPX-RTE over ORTE.
 
 \begin{lstlisting}[language=C, frame=single, basicstyle=\footnotesize, caption=MPI Hello World \label{lst:mpi_hello}]
 #include <mpi.h>
@@ -183,7 +183,7 @@ int main (int argc, char** argv)
 
 \clearpage
 \subsection{Parallel Smoothing}
-This application performs smoothing on an input image on a pixel by pixel basis. The algorithm changes the class that a pixel has been assigned to if majority of neighboring elements have a different class. For each pixel, we consider an area of 5x5 pixels (two pixels in each direction). Input file contains the integer value of the class that each pixel belongs to. The algorithm is performed iteratively 10 times, and the result is written to an output file.
+This application performs smoothing on an input image on a pixel-by-pixel basis. The algorithm changes the class that a pixel has been assigned to if majority of neighboring elements have a different class. For each pixel, we consider an area of 5x5 pixels (two pixels in each direction). Input file contains the integer value of the class that each pixel belongs to. The algorithm is performed iteratively 10 times, and the result is written to an output file.
 
 Figure \ref{fig:time-all-smoother-1024-infiniband} and \ref{fig:time-app-smoother-1024-infiniband} show the running time and application reported time accordingly. The input image size is 1024x1024 pixels.
 
